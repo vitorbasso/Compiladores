@@ -166,17 +166,18 @@ and comentario_bloco lin col = parse
    "--]]"      { token lexbuf }
 | novalinha  { incr_num_linha lexbuf; comentario_bloco lin col lexbuf }
 | _        { comentario_bloco lin col lexbuf }
-| eof        { erro lin col "Comentário nao fechado" }
-
-and comentario_linha = parse
-	novalinha {incr_num_linha lexbuf; token lexbuf}
-|	_					{comentario_linha lexbuf}
+| eof        { erro lin col "Comentario nao fechado" }
 
 and leia_string lin col buffer = parse
-	 '"'			{ Buffer.contents buffer}
+	'"'				{ Buffer.contents buffer}
 | "\\t"			{ Buffer.add_char buffer '\t'; leia_string lin col buffer lexbuf }
 | "\\n"			{ Buffer.add_char buffer '\n'; leia_string lin col buffer lexbuf }
 | '\\' '"'	{ Buffer.add_char buffer '"'; leia_string lin col buffer lexbuf }
 | '\\' '\\' { Buffer.add_char buffer '\\'; leia_string lin col buffer lexbuf }
+| novalinha {erro lin col "A string nao foi fechada"}
 | _ as c	 	{ Buffer.add_char buffer c; leia_string lin col buffer lexbuf }
 | eof      	{ erro lin col "A string nao foi fechada"}
+
+and comentario_linha = parse
+	novalinha {incr_num_linha lexbuf; token lexbuf}
+|	_					{comentario_linha lexbuf}

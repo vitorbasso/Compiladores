@@ -1,0 +1,26 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "nome"; Lexico.VIRGULA; Lexico.ID "sexo"; Lexico.VIRGULA;
+ Lexico.ID "x"; Lexico.VIRGULA; Lexico.ID "h"; Lexico.VIRGULA; Lexico.ID "m";
+ Lexico.ID "h"; Lexico.VIRGULA; Lexico.ID "m"; Lexico.ATRIB; Lexico.LITINT 0;
+ Lexico.VIRGULA; Lexico.LITINT 0; Lexico.FOR; Lexico.ID "x"; Lexico.ATRIB;
+ Lexico.LITINT 1; Lexico.VIRGULA; Lexico.LITINT 5; Lexico.VIRGULA;
+ Lexico.LITINT 1; Lexico.DO; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Digite o nome: "; Lexico.FPAR; Lexico.ID "nome";
+ Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR; Lexico.LITSTRING "*line";
+ Lexico.FPAR; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "H - Homem ou M - Mulher: "; Lexico.FPAR; Lexico.ID "sexo";
+ Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR; Lexico.LITSTRING "*line";
+ Lexico.FPAR; Lexico.IF; Lexico.ID "sexo"; Lexico.EQUIVALENTE;
+ Lexico.LITSTRING "H"; Lexico.THEN; Lexico.ID "h"; Lexico.ATRIB;
+ Lexico.ID "h"; Lexico.ADICAO; Lexico.LITINT 1; Lexico.ELSEIF;
+ Lexico.ID "sexo"; Lexico.EQUIVALENTE; Lexico.LITSTRING "M"; Lexico.THEN;
+ Lexico.ID "m"; Lexico.ATRIB; Lexico.ID "m"; Lexico.ADICAO; Lexico.LITINT 1;
+ Lexico.ELSE; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Sexo so pode ser H ou M!\n"; Lexico.FPAR; Lexico.END;
+ Lexico.END; Lexico.PRINT; Lexico.APAR; Lexico.LITSTRING "Foram inseridos ";
+ Lexico.CONCATENA; Lexico.ID "h"; Lexico.CONCATENA;
+ Lexico.LITSTRING " homens\n"; Lexico.FPAR; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Foram inseridos "; Lexico.CONCATENA; Lexico.ID "m";
+ Lexico.CONCATENA; Lexico.LITSTRING " mulheres\n"; Lexico.FPAR; Lexico.END;
+ Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.EOF]

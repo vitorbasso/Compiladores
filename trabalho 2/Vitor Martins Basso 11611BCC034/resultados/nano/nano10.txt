@@ -1,0 +1,9 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "n"; Lexico.VIRGULA; Lexico.ID "m"; Lexico.ID "n"; Lexico.VIRGULA;
+ Lexico.ID "m"; Lexico.ATRIB; Lexico.LITINT 1; Lexico.VIRGULA;
+ Lexico.LITINT 2; Lexico.IF; Lexico.ID "n"; Lexico.EQUIVALENTE;
+ Lexico.ID "m"; Lexico.THEN; Lexico.PRINT; Lexico.APAR; Lexico.ID "n";
+ Lexico.FPAR; Lexico.ELSE; Lexico.PRINT; Lexico.APAR; Lexico.LITINT 0;
+ Lexico.FPAR; Lexico.END; Lexico.END; Lexico.ID "main"; Lexico.APAR;
+ Lexico.FPAR; Lexico.EOF]

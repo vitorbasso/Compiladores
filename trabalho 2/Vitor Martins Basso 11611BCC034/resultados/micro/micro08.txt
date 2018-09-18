@@ -1,0 +1,14 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "numero"; Lexico.ID "numero"; Lexico.ATRIB; Lexico.LITINT 1;
+ Lexico.WHILE; Lexico.ID "numero"; Lexico.NAO_EQUIVALENTE; Lexico.LITINT 0;
+ Lexico.DO; Lexico.PRINT; Lexico.APAR; Lexico.LITSTRING "Digite um numero: ";
+ Lexico.FPAR; Lexico.ID "numero"; Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR;
+ Lexico.LITSTRING "*n"; Lexico.FPAR; Lexico.IF; Lexico.ID "numero";
+ Lexico.MAIOR; Lexico.LITINT 10; Lexico.THEN; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "O numero "; Lexico.CONCATENA; Lexico.ID "numero";
+ Lexico.CONCATENA; Lexico.LITSTRING " e maior que 10\n"; Lexico.FPAR;
+ Lexico.ELSE; Lexico.PRINT; Lexico.APAR; Lexico.LITSTRING "O numero ";
+ Lexico.CONCATENA; Lexico.ID "numero"; Lexico.CONCATENA;
+ Lexico.LITSTRING " e menor que 10\n"; Lexico.FPAR; Lexico.END; Lexico.END;
+ Lexico.END; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.EOF]

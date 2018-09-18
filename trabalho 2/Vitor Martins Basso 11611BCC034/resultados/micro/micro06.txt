@@ -1,0 +1,18 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "numero"; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Digite um numero de 1 a 5: "; Lexico.FPAR;
+ Lexico.ID "numero"; Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR;
+ Lexico.LITSTRING "*number"; Lexico.FPAR; Lexico.IF; Lexico.ID "numero";
+ Lexico.EQUIVALENTE; Lexico.LITINT 1; Lexico.THEN; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Um\n"; Lexico.FPAR; Lexico.ELSEIF; Lexico.ID "numero";
+ Lexico.EQUIVALENTE; Lexico.LITINT 2; Lexico.THEN; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Dois\n"; Lexico.FPAR; Lexico.ELSEIF; Lexico.ID "numero";
+ Lexico.EQUIVALENTE; Lexico.LITINT 3; Lexico.THEN; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Tres\n"; Lexico.FPAR; Lexico.ELSEIF; Lexico.ID "numero";
+ Lexico.EQUIVALENTE; Lexico.LITINT 4; Lexico.THEN; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Quatro\n"; Lexico.FPAR; Lexico.ELSEIF; Lexico.ID "numero";
+ Lexico.EQUIVALENTE; Lexico.LITINT 5; Lexico.THEN; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Cinco\n"; Lexico.FPAR; Lexico.ELSE; Lexico.PRINT;
+ Lexico.APAR; Lexico.LITSTRING "Numero invalido!!!"; Lexico.FPAR; Lexico.END;
+ Lexico.END; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.EOF]

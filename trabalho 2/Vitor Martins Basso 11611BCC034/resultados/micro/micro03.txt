@@ -1,0 +1,16 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "numero"; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Digite um numero: "; Lexico.FPAR; Lexico.ID "numero";
+ Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR; Lexico.LITSTRING "*number";
+ Lexico.FPAR; Lexico.IF; Lexico.ID "numero"; Lexico.MAIOR_OU_IGUAL;
+ Lexico.LITINT 100; Lexico.THEN; Lexico.IF; Lexico.ID "numero";
+ Lexico.MENOR_OU_IGUAL; Lexico.LITINT 200; Lexico.THEN; Lexico.PRINT;
+ Lexico.APAR;
+ Lexico.LITSTRING "O numero esta no intervalo entre 100 e 200\n";
+ Lexico.FPAR; Lexico.ELSE; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "O numero nao esta no intervalo entre 100 e 200\n";
+ Lexico.FPAR; Lexico.END; Lexico.ELSE; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "O numero nao esta no intervalo entre 100 e 200\n";
+ Lexico.FPAR; Lexico.END; Lexico.END; Lexico.ID "main"; Lexico.APAR;
+ Lexico.FPAR; Lexico.EOF]

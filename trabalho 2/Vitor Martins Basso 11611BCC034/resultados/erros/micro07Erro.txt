@@ -1,0 +1,1 @@
+Exception: Failure "14-22: A string nao foi fechada".
