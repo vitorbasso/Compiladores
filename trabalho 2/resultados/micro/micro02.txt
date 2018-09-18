@@ -1,0 +1,19 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "num1"; Lexico.VIRGULA; Lexico.ID "num2"; Lexico.PRINT;
+ Lexico.APAR; Lexico.LITSTRING "Digite o primeiro numero: "; Lexico.FPAR;
+ Lexico.ID "num1"; Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR;
+ Lexico.LITSTRING "*number"; Lexico.FPAR; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Digite o segundo numero: "; Lexico.FPAR; Lexico.ID "num2";
+ Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR; Lexico.LITSTRING "*number";
+ Lexico.FPAR; Lexico.IF; Lexico.ID "num1"; Lexico.MAIOR; Lexico.ID "num2";
+ Lexico.THEN; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "O primeiro n\195\186mero "; Lexico.CONCATENA;
+ Lexico.ID "num1"; Lexico.CONCATENA;
+ Lexico.LITSTRING " \195\169 maior que o segundo "; Lexico.CONCATENA;
+ Lexico.ID "num2"; Lexico.FPAR; Lexico.ELSE; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "O segundo n\195\186mero "; Lexico.CONCATENA;
+ Lexico.ID "num2"; Lexico.CONCATENA;
+ Lexico.LITSTRING " \195\169 maior que o primeiro "; Lexico.CONCATENA;
+ Lexico.ID "num1"; Lexico.FPAR; Lexico.END; Lexico.END; Lexico.ID "main";
+ Lexico.APAR; Lexico.FPAR; Lexico.EOF]

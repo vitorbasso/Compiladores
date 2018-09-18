@@ -1,0 +1,17 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "x"; Lexico.VIRGULA; Lexico.ID "num"; Lexico.VIRGULA;
+ Lexico.ID "intervalo"; Lexico.ID "intervalo"; Lexico.ATRIB; Lexico.LITINT 0;
+ Lexico.FOR; Lexico.ID "x"; Lexico.ATRIB; Lexico.LITINT 1; Lexico.VIRGULA;
+ Lexico.LITINT 5; Lexico.VIRGULA; Lexico.LITINT 1; Lexico.DO; Lexico.PRINT;
+ Lexico.APAR; Lexico.LITSTRING "Digite um numero: "; Lexico.FPAR;
+ Lexico.ID "num"; Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR;
+ Lexico.LITSTRING "*number"; Lexico.FPAR; Lexico.IF; Lexico.ID "num";
+ Lexico.MAIOR_OU_IGUAL; Lexico.LITINT 10; Lexico.THEN; Lexico.IF;
+ Lexico.ID "num"; Lexico.MENOR_OU_IGUAL; Lexico.LITINT 150; Lexico.THEN;
+ Lexico.ID "intervalo"; Lexico.ATRIB; Lexico.ID "intervalo"; Lexico.ADICAO;
+ Lexico.LITINT 1; Lexico.END; Lexico.END; Lexico.END; Lexico.PRINT;
+ Lexico.APAR; Lexico.LITSTRING "Ao total, foram digitados ";
+ Lexico.CONCATENA; Lexico.ID "intervalo"; Lexico.CONCATENA;
+ Lexico.LITSTRING " numeros no intervalo entre 10 e 150"; Lexico.FPAR;
+ Lexico.END; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.EOF]

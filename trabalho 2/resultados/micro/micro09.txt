@@ -1,0 +1,29 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "preco"; Lexico.VIRGULA; Lexico.ID "venda"; Lexico.VIRGULA;
+ Lexico.ID "novo_preco"; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Digite o preco: "; Lexico.FPAR; Lexico.ID "preco";
+ Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR; Lexico.LITSTRING "*n";
+ Lexico.FPAR; Lexico.PRINT; Lexico.APAR; Lexico.LITSTRING "Digite a venda: ";
+ Lexico.FPAR; Lexico.ID "venda"; Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR;
+ Lexico.LITSTRING "*n"; Lexico.FPAR; Lexico.IF; Lexico.ID "venda";
+ Lexico.MENOR; Lexico.LITINT 500; Lexico.OR; Lexico.ID "preco"; Lexico.MENOR;
+ Lexico.LITINT 30; Lexico.THEN; Lexico.ID "novo_preco"; Lexico.ATRIB;
+ Lexico.ID "preco"; Lexico.ADICAO; Lexico.LITINT 10; Lexico.DIVISAO;
+ Lexico.LITINT 100; Lexico.MULTIPLICACAO; Lexico.ID "preco"; Lexico.ELSEIF;
+ Lexico.APAR; Lexico.ID "venda"; Lexico.MAIOR_OU_IGUAL; Lexico.LITINT 500;
+ Lexico.AND; Lexico.ID "venda"; Lexico.MENOR_OU_IGUAL; Lexico.LITINT 1200;
+ Lexico.FPAR; Lexico.OR; Lexico.APAR; Lexico.ID "preco";
+ Lexico.MAIOR_OU_IGUAL; Lexico.LITINT 30; Lexico.AND; Lexico.ID "preco";
+ Lexico.MENOR; Lexico.LITINT 80; Lexico.FPAR; Lexico.THEN;
+ Lexico.ID "novo_preco"; Lexico.ATRIB; Lexico.ID "preco"; Lexico.ADICAO;
+ Lexico.LITINT 15; Lexico.DIVISAO; Lexico.LITINT 100; Lexico.MULTIPLICACAO;
+ Lexico.ID "preco"; Lexico.ELSEIF; Lexico.ID "venda"; Lexico.MAIOR_OU_IGUAL;
+ Lexico.LITINT 1200; Lexico.OR; Lexico.ID "preco"; Lexico.MAIOR_OU_IGUAL;
+ Lexico.LITINT 80; Lexico.THEN; Lexico.ID "novo_preco"; Lexico.ATRIB;
+ Lexico.ID "preco"; Lexico.SUBTRACAO; Lexico.LITINT 20; Lexico.DIVISAO;
+ Lexico.LITINT 100; Lexico.MULTIPLICACAO; Lexico.ID "preco"; Lexico.END;
+ Lexico.PRINT; Lexico.APAR; Lexico.LITSTRING "O novo preco e ";
+ Lexico.CONCATENA; Lexico.ID "novo_preco"; Lexico.CONCATENA;
+ Lexico.LITSTRING "\n"; Lexico.FPAR; Lexico.END; Lexico.ID "main";
+ Lexico.APAR; Lexico.FPAR; Lexico.EOF]

@@ -1,0 +1,21 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "numero"; Lexico.VIRGULA; Lexico.ID "x"; Lexico.PRINT;
+ Lexico.APAR; Lexico.LITSTRING "Digite um numero "; Lexico.FPAR;
+ Lexico.ID "numero"; Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR;
+ Lexico.LITSTRING "*n"; Lexico.FPAR; Lexico.ID "x"; Lexico.ATRIB;
+ Lexico.ID "verifica"; Lexico.APAR; Lexico.ID "numero"; Lexico.FPAR;
+ Lexico.IF; Lexico.ID "x"; Lexico.EQUIVALENTE; Lexico.LITINT 1; Lexico.THEN;
+ Lexico.PRINT; Lexico.APAR; Lexico.LITSTRING "Numero positivo\n";
+ Lexico.FPAR; Lexico.ELSEIF; Lexico.ID "x"; Lexico.EQUIVALENTE;
+ Lexico.LITINT 0; Lexico.THEN; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Zero\n"; Lexico.FPAR; Lexico.ELSE; Lexico.PRINT;
+ Lexico.APAR; Lexico.LITSTRING "Numero negativo\n"; Lexico.FPAR; Lexico.END;
+ Lexico.END; Lexico.FUNCAO; Lexico.ID "verifica"; Lexico.APAR; Lexico.ID "n";
+ Lexico.FPAR; Lexico.LOCAL; Lexico.ID "res"; Lexico.IF; Lexico.ID "n";
+ Lexico.MAIOR; Lexico.LITINT 0; Lexico.THEN; Lexico.ID "res"; Lexico.ATRIB;
+ Lexico.LITINT 1; Lexico.ELSEIF; Lexico.ID "n"; Lexico.MENOR;
+ Lexico.LITINT 0; Lexico.THEN; Lexico.ID "res"; Lexico.ATRIB;
+ Lexico.SUBTRACAO; Lexico.LITINT 1; Lexico.ELSE; Lexico.ID "res";
+ Lexico.ATRIB; Lexico.LITINT 0; Lexico.END; Lexico.RETURN; Lexico.ID "res";
+ Lexico.END; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.EOF]

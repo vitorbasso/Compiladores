@@ -1,0 +1,14 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "cel"; Lexico.VIRGULA; Lexico.ID "far"; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING " tabela de conversao: Celsius -> Fahrenheit\n";
+ Lexico.FPAR; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Digite a temperatura em Celsius: "; Lexico.FPAR;
+ Lexico.ID "cel"; Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR;
+ Lexico.LITSTRING "*number"; Lexico.FPAR; Lexico.ID "far"; Lexico.ATRIB;
+ Lexico.APAR; Lexico.LITINT 9; Lexico.MULTIPLICACAO; Lexico.ID "cel";
+ Lexico.ADICAO; Lexico.LITINT 160; Lexico.FPAR; Lexico.DIVISAO;
+ Lexico.LITINT 5; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "A nova temperatura e: "; Lexico.CONCATENA;
+ Lexico.ID "far"; Lexico.CONCATENA; Lexico.LITSTRING " F"; Lexico.FPAR;
+ Lexico.END; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.EOF]

@@ -1,0 +1,21 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "programa"; Lexico.VIRGULA; Lexico.ID "numero"; Lexico.VIRGULA;
+ Lexico.ID "opc"; Lexico.ID "programa"; Lexico.ATRIB; Lexico.LITINT 1;
+ Lexico.WHILE; Lexico.ID "programa"; Lexico.EQUIVALENTE; Lexico.LITINT 1;
+ Lexico.DO; Lexico.PRINT; Lexico.APAR; Lexico.LITSTRING "Digite um numero: ";
+ Lexico.FPAR; Lexico.ID "numero"; Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR;
+ Lexico.LITSTRING "*n"; Lexico.FPAR; Lexico.IF; Lexico.ID "numero";
+ Lexico.MAIOR; Lexico.LITINT 0; Lexico.THEN; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Positivo\n"; Lexico.FPAR; Lexico.ELSE; Lexico.IF;
+ Lexico.ID "numero"; Lexico.EQUIVALENTE; Lexico.LITINT 0; Lexico.THEN;
+ Lexico.PRINT; Lexico.APAR; Lexico.LITSTRING "O numero e igual a 0\n";
+ Lexico.FPAR; Lexico.END; Lexico.IF; Lexico.ID "numero"; Lexico.MENOR;
+ Lexico.LITINT 0; Lexico.THEN; Lexico.PRINT; Lexico.APAR;
+ Lexico.LITSTRING "Negativo\n"; Lexico.FPAR; Lexico.END; Lexico.END;
+ Lexico.PRINT; Lexico.APAR; Lexico.LITSTRING "Deseja finalizar? (S - 1): ";
+ Lexico.FPAR; Lexico.ID "opc"; Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR;
+ Lexico.LITSTRING "*n"; Lexico.FPAR; Lexico.IF; Lexico.ID "opc";
+ Lexico.EQUIVALENTE; Lexico.LITINT 1; Lexico.THEN; Lexico.ID "programa";
+ Lexico.ATRIB; Lexico.LITINT 0; Lexico.END; Lexico.END; Lexico.END;
+ Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.EOF]

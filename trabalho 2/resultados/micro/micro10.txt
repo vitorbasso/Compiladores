@@ -1,0 +1,17 @@
+- : Lexico.tokens list =
+[Lexico.FUNCAO; Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.LOCAL;
+ Lexico.ID "numero"; Lexico.VIRGULA; Lexico.ID "fat"; Lexico.PRINT;
+ Lexico.APAR; Lexico.LITSTRING "Digite um numero: "; Lexico.FPAR;
+ Lexico.ID "numero"; Lexico.ATRIB; Lexico.IO_READ; Lexico.APAR;
+ Lexico.LITSTRING "*n"; Lexico.FPAR; Lexico.ID "fat"; Lexico.ATRIB;
+ Lexico.ID "fatorial"; Lexico.APAR; Lexico.ID "numero"; Lexico.FPAR;
+ Lexico.PRINT; Lexico.APAR; Lexico.LITSTRING "O fatorial de ";
+ Lexico.CONCATENA; Lexico.ID "numero"; Lexico.CONCATENA;
+ Lexico.LITSTRING " e "; Lexico.CONCATENA; Lexico.ID "fat"; Lexico.CONCATENA;
+ Lexico.LITSTRING "\n"; Lexico.FPAR; Lexico.END; Lexico.FUNCAO;
+ Lexico.ID "fatorial"; Lexico.APAR; Lexico.ID "n"; Lexico.FPAR; Lexico.IF;
+ Lexico.ID "n"; Lexico.MENOR_OU_IGUAL; Lexico.LITINT 0; Lexico.THEN;
+ Lexico.RETURN; Lexico.LITINT 1; Lexico.ELSE; Lexico.RETURN; Lexico.ID "n";
+ Lexico.MULTIPLICACAO; Lexico.ID "fatorial"; Lexico.APAR; Lexico.ID "n";
+ Lexico.SUBTRACAO; Lexico.LITINT 1; Lexico.FPAR; Lexico.END; Lexico.END;
+ Lexico.ID "main"; Lexico.APAR; Lexico.FPAR; Lexico.EOF]
