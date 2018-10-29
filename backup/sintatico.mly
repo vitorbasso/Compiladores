@@ -92,7 +92,7 @@ argumentos:
   ;
 
 declaracao:
-  | t = tipo v = variavel {DecVar (t, v)}
+  | t=tipo v=variavel { DecVar (t,v) }
   ;
 
 tipo: t = tipo_simples { t }

@@ -1,0 +1,108 @@
+### Starting build.
+# Target: sintaticoTest.ml.depends, tags: { package(menhirLib), extension:ml, file:sintaticoTest.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package menhirLib -modules sintaticoTest.ml > sintaticoTest.ml.depends
+# Target: ast.ml.depends, tags: { package(menhirLib), extension:ml, file:ast.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package menhirLib -modules ast.ml > ast.ml.depends
+# Target: erroSint.ml.depends, tags: { package(menhirLib), extension:ml, file:erroSint.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package menhirLib -modules erroSint.ml > erroSint.ml.depends
+# Target: lexico.mll, tags: { package(menhirLib), extension:mll, file:lexico.mll, lexer, ocaml, ocamllex, quiet }
+/usr/bin/ocamllex.opt -q lexico.mll
+# Target: lexico.ml.depends, tags: { package(menhirLib), extension:ml, file:lexico.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package menhirLib -modules lexico.ml > lexico.ml.depends
+# Target: sintatico.mly.depends, tags: { package(menhirLib), extension:mly, file:sintatico.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet }
+menhir --table --raw-depend --ocamldep 'ocamlfind ocamldep -modules' sintatico.mly > sintatico.mly.depends
++ menhir --table --raw-depend --ocamldep 'ocamlfind ocamldep -modules' sintatico.mly > sintatico.mly.depends
+File "sintatico.mly", line 9, characters 18-28:
+Warning: the token ABRE_CHAVE is unused.
+File "sintatico.mly", line 10, characters 18-31:
+Warning: the token ABRE_COLCHETE is unused.
+File "sintatico.mly", line 18, characters 18-23:
+Warning: the token BREAK is unused.
+File "sintatico.mly", line 24, characters 18-29:
+Warning: the token DOIS_PONTOS is unused.
+File "sintatico.mly", line 26, characters 18-24:
+Warning: the token ELSEIF is unused.
+File "sintatico.mly", line 66, characters 18-23:
+Warning: the token FALSE is unused.
+File "sintatico.mly", line 11, characters 18-29:
+Warning: the token FECHA_CHAVE is unused.
+File "sintatico.mly", line 12, characters 18-32:
+Warning: the token FECHA_COLCHETE is unused.
+File "sintatico.mly", line 34, characters 18-20:
+Warning: the token IN is unused.
+File "sintatico.mly", line 36, characters 18-23:
+Warning: the token LOCAL is unused.
+File "sintatico.mly", line 45, characters 18-21:
+Warning: the token NIL is unused.
+File "sintatico.mly", line 47, characters 18-30:
+Warning: the token NUMBER_INPUT is unused.
+File "sintatico.mly", line 51, characters 18-23:
+Warning: the token PONTO is unused.
+File "sintatico.mly", line 52, characters 18-31:
+Warning: the token PONTO_VIRGULA is unused.
+File "sintatico.mly", line 68, characters 18-24:
+Warning: the token REPEAT is unused.
+File "sintatico.mly", line 54, characters 18-29:
+Warning: the token RETICENCIAS is unused.
+File "sintatico.mly", line 67, characters 18-22:
+Warning: the token TRUE is unused.
+File "sintatico.mly", line 62, characters 18-23:
+Warning: the token UNTIL is unused.
+# Target: ast.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:ast.cmo, file:ast.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -package menhirLib -o ast.cmo ast.ml
+# Target: sintatico.mly, tags: { package(menhirLib), byte, compile, extension:ml, extension:mly, file:sintatico.ml, file:sintatico.mly, infer, menhir, ocaml, parser, quiet }
+menhir --table --ocamlc 'ocamlfind ocamlc -package menhirLib' --infer sintatico.mly
++ menhir --table --ocamlc 'ocamlfind ocamlc -package menhirLib' --infer sintatico.mly
+File "sintatico.mly", line 9, characters 18-28:
+Warning: the token ABRE_CHAVE is unused.
+File "sintatico.mly", line 10, characters 18-31:
+Warning: the token ABRE_COLCHETE is unused.
+File "sintatico.mly", line 18, characters 18-23:
+Warning: the token BREAK is unused.
+File "sintatico.mly", line 24, characters 18-29:
+Warning: the token DOIS_PONTOS is unused.
+File "sintatico.mly", line 26, characters 18-24:
+Warning: the token ELSEIF is unused.
+File "sintatico.mly", line 66, characters 18-23:
+Warning: the token FALSE is unused.
+File "sintatico.mly", line 11, characters 18-29:
+Warning: the token FECHA_CHAVE is unused.
+File "sintatico.mly", line 12, characters 18-32:
+Warning: the token FECHA_COLCHETE is unused.
+File "sintatico.mly", line 34, characters 18-20:
+Warning: the token IN is unused.
+File "sintatico.mly", line 36, characters 18-23:
+Warning: the token LOCAL is unused.
+File "sintatico.mly", line 45, characters 18-21:
+Warning: the token NIL is unused.
+File "sintatico.mly", line 47, characters 18-30:
+Warning: the token NUMBER_INPUT is unused.
+File "sintatico.mly", line 51, characters 18-23:
+Warning: the token PONTO is unused.
+File "sintatico.mly", line 52, characters 18-31:
+Warning: the token PONTO_VIRGULA is unused.
+File "sintatico.mly", line 68, characters 18-24:
+Warning: the token REPEAT is unused.
+File "sintatico.mly", line 54, characters 18-29:
+Warning: the token RETICENCIAS is unused.
+File "sintatico.mly", line 67, characters 18-22:
+Warning: the token TRUE is unused.
+File "sintatico.mly", line 62, characters 18-23:
+Warning: the token UNTIL is unused.
+# Target: sintatico.mli.depends, tags: { package(menhirLib), extension:mli, file:sintatico.mli, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package menhirLib -modules sintatico.mli > sintatico.mli.depends
+# Target: sintatico.cmi, tags: { package(menhirLib), byte, compile, extension:mli, file:sintatico.mli, interf, ocaml, quiet }
+ocamlfind ocamlc -c -package menhirLib -o sintatico.cmi sintatico.mli
+# Target: erroSint.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:erroSint.cmo, file:erroSint.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -package menhirLib -o erroSint.cmo erroSint.ml
+# Target: lexico.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:lexico.cmo, file:lexico.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -package menhirLib -o lexico.cmo lexico.ml
+# Target: sintaticoTest.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:sintaticoTest.cmo, file:sintaticoTest.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -package menhirLib -o sintaticoTest.cmo sintaticoTest.ml
+# Target: sintatico.ml.depends, tags: { package(menhirLib), extension:ml, file:sintatico.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -package menhirLib -modules sintatico.ml > sintatico.ml.depends
+# Target: sintatico.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:sintatico.cmo, file:sintatico.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -package menhirLib -o sintatico.cmo sintatico.ml
+# Target: sintaticoTest.byte, tags: { package(menhirLib), byte, dont_link_with, extension:byte, file:sintaticoTest.byte, link, ocaml, program, quiet }
+ocamlfind ocamlc -linkpkg -package menhirLib ast.cmo erroSint.cmo sintatico.cmo lexico.cmo sintaticoTest.cmo -o sintaticoTest.byte
+# Compilation successful.
