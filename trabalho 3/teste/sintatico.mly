@@ -88,12 +88,10 @@ programa: f = funcoes+
     EOF { Programa (f) }
 
 funcoes:
-  | FUNCAO tipo = tipo_simples id = ID APAR args = argumentos* FPAR
-                  ds = declaracao*
-                  cs = comando*
-                  (*ret = retorno*)
-                  END {Funcao (tipo, id, args, ds, cs(*, ret*))}
-  ;
+	| FUNCAO tipo=tipo_simples id=ID APAR args=argumentos* FPAR ds=declaracao* cs=comando*
+	(*ret=retorno*)
+	END { Funcao (tipo, id, args, ds, cs(*,ret*))}
+	;
 
 argumentos:
   | t = tipo_simples id = ID { Args (t, id) }

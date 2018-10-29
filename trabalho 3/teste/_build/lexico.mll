@@ -60,6 +60,7 @@ rule token = parse
 | ".." 			 					{ CONCATENA }
 | "..."			 					{ RETICENCIAS }
 | "and"			 					{ AND }
+| "<int>"             { TIPO_INT}
 | "break"		 					{ BREAK }
 | "do"			 					{ DO }
 | "else"		 					{ ELSE }
