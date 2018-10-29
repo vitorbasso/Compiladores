@@ -1,0 +1,21 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [], [DecVar (TipoInt, VarSimples "numero")],
+     [CmdAtrib (VarSimples "numero", ExpInt 1);
+      CmdWhile
+       (ExpOp (Nao_Equivalente, ExpVar (VarSimples "numero"), ExpInt 0),
+       [CmdPrint (ExpString "Digite um numero: ");
+        CmdScan (VarSimples "numero");
+        CmdIf (ExpOp (Maior, ExpVar (VarSimples "numero"), ExpInt 10),
+         [CmdPrint
+           (ExpOp (Concatena,
+             ExpOp (Concatena, ExpString "O numero ",
+              ExpVar (VarSimples "numero")),
+             ExpString " e maior que 10\n"))],
+         Some
+          [CmdPrint
+            (ExpOp (Concatena,
+              ExpOp (Concatena, ExpString "O numero ",
+               ExpVar (VarSimples "numero")),
+              ExpString " e menor que 10\n"))])])])])

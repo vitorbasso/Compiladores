@@ -98,7 +98,7 @@ argumentos:
   ;
 
 declaracao:
-  | t=tipo v=variavel { DecVar (t,v) }
+  | LOCAL t=tipo v=variavel { DecVar (t,v) }
   ;
 
 tipo: t = tipo_simples { t }
@@ -146,7 +146,7 @@ comando_scan:
   ;
 
 comando_funcao:
-  | id = ID APAR  args = ID* FPAR {CmdFunction  (id, args)  }
+  | id=ID APAR  args=ID* FPAR {CmdFunction  (id, args)  }
   ;
 
 comando_retorno:

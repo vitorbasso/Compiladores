@@ -1,0 +1,35 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [],
+     [DecVar (TipoString, VarSimples "nome");
+      DecVar (TipoString, VarSimples "sexo");
+      DecVar (TipoInt, VarSimples "x"); DecVar (TipoInt, VarSimples "h");
+      DecVar (TipoInt, VarSimples "m")],
+     [CmdAtrib (VarSimples "x", ExpInt 1);
+      CmdAtrib (VarSimples "h", ExpInt 0);
+      CmdAtrib (VarSimples "m", ExpInt 0);
+      CmdFor (VarSimples "x", 1, 5, 1,
+       [CmdPrint (ExpString "Digite o nome: "); CmdScan (VarSimples "nome");
+        CmdPrint (ExpString "H - Homem ou M - Mulher: ");
+        CmdScan (VarSimples "sexo");
+        CmdIf
+         (ExpOp (Equivalente, ExpVar (VarSimples "sexo"), ExpString "H"),
+         [CmdAtrib (VarSimples "h",
+           ExpOp (Adicao, ExpVar (VarSimples "h"), ExpInt 1))],
+         Some
+          [CmdIf
+            (ExpOp (Equivalente, ExpVar (VarSimples "sexo"), ExpString "M"),
+            [CmdAtrib (VarSimples "m",
+              ExpOp (Adicao, ExpVar (VarSimples "m"), ExpInt 1))],
+            Some [CmdPrint (ExpString "Sexo so pode ser H ou M!\n")])])]);
+      CmdPrint
+       (ExpOp (Concatena,
+         ExpOp (Concatena, ExpString "Foram inseridos ",
+          ExpVar (VarSimples "h")),
+         ExpString " homens\n"));
+      CmdPrint
+       (ExpOp (Concatena,
+         ExpOp (Concatena, ExpString "Foram inseridos ",
+          ExpVar (VarSimples "m")),
+         ExpString " mulheres\n"))])])

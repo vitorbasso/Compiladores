@@ -28,6 +28,9 @@ rule token = parse
 | novalinha 					{ incr_num_linha lexbuf; token lexbuf }
 | "--[["							{ comentario_bloco lexbuf }
 | "--" 								{ comentario_linha lexbuf }
+| "int"             { TIPO_INT}
+| "bool"            { TIPO_BOOLEAN}
+| "string"          { TIPO_STRING}
 | "("				 					{ APAR }
 | "{"				 					{ ABRE_CHAVE }
 | "["				 					{ ABRE_COLCHETE }
@@ -60,7 +63,6 @@ rule token = parse
 | ".." 			 					{ CONCATENA }
 | "..."			 					{ RETICENCIAS }
 | "and"			 					{ AND }
-| "<int>"             { TIPO_INT}
 | "break"		 					{ BREAK }
 | "do"			 					{ DO }
 | "else"		 					{ ELSE }

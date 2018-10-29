@@ -1,0 +1,22 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [],
+     [DecVar (TipoInt, VarSimples "x"); DecVar (TipoInt, VarSimples "num");
+      DecVar (TipoInt, VarSimples "intervalo")],
+     [CmdAtrib (VarSimples "intervalo", ExpInt 0);
+      CmdFor (VarSimples "x", 1, 5, 1,
+       [CmdPrint (ExpString "Digite um numero: ");
+        CmdScan (VarSimples "num");
+        CmdIf (ExpOp (Maior_ou_Igual, ExpVar (VarSimples "num"), ExpInt 10),
+         [CmdIf
+           (ExpOp (Menor_ou_Igual, ExpVar (VarSimples "num"), ExpInt 150),
+           [CmdAtrib (VarSimples "intervalo",
+             ExpOp (Adicao, ExpVar (VarSimples "intervalo"), ExpInt 1))],
+           None)],
+         None)]);
+      CmdPrint
+       (ExpOp (Concatena,
+         ExpOp (Concatena, ExpString "Ao total, foram digitados ",
+          ExpVar (VarSimples "intervalo")),
+         ExpString " numeros no intervalo entre 10 e 150"))])])

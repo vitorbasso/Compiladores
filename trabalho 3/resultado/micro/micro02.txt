@@ -1,0 +1,27 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [],
+     [DecVar (TipoInt, VarSimples "num1");
+      DecVar (TipoInt, VarSimples "num2")],
+     [CmdPrint (ExpString "Digite o primeiro numero: ");
+      CmdScan (VarSimples "num1");
+      CmdPrint (ExpString "Digite o segundo numero: ");
+      CmdScan (VarSimples "num2");
+      CmdIf
+       (ExpOp (Maior, ExpVar (VarSimples "num1"), ExpVar (VarSimples "num2")),
+       [CmdPrint
+         (ExpOp (Concatena,
+           ExpOp (Concatena,
+            ExpOp (Concatena, ExpString "O primeiro n\195\186mero ",
+             ExpVar (VarSimples "num1")),
+            ExpString " \195\169 maior que o segundo "),
+           ExpVar (VarSimples "num2")))],
+       Some
+        [CmdPrint
+          (ExpOp (Concatena,
+            ExpOp (Concatena,
+             ExpOp (Concatena, ExpString "O segundo n\195\186mero ",
+              ExpVar (VarSimples "num2")),
+             ExpString " \195\169 maior que o primeiro "),
+            ExpVar (VarSimples "num1")))])])])

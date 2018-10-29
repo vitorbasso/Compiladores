@@ -1,0 +1,17 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [], [DecVar (TipoInt, VarSimples "numero")],
+     [CmdPrint (ExpString "Digite um numero de 1 a 5: ");
+      CmdScan (VarSimples "numero");
+      CmdIf (ExpOp (Equivalente, ExpVar (VarSimples "numero"), ExpInt 1),
+       [CmdPrint (ExpString "Um\n")], None);
+      CmdIf (ExpOp (Equivalente, ExpVar (VarSimples "numero"), ExpInt 2),
+       [CmdPrint (ExpString "Dois\n")], None);
+      CmdIf (ExpOp (Equivalente, ExpVar (VarSimples "numero"), ExpInt 3),
+       [CmdPrint (ExpString "Tres\n")], None);
+      CmdIf (ExpOp (Equivalente, ExpVar (VarSimples "numero"), ExpInt 4),
+       [CmdPrint (ExpString "Quatro\n")], None);
+      CmdIf (ExpOp (Equivalente, ExpVar (VarSimples "numero"), ExpInt 5),
+       [CmdPrint (ExpString "Cinco\n")],
+       Some [CmdPrint (ExpString "Numero invalido!!!")])])])

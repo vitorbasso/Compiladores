@@ -1,0 +1,23 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "fatorial", [Args (TipoInt, "n")],
+     [DecVar (TipoInt, VarSimples "x")],
+     [CmdIf (ExpOp (Menor_ou_Igual, ExpVar (VarSimples "n"), ExpInt 1),
+       [CmdRetorno (ExpInt 1)],
+       Some
+        [CmdAtrib (VarSimples "y",
+          ExpOp (Subtracao, ExpVar (VarSimples "n"), ExpInt 1));
+         CmdAtribRetorno (VarSimples "x", "fatorial", ["y"]);
+         CmdRetorno
+          (ExpOp (Multiplicacao, ExpVar (VarSimples "n"),
+            ExpVar (VarSimples "x")))])]);
+    Funcao (TipoInt, "main", [],
+     [DecVar (TipoInt, VarSimples "numero");
+      DecVar (TipoInt, VarSimples "fat")],
+     [CmdPrint (ExpString "Digite um numero: ");
+      CmdScan (VarSimples "numero");
+      CmdAtribRetorno (VarSimples "fat", "fatorial", ["numero"]);
+      CmdPrint (ExpString "O fatorial de "); CmdPrint (ExpString "numero");
+      CmdPrint (ExpString " e "); CmdPrint (ExpVar (VarSimples "fat"));
+      CmdRetorno (ExpInt 1)])])

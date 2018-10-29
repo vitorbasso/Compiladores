@@ -1,64 +1,67 @@
 State 0:
 programa' -> . programa [ # ]
 -- On FUNCAO shift to state 1
--- On programa shift to state 133
--- On nonempty_list(funcoes) shift to state 134
--- On funcoes shift to state 136
+-- On programa shift to state 135
+-- On nonempty_list(funcoes) shift to state 136
+-- On funcoes shift to state 138
 
 State 1:
-funcoes -> FUNCAO . ID APAR list(argumentos) FPAR list(declaracao) list(comando) END [ FUNCAO EOF ]
--- On ID shift to state 2
+funcoes -> FUNCAO . tipo_simples ID APAR list(argumentos) FPAR list(declaracao) list(comando) END [ FUNCAO EOF ]
+-- On TIPO_STRING shift to state 2
+-- On TIPO_INT shift to state 3
+-- On TIPO_BOOLEAN shift to state 4
+-- On tipo_simples shift to state 5
 
 State 2:
-funcoes -> FUNCAO ID . APAR list(argumentos) FPAR list(declaracao) list(comando) END [ FUNCAO EOF ]
--- On APAR shift to state 3
-
-State 3:
-funcoes -> FUNCAO ID APAR . list(argumentos) FPAR list(declaracao) list(comando) END [ FUNCAO EOF ]
--- On TIPO_STRING shift to state 4
--- On TIPO_INT shift to state 5
--- On TIPO_BOOLEAN shift to state 6
--- On tipo_simples shift to state 7
--- On list(argumentos) shift to state 9
--- On argumentos shift to state 131
--- On FPAR reduce production list(argumentos) -> 
-
-State 4:
 tipo_simples -> TIPO_STRING . [ ID ]
 -- On ID reduce production tipo_simples -> TIPO_STRING 
 
-State 5:
+State 3:
 tipo_simples -> TIPO_INT . [ ID ]
 -- On ID reduce production tipo_simples -> TIPO_INT 
 
-State 6:
+State 4:
 tipo_simples -> TIPO_BOOLEAN . [ ID ]
 -- On ID reduce production tipo_simples -> TIPO_BOOLEAN 
 
+State 5:
+funcoes -> FUNCAO tipo_simples . ID APAR list(argumentos) FPAR list(declaracao) list(comando) END [ FUNCAO EOF ]
+-- On ID shift to state 6
+
+State 6:
+funcoes -> FUNCAO tipo_simples ID . APAR list(argumentos) FPAR list(declaracao) list(comando) END [ FUNCAO EOF ]
+-- On APAR shift to state 7
+
 State 7:
-argumentos -> tipo_simples . ID [ TIPO_STRING TIPO_INT TIPO_BOOLEAN FPAR ]
--- On ID shift to state 8
+funcoes -> FUNCAO tipo_simples ID APAR . list(argumentos) FPAR list(declaracao) list(comando) END [ FUNCAO EOF ]
+-- On TIPO_STRING shift to state 2
+-- On TIPO_INT shift to state 3
+-- On TIPO_BOOLEAN shift to state 4
+-- On tipo_simples shift to state 8
+-- On list(argumentos) shift to state 10
+-- On argumentos shift to state 133
+-- On FPAR reduce production list(argumentos) -> 
 
 State 8:
+argumentos -> tipo_simples . ID [ TIPO_STRING TIPO_INT TIPO_BOOLEAN FPAR ]
+-- On ID shift to state 9
+
+State 9:
 argumentos -> tipo_simples ID . [ TIPO_STRING TIPO_INT TIPO_BOOLEAN FPAR ]
 -- On TIPO_STRING reduce production argumentos -> tipo_simples ID 
 -- On TIPO_INT reduce production argumentos -> tipo_simples ID 
 -- On TIPO_BOOLEAN reduce production argumentos -> tipo_simples ID 
 -- On FPAR reduce production argumentos -> tipo_simples ID 
 
-State 9:
-funcoes -> FUNCAO ID APAR list(argumentos) . FPAR list(declaracao) list(comando) END [ FUNCAO EOF ]
--- On FPAR shift to state 10
-
 State 10:
-funcoes -> FUNCAO ID APAR list(argumentos) FPAR . list(declaracao) list(comando) END [ FUNCAO EOF ]
--- On TIPO_STRING shift to state 4
--- On TIPO_INT shift to state 5
--- On TIPO_BOOLEAN shift to state 6
--- On tipo_simples shift to state 11
--- On tipo shift to state 12
--- On list(declaracao) shift to state 15
--- On declaracao shift to state 129
+funcoes -> FUNCAO tipo_simples ID APAR list(argumentos) . FPAR list(declaracao) list(comando) END [ FUNCAO EOF ]
+-- On FPAR shift to state 11
+
+State 11:
+funcoes -> FUNCAO tipo_simples ID APAR list(argumentos) FPAR . list(declaracao) list(comando) END [ FUNCAO EOF ]
+-- On LOCAL shift to state 12
+-- On list(declaracao) shift to state 17
+-- On declaracao shift to state 131
 -- On WHILE reduce production list(declaracao) -> 
 -- On RETURN reduce production list(declaracao) -> 
 -- On PRINT reduce production list(declaracao) -> 
@@ -67,21 +70,26 @@ funcoes -> FUNCAO ID APAR list(argumentos) FPAR . list(declaracao) list(comando)
 -- On FOR reduce production list(declaracao) -> 
 -- On END reduce production list(declaracao) -> 
 
-State 11:
+State 12:
+declaracao -> LOCAL . tipo variavel [ WHILE RETURN PRINT LOCAL IF ID FOR END ]
+-- On TIPO_STRING shift to state 2
+-- On TIPO_INT shift to state 3
+-- On TIPO_BOOLEAN shift to state 4
+-- On tipo_simples shift to state 13
+-- On tipo shift to state 14
+
+State 13:
 tipo -> tipo_simples . [ ID ]
 -- On ID reduce production tipo -> tipo_simples 
 
-State 12:
-declaracao -> tipo . variavel [ WHILE TIPO_STRING TIPO_INT TIPO_BOOLEAN RETURN PRINT IF ID FOR END ]
--- On ID shift to state 13
--- On variavel shift to state 14
+State 14:
+declaracao -> LOCAL tipo . variavel [ WHILE RETURN PRINT LOCAL IF ID FOR END ]
+-- On ID shift to state 15
+-- On variavel shift to state 16
 
-State 13:
-variavel -> ID . [ WHILE TIPO_STRING TIPO_INT TIPO_BOOLEAN THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA ATRIB AND_BINARIO AND ADICAO ]
+State 15:
+variavel -> ID . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR LOCAL IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA ATRIB AND_BINARIO AND ADICAO ]
 -- On WHILE reduce production variavel -> ID 
--- On TIPO_STRING reduce production variavel -> ID 
--- On TIPO_INT reduce production variavel -> ID 
--- On TIPO_BOOLEAN reduce production variavel -> ID 
 -- On THEN reduce production variavel -> ID 
 -- On TAMANHO reduce production variavel -> ID 
 -- On SUBTRACAO reduce production variavel -> ID 
@@ -99,6 +107,7 @@ variavel -> ID . [ WHILE TIPO_STRING TIPO_INT TIPO_BOOLEAN THEN TAMANHO SUBTRACA
 -- On MENOR reduce production variavel -> ID 
 -- On MAIOR_OU_IGUAL reduce production variavel -> ID 
 -- On MAIOR reduce production variavel -> ID 
+-- On LOCAL reduce production variavel -> ID 
 -- On IF reduce production variavel -> ID 
 -- On ID reduce production variavel -> ID 
 -- On FPAR reduce production variavel -> ID 
@@ -117,51 +126,49 @@ variavel -> ID . [ WHILE TIPO_STRING TIPO_INT TIPO_BOOLEAN THEN TAMANHO SUBTRACA
 -- On AND reduce production variavel -> ID 
 -- On ADICAO reduce production variavel -> ID 
 
-State 14:
-declaracao -> tipo variavel . [ WHILE TIPO_STRING TIPO_INT TIPO_BOOLEAN RETURN PRINT IF ID FOR END ]
--- On WHILE reduce production declaracao -> tipo variavel 
--- On TIPO_STRING reduce production declaracao -> tipo variavel 
--- On TIPO_INT reduce production declaracao -> tipo variavel 
--- On TIPO_BOOLEAN reduce production declaracao -> tipo variavel 
--- On RETURN reduce production declaracao -> tipo variavel 
--- On PRINT reduce production declaracao -> tipo variavel 
--- On IF reduce production declaracao -> tipo variavel 
--- On ID reduce production declaracao -> tipo variavel 
--- On FOR reduce production declaracao -> tipo variavel 
--- On END reduce production declaracao -> tipo variavel 
-
-State 15:
-funcoes -> FUNCAO ID APAR list(argumentos) FPAR list(declaracao) . list(comando) END [ FUNCAO EOF ]
--- On WHILE shift to state 16
--- On RETURN shift to state 72
--- On PRINT shift to state 74
--- On IF shift to state 78
--- On ID shift to state 81
--- On FOR shift to state 87
--- On variavel shift to state 96
--- On list(comando) shift to state 127
--- On comando_while shift to state 108
--- On comando_scan shift to state 109
--- On comando_retorno shift to state 110
--- On comando_print shift to state 111
--- On comando_if shift to state 112
--- On comando_funcao shift to state 113
--- On comando_for shift to state 114
--- On comando_atribuicao shift to state 115
--- On comando shift to state 116
--- On END reduce production list(comando) -> 
-
 State 16:
-comando_while -> WHILE . expressao DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 70
+declaracao -> LOCAL tipo variavel . [ WHILE RETURN PRINT LOCAL IF ID FOR END ]
+-- On WHILE reduce production declaracao -> LOCAL tipo variavel 
+-- On RETURN reduce production declaracao -> LOCAL tipo variavel 
+-- On PRINT reduce production declaracao -> LOCAL tipo variavel 
+-- On LOCAL reduce production declaracao -> LOCAL tipo variavel 
+-- On IF reduce production declaracao -> LOCAL tipo variavel 
+-- On ID reduce production declaracao -> LOCAL tipo variavel 
+-- On FOR reduce production declaracao -> LOCAL tipo variavel 
+-- On END reduce production declaracao -> LOCAL tipo variavel 
 
 State 17:
+funcoes -> FUNCAO tipo_simples ID APAR list(argumentos) FPAR list(declaracao) . list(comando) END [ FUNCAO EOF ]
+-- On WHILE shift to state 18
+-- On RETURN shift to state 74
+-- On PRINT shift to state 76
+-- On IF shift to state 80
+-- On ID shift to state 83
+-- On FOR shift to state 89
+-- On variavel shift to state 98
+-- On list(comando) shift to state 129
+-- On comando_while shift to state 110
+-- On comando_scan shift to state 111
+-- On comando_retorno shift to state 112
+-- On comando_print shift to state 113
+-- On comando_if shift to state 114
+-- On comando_funcao shift to state 115
+-- On comando_for shift to state 116
+-- On comando_atribuicao shift to state 117
+-- On comando shift to state 118
+-- On END reduce production list(comando) -> 
+
+State 18:
+comando_while -> WHILE . expressao DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 72
+
+State 19:
 expressao -> LITSTRING . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 -- On WHILE reduce production expressao -> LITSTRING 
 -- On THEN reduce production expressao -> LITSTRING 
@@ -198,7 +205,7 @@ expressao -> LITSTRING . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_
 -- On AND reduce production expressao -> LITSTRING 
 -- On ADICAO reduce production expressao -> LITSTRING 
 
-State 18:
+State 20:
 expressao -> LITINT . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 -- On WHILE reduce production expressao -> LITINT 
 -- On THEN reduce production expressao -> LITINT 
@@ -235,7 +242,7 @@ expressao -> LITINT . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXC
 -- On AND reduce production expressao -> LITINT 
 -- On ADICAO reduce production expressao -> LITINT 
 
-State 19:
+State 21:
 expressao -> BOOL . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 -- On WHILE reduce production expressao -> BOOL 
 -- On THEN reduce production expressao -> BOOL 
@@ -272,17 +279,17 @@ expressao -> BOOL . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLU
 -- On AND reduce production expressao -> BOOL 
 -- On ADICAO reduce production expressao -> BOOL 
 
-State 20:
+State 22:
 expressao -> APAR . expressao FPAR [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 22
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 24
 
-State 21:
+State 23:
 expressao -> variavel . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 -- On WHILE reduce production expressao -> variavel 
 -- On THEN reduce production expressao -> variavel 
@@ -319,7 +326,7 @@ expressao -> variavel . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_E
 -- On AND reduce production expressao -> variavel 
 -- On ADICAO reduce production expressao -> variavel 
 
-State 22:
+State 24:
 expressao -> expressao . OR expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR FPAR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR FPAR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR FPAR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -344,42 +351,42 @@ expressao -> expressao . NOT expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO 
 expressao -> expressao . TAMANHO expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR FPAR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR FPAR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> APAR expressao . FPAR [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On OR shift to state 53
--- On NOT shift to state 29
--- On NAO_EQUIVALENTE shift to state 55
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On MENOR_OU_IGUAL shift to state 57
--- On MENOR shift to state 59
--- On MAIOR_OU_IGUAL shift to state 61
--- On MAIOR shift to state 63
--- On FPAR shift to state 69
--- On EXPONENCIACAO shift to state 25
--- On EQUIVALENTE shift to state 65
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On AND shift to state 67
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On OR shift to state 55
+-- On NOT shift to state 31
+-- On NAO_EQUIVALENTE shift to state 57
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On MENOR_OU_IGUAL shift to state 59
+-- On MENOR shift to state 61
+-- On MAIOR_OU_IGUAL shift to state 63
+-- On MAIOR shift to state 65
+-- On FPAR shift to state 71
+-- On EXPONENCIACAO shift to state 27
+-- On EQUIVALENTE shift to state 67
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On AND shift to state 69
+-- On ADICAO shift to state 47
 
-State 23:
+State 25:
 expressao -> expressao TAMANHO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 24
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 26
 
-State 24:
+State 26:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -404,7 +411,7 @@ expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRI
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao TAMANHO expressao . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On EXPONENCIACAO shift to state 25
+-- On EXPONENCIACAO shift to state 27
 -- On WHILE reduce production expressao -> expressao TAMANHO expressao 
 -- On THEN reduce production expressao -> expressao TAMANHO expressao 
 -- On TAMANHO reduce production expressao -> expressao TAMANHO expressao 
@@ -439,17 +446,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND reduce production expressao -> expressao TAMANHO expressao 
 -- On ADICAO reduce production expressao -> expressao TAMANHO expressao 
 
-State 25:
+State 27:
 expressao -> expressao EXPONENCIACAO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 26
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 28
 
-State 26:
+State 28:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -509,17 +516,17 @@ expressao -> expressao EXPONENCIACAO expressao . [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND reduce production expressao -> expressao EXPONENCIACAO expressao 
 -- On ADICAO reduce production expressao -> expressao EXPONENCIACAO expressao 
 
-State 27:
+State 29:
 expressao -> expressao SUBTRACAO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 28
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 30
 
-State 28:
+State 30:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -544,13 +551,13 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On NOT shift to state 29
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
+-- On TAMANHO shift to state 25
+-- On NOT shift to state 31
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
 -- On WHILE reduce production expressao -> expressao SUBTRACAO expressao 
 -- On THEN reduce production expressao -> expressao SUBTRACAO expressao 
 -- On SUBTRACAO reduce production expressao -> expressao SUBTRACAO expressao 
@@ -579,17 +586,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND reduce production expressao -> expressao SUBTRACAO expressao 
 -- On ADICAO reduce production expressao -> expressao SUBTRACAO expressao 
 
-State 29:
+State 31:
 expressao -> expressao NOT . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 30
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 32
 
-State 30:
+State 32:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -614,7 +621,7 @@ expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRI
 expressao -> expressao NOT expressao . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On EXPONENCIACAO shift to state 25
+-- On EXPONENCIACAO shift to state 27
 -- On WHILE reduce production expressao -> expressao NOT expressao 
 -- On THEN reduce production expressao -> expressao NOT expressao 
 -- On TAMANHO reduce production expressao -> expressao NOT expressao 
@@ -649,17 +656,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND reduce production expressao -> expressao NOT expressao 
 -- On ADICAO reduce production expressao -> expressao NOT expressao 
 
-State 31:
+State 33:
 expressao -> expressao MULTIPLICACAO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 32
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 34
 
-State 32:
+State 34:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -684,9 +691,9 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On NOT shift to state 29
--- On EXPONENCIACAO shift to state 25
+-- On TAMANHO shift to state 25
+-- On NOT shift to state 31
+-- On EXPONENCIACAO shift to state 27
 -- On WHILE reduce production expressao -> expressao MULTIPLICACAO expressao 
 -- On THEN reduce production expressao -> expressao MULTIPLICACAO expressao 
 -- On SUBTRACAO reduce production expressao -> expressao MULTIPLICACAO expressao 
@@ -719,17 +726,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND reduce production expressao -> expressao MULTIPLICACAO expressao 
 -- On ADICAO reduce production expressao -> expressao MULTIPLICACAO expressao 
 
-State 33:
+State 35:
 expressao -> expressao MODULO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 34
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 36
 
-State 34:
+State 36:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -754,9 +761,9 @@ expressao -> expressao MODULO expressao . [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On NOT shift to state 29
--- On EXPONENCIACAO shift to state 25
+-- On TAMANHO shift to state 25
+-- On NOT shift to state 31
+-- On EXPONENCIACAO shift to state 27
 -- On WHILE reduce production expressao -> expressao MODULO expressao 
 -- On THEN reduce production expressao -> expressao MODULO expressao 
 -- On SUBTRACAO reduce production expressao -> expressao MODULO expressao 
@@ -789,17 +796,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND reduce production expressao -> expressao MODULO expressao 
 -- On ADICAO reduce production expressao -> expressao MODULO expressao 
 
-State 35:
+State 37:
 expressao -> expressao DIVISAO_INTEIRO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 36
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 38
 
-State 36:
+State 38:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -824,9 +831,9 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On NOT shift to state 29
--- On EXPONENCIACAO shift to state 25
+-- On TAMANHO shift to state 25
+-- On NOT shift to state 31
+-- On EXPONENCIACAO shift to state 27
 -- On WHILE reduce production expressao -> expressao DIVISAO_INTEIRO expressao 
 -- On THEN reduce production expressao -> expressao DIVISAO_INTEIRO expressao 
 -- On SUBTRACAO reduce production expressao -> expressao DIVISAO_INTEIRO expressao 
@@ -859,17 +866,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND reduce production expressao -> expressao DIVISAO_INTEIRO expressao 
 -- On ADICAO reduce production expressao -> expressao DIVISAO_INTEIRO expressao 
 
-State 37:
+State 39:
 expressao -> expressao DIVISAO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 38
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 40
 
-State 38:
+State 40:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -894,9 +901,9 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On NOT shift to state 29
--- On EXPONENCIACAO shift to state 25
+-- On TAMANHO shift to state 25
+-- On NOT shift to state 31
+-- On EXPONENCIACAO shift to state 27
 -- On WHILE reduce production expressao -> expressao DIVISAO expressao 
 -- On THEN reduce production expressao -> expressao DIVISAO expressao 
 -- On SUBTRACAO reduce production expressao -> expressao DIVISAO expressao 
@@ -929,17 +936,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND reduce production expressao -> expressao DIVISAO expressao 
 -- On ADICAO reduce production expressao -> expressao DIVISAO expressao 
 
-State 39:
+State 41:
 expressao -> expressao OR_BINARIO_EXCLUSIVO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 40
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 42
 
-State 40:
+State 42:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -964,19 +971,19 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On NOT shift to state 29
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On NOT shift to state 31
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao OR_BINARIO_EXCLUSIVO expressao 
 -- On THEN reduce production expressao -> expressao OR_BINARIO_EXCLUSIVO expressao 
 -- On RETURN reduce production expressao -> expressao OR_BINARIO_EXCLUSIVO expressao 
@@ -999,17 +1006,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On DO reduce production expressao -> expressao OR_BINARIO_EXCLUSIVO expressao 
 -- On AND reduce production expressao -> expressao OR_BINARIO_EXCLUSIVO expressao 
 
-State 41:
+State 43:
 expressao -> expressao MULT_POR_2 . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 42
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 44
 
-State 42:
+State 44:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1034,16 +1041,16 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On NOT shift to state 29
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On NOT shift to state 31
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao MULT_POR_2 expressao 
 -- On THEN reduce production expressao -> expressao MULT_POR_2 expressao 
 -- On RETURN reduce production expressao -> expressao MULT_POR_2 expressao 
@@ -1069,17 +1076,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND_BINARIO reduce production expressao -> expressao MULT_POR_2 expressao 
 -- On AND reduce production expressao -> expressao MULT_POR_2 expressao 
 
-State 43:
+State 45:
 expressao -> expressao CONCATENA . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 44
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 46
 
-State 44:
+State 46:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1104,15 +1111,15 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On NOT shift to state 29
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On NOT shift to state 31
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao CONCATENA expressao 
 -- On THEN reduce production expressao -> expressao CONCATENA expressao 
 -- On RETURN reduce production expressao -> expressao CONCATENA expressao 
@@ -1139,17 +1146,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND_BINARIO reduce production expressao -> expressao CONCATENA expressao 
 -- On AND reduce production expressao -> expressao CONCATENA expressao 
 
-State 45:
+State 47:
 expressao -> expressao ADICAO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 46
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 48
 
-State 46:
+State 48:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1174,13 +1181,13 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On NOT shift to state 29
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
+-- On TAMANHO shift to state 25
+-- On NOT shift to state 31
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
 -- On WHILE reduce production expressao -> expressao ADICAO expressao 
 -- On THEN reduce production expressao -> expressao ADICAO expressao 
 -- On SUBTRACAO reduce production expressao -> expressao ADICAO expressao 
@@ -1209,17 +1216,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND reduce production expressao -> expressao ADICAO expressao 
 -- On ADICAO reduce production expressao -> expressao ADICAO expressao 
 
-State 47:
+State 49:
 expressao -> expressao DIV_POR_2 . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 48
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 50
 
-State 48:
+State 50:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1244,16 +1251,16 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On NOT shift to state 29
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On NOT shift to state 31
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao DIV_POR_2 expressao 
 -- On THEN reduce production expressao -> expressao DIV_POR_2 expressao 
 -- On RETURN reduce production expressao -> expressao DIV_POR_2 expressao 
@@ -1279,17 +1286,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND_BINARIO reduce production expressao -> expressao DIV_POR_2 expressao 
 -- On AND reduce production expressao -> expressao DIV_POR_2 expressao 
 
-State 49:
+State 51:
 expressao -> expressao AND_BINARIO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 50
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 52
 
-State 50:
+State 52:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1314,18 +1321,18 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On NOT shift to state 29
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On NOT shift to state 31
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao AND_BINARIO expressao 
 -- On THEN reduce production expressao -> expressao AND_BINARIO expressao 
 -- On RETURN reduce production expressao -> expressao AND_BINARIO expressao 
@@ -1349,17 +1356,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On AND_BINARIO reduce production expressao -> expressao AND_BINARIO expressao 
 -- On AND reduce production expressao -> expressao AND_BINARIO expressao 
 
-State 51:
+State 53:
 expressao -> expressao OR_BINARIO . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 52
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 54
 
-State 52:
+State 54:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1384,20 +1391,20 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On NOT shift to state 29
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On NOT shift to state 31
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao OR_BINARIO expressao 
 -- On THEN reduce production expressao -> expressao OR_BINARIO expressao 
 -- On RETURN reduce production expressao -> expressao OR_BINARIO expressao 
@@ -1419,17 +1426,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On DO reduce production expressao -> expressao OR_BINARIO expressao 
 -- On AND reduce production expressao -> expressao OR_BINARIO expressao 
 
-State 53:
+State 55:
 expressao -> expressao OR . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 54
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 56
 
-State 54:
+State 56:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao OR expressao . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1454,28 +1461,28 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On NOT shift to state 29
--- On NAO_EQUIVALENTE shift to state 55
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On MENOR_OU_IGUAL shift to state 57
--- On MENOR shift to state 59
--- On MAIOR_OU_IGUAL shift to state 61
--- On MAIOR shift to state 63
--- On EXPONENCIACAO shift to state 25
--- On EQUIVALENTE shift to state 65
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On AND shift to state 67
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On NOT shift to state 31
+-- On NAO_EQUIVALENTE shift to state 57
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On MENOR_OU_IGUAL shift to state 59
+-- On MENOR shift to state 61
+-- On MAIOR_OU_IGUAL shift to state 63
+-- On MAIOR shift to state 65
+-- On EXPONENCIACAO shift to state 27
+-- On EQUIVALENTE shift to state 67
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On AND shift to state 69
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao OR expressao 
 -- On THEN reduce production expressao -> expressao OR expressao 
 -- On RETURN reduce production expressao -> expressao OR expressao 
@@ -1489,17 +1496,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On ELSE reduce production expressao -> expressao OR expressao 
 -- On DO reduce production expressao -> expressao OR expressao 
 
-State 55:
+State 57:
 expressao -> expressao NAO_EQUIVALENTE . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 56
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 58
 
-State 56:
+State 58:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1524,21 +1531,21 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On NOT shift to state 29
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On NOT shift to state 31
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao NAO_EQUIVALENTE expressao 
 -- On THEN reduce production expressao -> expressao NAO_EQUIVALENTE expressao 
 -- On RETURN reduce production expressao -> expressao NAO_EQUIVALENTE expressao 
@@ -1559,17 +1566,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On DO reduce production expressao -> expressao NAO_EQUIVALENTE expressao 
 -- On AND reduce production expressao -> expressao NAO_EQUIVALENTE expressao 
 
-State 57:
+State 59:
 expressao -> expressao MENOR_OU_IGUAL . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 58
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 60
 
-State 58:
+State 60:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1594,21 +1601,21 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On NOT shift to state 29
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On NOT shift to state 31
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao MENOR_OU_IGUAL expressao 
 -- On THEN reduce production expressao -> expressao MENOR_OU_IGUAL expressao 
 -- On RETURN reduce production expressao -> expressao MENOR_OU_IGUAL expressao 
@@ -1629,17 +1636,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On DO reduce production expressao -> expressao MENOR_OU_IGUAL expressao 
 -- On AND reduce production expressao -> expressao MENOR_OU_IGUAL expressao 
 
-State 59:
+State 61:
 expressao -> expressao MENOR . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 60
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 62
 
-State 60:
+State 62:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1664,21 +1671,21 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On NOT shift to state 29
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On NOT shift to state 31
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao MENOR expressao 
 -- On THEN reduce production expressao -> expressao MENOR expressao 
 -- On RETURN reduce production expressao -> expressao MENOR expressao 
@@ -1699,17 +1706,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On DO reduce production expressao -> expressao MENOR expressao 
 -- On AND reduce production expressao -> expressao MENOR expressao 
 
-State 61:
+State 63:
 expressao -> expressao MAIOR_OU_IGUAL . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 62
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 64
 
-State 62:
+State 64:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1734,21 +1741,21 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On NOT shift to state 29
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On NOT shift to state 31
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao MAIOR_OU_IGUAL expressao 
 -- On THEN reduce production expressao -> expressao MAIOR_OU_IGUAL expressao 
 -- On RETURN reduce production expressao -> expressao MAIOR_OU_IGUAL expressao 
@@ -1769,17 +1776,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On DO reduce production expressao -> expressao MAIOR_OU_IGUAL expressao 
 -- On AND reduce production expressao -> expressao MAIOR_OU_IGUAL expressao 
 
-State 63:
+State 65:
 expressao -> expressao MAIOR . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 64
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 66
 
-State 64:
+State 66:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1804,21 +1811,21 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On NOT shift to state 29
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On NOT shift to state 31
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao MAIOR expressao 
 -- On THEN reduce production expressao -> expressao MAIOR expressao 
 -- On RETURN reduce production expressao -> expressao MAIOR expressao 
@@ -1839,17 +1846,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On DO reduce production expressao -> expressao MAIOR expressao 
 -- On AND reduce production expressao -> expressao MAIOR expressao 
 
-State 65:
+State 67:
 expressao -> expressao EQUIVALENTE . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 66
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 68
 
-State 66:
+State 68:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . MAIOR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1874,21 +1881,21 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On NOT shift to state 29
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On EXPONENCIACAO shift to state 25
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On NOT shift to state 31
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On EXPONENCIACAO shift to state 27
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao EQUIVALENTE expressao 
 -- On THEN reduce production expressao -> expressao EQUIVALENTE expressao 
 -- On RETURN reduce production expressao -> expressao EQUIVALENTE expressao 
@@ -1909,17 +1916,17 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On DO reduce production expressao -> expressao EQUIVALENTE expressao 
 -- On AND reduce production expressao -> expressao EQUIVALENTE expressao 
 
-State 67:
+State 69:
 expressao -> expressao AND . expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 68
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 70
 
-State 68:
+State 70:
 expressao -> expressao . OR expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao AND expressao . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -1944,27 +1951,27 @@ expressao -> expressao . MODULO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN 
 expressao -> expressao . NOT expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On NOT shift to state 29
--- On NAO_EQUIVALENTE shift to state 55
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On MENOR_OU_IGUAL shift to state 57
--- On MENOR shift to state 59
--- On MAIOR_OU_IGUAL shift to state 61
--- On MAIOR shift to state 63
--- On EXPONENCIACAO shift to state 25
--- On EQUIVALENTE shift to state 65
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On NOT shift to state 31
+-- On NAO_EQUIVALENTE shift to state 57
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On MENOR_OU_IGUAL shift to state 59
+-- On MENOR shift to state 61
+-- On MAIOR_OU_IGUAL shift to state 63
+-- On MAIOR shift to state 65
+-- On EXPONENCIACAO shift to state 27
+-- On EQUIVALENTE shift to state 67
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On ADICAO shift to state 47
 -- On WHILE reduce production expressao -> expressao AND expressao 
 -- On THEN reduce production expressao -> expressao AND expressao 
 -- On RETURN reduce production expressao -> expressao AND expressao 
@@ -1979,7 +1986,7 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE THEN TAMANHO SUBTRACAO 
 -- On DO reduce production expressao -> expressao AND expressao 
 -- On AND reduce production expressao -> expressao AND expressao 
 
-State 69:
+State 71:
 expressao -> APAR expressao FPAR . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FPAR FOR EXPONENCIACAO EQUIVALENTE END ELSE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 -- On WHILE reduce production expressao -> APAR expressao FPAR 
 -- On THEN reduce production expressao -> APAR expressao FPAR 
@@ -2016,7 +2023,7 @@ expressao -> APAR expressao FPAR . [ WHILE THEN TAMANHO SUBTRACAO RETURN PRINT O
 -- On AND reduce production expressao -> APAR expressao FPAR 
 -- On ADICAO reduce production expressao -> APAR expressao FPAR 
 
-State 70:
+State 72:
 comando_while -> WHILE expressao . DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 expressao -> expressao . OR expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR EXPONENCIACAO EQUIVALENTE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR EXPONENCIACAO EQUIVALENTE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -2041,63 +2048,63 @@ expressao -> expressao . MODULO expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSI
 expressao -> expressao . NOT expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR EXPONENCIACAO EQUIVALENTE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR EXPONENCIACAO EQUIVALENTE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR EXPONENCIACAO EQUIVALENTE DO DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On OR shift to state 53
--- On NOT shift to state 29
--- On NAO_EQUIVALENTE shift to state 55
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On MENOR_OU_IGUAL shift to state 57
--- On MENOR shift to state 59
--- On MAIOR_OU_IGUAL shift to state 61
--- On MAIOR shift to state 63
--- On EXPONENCIACAO shift to state 25
--- On EQUIVALENTE shift to state 65
--- On DO shift to state 71
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On AND shift to state 67
--- On ADICAO shift to state 45
-
-State 71:
-comando_while -> WHILE expressao DO . list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On WHILE shift to state 16
--- On RETURN shift to state 72
--- On PRINT shift to state 74
--- On IF shift to state 78
--- On ID shift to state 81
--- On FOR shift to state 87
--- On variavel shift to state 96
--- On list(comando) shift to state 125
--- On comando_while shift to state 108
--- On comando_scan shift to state 109
--- On comando_retorno shift to state 110
--- On comando_print shift to state 111
--- On comando_if shift to state 112
--- On comando_funcao shift to state 113
--- On comando_for shift to state 114
--- On comando_atribuicao shift to state 115
--- On comando shift to state 116
--- On END reduce production list(comando) -> 
-
-State 72:
-comando_retorno -> RETURN . expressao [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 73
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On OR shift to state 55
+-- On NOT shift to state 31
+-- On NAO_EQUIVALENTE shift to state 57
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On MENOR_OU_IGUAL shift to state 59
+-- On MENOR shift to state 61
+-- On MAIOR_OU_IGUAL shift to state 63
+-- On MAIOR shift to state 65
+-- On EXPONENCIACAO shift to state 27
+-- On EQUIVALENTE shift to state 67
+-- On DO shift to state 73
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On AND shift to state 69
+-- On ADICAO shift to state 47
 
 State 73:
+comando_while -> WHILE expressao DO . list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On WHILE shift to state 18
+-- On RETURN shift to state 74
+-- On PRINT shift to state 76
+-- On IF shift to state 80
+-- On ID shift to state 83
+-- On FOR shift to state 89
+-- On variavel shift to state 98
+-- On list(comando) shift to state 127
+-- On comando_while shift to state 110
+-- On comando_scan shift to state 111
+-- On comando_retorno shift to state 112
+-- On comando_print shift to state 113
+-- On comando_if shift to state 114
+-- On comando_funcao shift to state 115
+-- On comando_for shift to state 116
+-- On comando_atribuicao shift to state 117
+-- On comando shift to state 118
+-- On END reduce production list(comando) -> 
+
+State 74:
+comando_retorno -> RETURN . expressao [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 75
+
+State 75:
 comando_retorno -> RETURN expressao . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 expressao -> expressao . OR expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -2122,29 +2129,29 @@ expressao -> expressao . MODULO expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT
 expressao -> expressao . NOT expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On OR shift to state 53
--- On NOT shift to state 29
--- On NAO_EQUIVALENTE shift to state 55
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On MENOR_OU_IGUAL shift to state 57
--- On MENOR shift to state 59
--- On MAIOR_OU_IGUAL shift to state 61
--- On MAIOR shift to state 63
--- On EXPONENCIACAO shift to state 25
--- On EQUIVALENTE shift to state 65
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On AND shift to state 67
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On OR shift to state 55
+-- On NOT shift to state 31
+-- On NAO_EQUIVALENTE shift to state 57
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On MENOR_OU_IGUAL shift to state 59
+-- On MENOR shift to state 61
+-- On MAIOR_OU_IGUAL shift to state 63
+-- On MAIOR shift to state 65
+-- On EXPONENCIACAO shift to state 27
+-- On EQUIVALENTE shift to state 67
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On AND shift to state 69
+-- On ADICAO shift to state 47
 -- On WHILE reduce production comando_retorno -> RETURN expressao 
 -- On RETURN reduce production comando_retorno -> RETURN expressao 
 -- On PRINT reduce production comando_retorno -> RETURN expressao 
@@ -2154,21 +2161,21 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE TAMANHO SUBTRACAO RETUR
 -- On END reduce production comando_retorno -> RETURN expressao 
 -- On ELSE reduce production comando_retorno -> RETURN expressao 
 
-State 74:
-comando_print -> PRINT . APAR expressao FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On APAR shift to state 75
-
-State 75:
-comando_print -> PRINT APAR . expressao FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 76
-
 State 76:
+comando_print -> PRINT . APAR expressao FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On APAR shift to state 77
+
+State 77:
+comando_print -> PRINT APAR . expressao FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 78
+
+State 78:
 comando_print -> PRINT APAR expressao . FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 expressao -> expressao . OR expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR FPAR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR FPAR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -2193,32 +2200,32 @@ expressao -> expressao . MODULO expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSI
 expressao -> expressao . NOT expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR FPAR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR FPAR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR FPAR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On OR shift to state 53
--- On NOT shift to state 29
--- On NAO_EQUIVALENTE shift to state 55
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On MENOR_OU_IGUAL shift to state 57
--- On MENOR shift to state 59
--- On MAIOR_OU_IGUAL shift to state 61
--- On MAIOR shift to state 63
--- On FPAR shift to state 77
--- On EXPONENCIACAO shift to state 25
--- On EQUIVALENTE shift to state 65
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On AND shift to state 67
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On OR shift to state 55
+-- On NOT shift to state 31
+-- On NAO_EQUIVALENTE shift to state 57
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On MENOR_OU_IGUAL shift to state 59
+-- On MENOR shift to state 61
+-- On MAIOR_OU_IGUAL shift to state 63
+-- On MAIOR shift to state 65
+-- On FPAR shift to state 79
+-- On EXPONENCIACAO shift to state 27
+-- On EQUIVALENTE shift to state 67
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On AND shift to state 69
+-- On ADICAO shift to state 47
 
-State 77:
+State 79:
 comando_print -> PRINT APAR expressao FPAR . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando_print -> PRINT APAR expressao FPAR 
 -- On RETURN reduce production comando_print -> PRINT APAR expressao FPAR 
@@ -2229,17 +2236,17 @@ comando_print -> PRINT APAR expressao FPAR . [ WHILE RETURN PRINT IF ID FOR END 
 -- On END reduce production comando_print -> PRINT APAR expressao FPAR 
 -- On ELSE reduce production comando_print -> PRINT APAR expressao FPAR 
 
-State 78:
+State 80:
 comando_if -> IF . expressao THEN nonempty_list(comando) option(__anonymous_0) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On ID shift to state 13
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 79
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On ID shift to state 15
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 81
 
-State 79:
+State 81:
 comando_if -> IF expressao . THEN nonempty_list(comando) option(__anonymous_0) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 expressao -> expressao . OR expressao [ THEN TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ THEN TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -2264,78 +2271,78 @@ expressao -> expressao . MODULO expressao [ THEN TAMANHO SUBTRACAO OR_BINARIO_EX
 expressao -> expressao . NOT expressao [ THEN TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ THEN TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ THEN TAMANHO SUBTRACAO OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR EXPONENCIACAO EQUIVALENTE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On THEN shift to state 80
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On OR shift to state 53
--- On NOT shift to state 29
--- On NAO_EQUIVALENTE shift to state 55
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On MENOR_OU_IGUAL shift to state 57
--- On MENOR shift to state 59
--- On MAIOR_OU_IGUAL shift to state 61
--- On MAIOR shift to state 63
--- On EXPONENCIACAO shift to state 25
--- On EQUIVALENTE shift to state 65
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On AND shift to state 67
--- On ADICAO shift to state 45
-
-State 80:
-comando_if -> IF expressao THEN . nonempty_list(comando) option(__anonymous_0) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On WHILE shift to state 16
--- On RETURN shift to state 72
--- On PRINT shift to state 74
--- On IF shift to state 78
--- On ID shift to state 81
--- On FOR shift to state 87
--- On variavel shift to state 96
--- On nonempty_list(comando) shift to state 118
--- On comando_while shift to state 108
--- On comando_scan shift to state 109
--- On comando_retorno shift to state 110
--- On comando_print shift to state 111
--- On comando_if shift to state 112
--- On comando_funcao shift to state 113
--- On comando_for shift to state 114
--- On comando_atribuicao shift to state 115
--- On comando shift to state 121
-
-State 81:
-comando_funcao -> ID . APAR list(ID) FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
-variavel -> ID . [ ATRIB ]
--- On APAR shift to state 82
--- On ATRIB reduce production variavel -> ID 
+-- On THEN shift to state 82
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On OR shift to state 55
+-- On NOT shift to state 31
+-- On NAO_EQUIVALENTE shift to state 57
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On MENOR_OU_IGUAL shift to state 59
+-- On MENOR shift to state 61
+-- On MAIOR_OU_IGUAL shift to state 63
+-- On MAIOR shift to state 65
+-- On EXPONENCIACAO shift to state 27
+-- On EQUIVALENTE shift to state 67
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On AND shift to state 69
+-- On ADICAO shift to state 47
 
 State 82:
-comando_funcao -> ID APAR . list(ID) FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+comando_if -> IF expressao THEN . nonempty_list(comando) option(__anonymous_0) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On WHILE shift to state 18
+-- On RETURN shift to state 74
+-- On PRINT shift to state 76
+-- On IF shift to state 80
 -- On ID shift to state 83
--- On list(ID) shift to state 85
--- On FPAR reduce production list(ID) -> 
+-- On FOR shift to state 89
+-- On variavel shift to state 98
+-- On nonempty_list(comando) shift to state 120
+-- On comando_while shift to state 110
+-- On comando_scan shift to state 111
+-- On comando_retorno shift to state 112
+-- On comando_print shift to state 113
+-- On comando_if shift to state 114
+-- On comando_funcao shift to state 115
+-- On comando_for shift to state 116
+-- On comando_atribuicao shift to state 117
+-- On comando shift to state 123
 
 State 83:
-list(ID) -> ID . list(ID) [ FPAR ]
--- On ID shift to state 83
--- On list(ID) shift to state 84
--- On FPAR reduce production list(ID) -> 
+comando_funcao -> ID . APAR list(ID) FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+variavel -> ID . [ ATRIB ]
+-- On APAR shift to state 84
+-- On ATRIB reduce production variavel -> ID 
 
 State 84:
+comando_funcao -> ID APAR . list(ID) FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On ID shift to state 85
+-- On list(ID) shift to state 87
+-- On FPAR reduce production list(ID) -> 
+
+State 85:
+list(ID) -> ID . list(ID) [ FPAR ]
+-- On ID shift to state 85
+-- On list(ID) shift to state 86
+-- On FPAR reduce production list(ID) -> 
+
+State 86:
 list(ID) -> ID list(ID) . [ FPAR ]
 -- On FPAR reduce production list(ID) -> ID list(ID) 
 
-State 85:
+State 87:
 comando_funcao -> ID APAR list(ID) . FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On FPAR shift to state 86
+-- On FPAR shift to state 88
 
-State 86:
+State 88:
 comando_funcao -> ID APAR list(ID) FPAR . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando_funcao -> ID APAR list(ID) FPAR 
 -- On RETURN reduce production comando_funcao -> ID APAR list(ID) FPAR 
@@ -2346,88 +2353,88 @@ comando_funcao -> ID APAR list(ID) FPAR . [ WHILE RETURN PRINT IF ID FOR END ELS
 -- On END reduce production comando_funcao -> ID APAR list(ID) FPAR 
 -- On ELSE reduce production comando_funcao -> ID APAR list(ID) FPAR 
 
-State 87:
-comando_for -> FOR . variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On ID shift to state 13
--- On variavel shift to state 88
-
-State 88:
-comando_for -> FOR variavel . ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On ATRIB shift to state 89
-
 State 89:
-comando_for -> FOR variavel ATRIB . LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On LITINT shift to state 90
+comando_for -> FOR . variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On ID shift to state 15
+-- On variavel shift to state 90
 
 State 90:
-comando_for -> FOR variavel ATRIB LITINT . VIRGULA LITINT VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On VIRGULA shift to state 91
+comando_for -> FOR variavel . ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On ATRIB shift to state 91
 
 State 91:
-comando_for -> FOR variavel ATRIB LITINT VIRGULA . LITINT VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+comando_for -> FOR variavel ATRIB . LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On LITINT shift to state 92
 
 State 92:
-comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT . VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+comando_for -> FOR variavel ATRIB LITINT . VIRGULA LITINT VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On VIRGULA shift to state 93
 
 State 93:
-comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA . LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+comando_for -> FOR variavel ATRIB LITINT VIRGULA . LITINT VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On LITINT shift to state 94
 
 State 94:
-comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT . DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On DO shift to state 95
+comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT . VIRGULA LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On VIRGULA shift to state 95
 
 State 95:
-comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO . list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On WHILE shift to state 16
--- On RETURN shift to state 72
--- On PRINT shift to state 74
--- On IF shift to state 78
--- On ID shift to state 81
--- On FOR shift to state 87
--- On variavel shift to state 96
--- On list(comando) shift to state 106
--- On comando_while shift to state 108
--- On comando_scan shift to state 109
--- On comando_retorno shift to state 110
--- On comando_print shift to state 111
--- On comando_if shift to state 112
--- On comando_funcao shift to state 113
--- On comando_for shift to state 114
--- On comando_atribuicao shift to state 115
--- On comando shift to state 116
--- On END reduce production list(comando) -> 
+comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA . LITINT DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On LITINT shift to state 96
 
 State 96:
+comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT . DO list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On DO shift to state 97
+
+State 97:
+comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO . list(comando) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On WHILE shift to state 18
+-- On RETURN shift to state 74
+-- On PRINT shift to state 76
+-- On IF shift to state 80
+-- On ID shift to state 83
+-- On FOR shift to state 89
+-- On variavel shift to state 98
+-- On list(comando) shift to state 108
+-- On comando_while shift to state 110
+-- On comando_scan shift to state 111
+-- On comando_retorno shift to state 112
+-- On comando_print shift to state 113
+-- On comando_if shift to state 114
+-- On comando_funcao shift to state 115
+-- On comando_for shift to state 116
+-- On comando_atribuicao shift to state 117
+-- On comando shift to state 118
+-- On END reduce production list(comando) -> 
+
+State 98:
 comando_atribuicao -> variavel . ATRIB expressao [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 comando_atribuicao -> variavel . ATRIB ID APAR list(ID) FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 comando_scan -> variavel . ATRIB IO_READ APAR FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On ATRIB shift to state 97
+-- On ATRIB shift to state 99
 
-State 97:
+State 99:
 comando_atribuicao -> variavel ATRIB . expressao [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 comando_atribuicao -> variavel ATRIB . ID APAR list(ID) FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 comando_scan -> variavel ATRIB . IO_READ APAR FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On LITSTRING shift to state 17
--- On LITINT shift to state 18
--- On IO_READ shift to state 98
--- On ID shift to state 101
--- On BOOL shift to state 19
--- On APAR shift to state 20
--- On variavel shift to state 21
--- On expressao shift to state 105
-
-State 98:
-comando_scan -> variavel ATRIB IO_READ . APAR FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On APAR shift to state 99
-
-State 99:
-comando_scan -> variavel ATRIB IO_READ APAR . FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On FPAR shift to state 100
+-- On LITSTRING shift to state 19
+-- On LITINT shift to state 20
+-- On IO_READ shift to state 100
+-- On ID shift to state 103
+-- On BOOL shift to state 21
+-- On APAR shift to state 22
+-- On variavel shift to state 23
+-- On expressao shift to state 107
 
 State 100:
+comando_scan -> variavel ATRIB IO_READ . APAR FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On APAR shift to state 101
+
+State 101:
+comando_scan -> variavel ATRIB IO_READ APAR . FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
+-- On FPAR shift to state 102
+
+State 102:
 comando_scan -> variavel ATRIB IO_READ APAR FPAR . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando_scan -> variavel ATRIB IO_READ APAR FPAR 
 -- On RETURN reduce production comando_scan -> variavel ATRIB IO_READ APAR FPAR 
@@ -2438,10 +2445,10 @@ comando_scan -> variavel ATRIB IO_READ APAR FPAR . [ WHILE RETURN PRINT IF ID FO
 -- On END reduce production comando_scan -> variavel ATRIB IO_READ APAR FPAR 
 -- On ELSE reduce production comando_scan -> variavel ATRIB IO_READ APAR FPAR 
 
-State 101:
+State 103:
 comando_atribuicao -> variavel ATRIB ID . APAR list(ID) FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 variavel -> ID . [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On APAR shift to state 102
+-- On APAR shift to state 104
 -- On WHILE reduce production variavel -> ID 
 -- On TAMANHO reduce production variavel -> ID 
 -- On SUBTRACAO reduce production variavel -> ID 
@@ -2474,17 +2481,17 @@ variavel -> ID . [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_
 -- On AND reduce production variavel -> ID 
 -- On ADICAO reduce production variavel -> ID 
 
-State 102:
+State 104:
 comando_atribuicao -> variavel ATRIB ID APAR . list(ID) FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On ID shift to state 83
--- On list(ID) shift to state 103
+-- On ID shift to state 85
+-- On list(ID) shift to state 105
 -- On FPAR reduce production list(ID) -> 
 
-State 103:
+State 105:
 comando_atribuicao -> variavel ATRIB ID APAR list(ID) . FPAR [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On FPAR shift to state 104
+-- On FPAR shift to state 106
 
-State 104:
+State 106:
 comando_atribuicao -> variavel ATRIB ID APAR list(ID) FPAR . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando_atribuicao -> variavel ATRIB ID APAR list(ID) FPAR 
 -- On RETURN reduce production comando_atribuicao -> variavel ATRIB ID APAR list(ID) FPAR 
@@ -2495,7 +2502,7 @@ comando_atribuicao -> variavel ATRIB ID APAR list(ID) FPAR . [ WHILE RETURN PRIN
 -- On END reduce production comando_atribuicao -> variavel ATRIB ID APAR list(ID) FPAR 
 -- On ELSE reduce production comando_atribuicao -> variavel ATRIB ID APAR list(ID) FPAR 
 
-State 105:
+State 107:
 comando_atribuicao -> variavel ATRIB expressao . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 expressao -> expressao . OR expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . AND expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
@@ -2520,29 +2527,29 @@ expressao -> expressao . MODULO expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT
 expressao -> expressao . NOT expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . TAMANHO expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
 expressao -> expressao . EXPONENCIACAO expressao [ WHILE TAMANHO SUBTRACAO RETURN PRINT OR_BINARIO_EXCLUSIVO OR_BINARIO OR NOT NAO_EQUIVALENTE MULT_POR_2 MULTIPLICACAO MODULO MENOR_OU_IGUAL MENOR MAIOR_OU_IGUAL MAIOR IF ID FOR EXPONENCIACAO EQUIVALENTE END ELSE DIV_POR_2 DIVISAO_INTEIRO DIVISAO CONCATENA AND_BINARIO AND ADICAO ]
--- On TAMANHO shift to state 23
--- On SUBTRACAO shift to state 27
--- On OR_BINARIO_EXCLUSIVO shift to state 39
--- On OR_BINARIO shift to state 51
--- On OR shift to state 53
--- On NOT shift to state 29
--- On NAO_EQUIVALENTE shift to state 55
--- On MULT_POR_2 shift to state 41
--- On MULTIPLICACAO shift to state 31
--- On MODULO shift to state 33
--- On MENOR_OU_IGUAL shift to state 57
--- On MENOR shift to state 59
--- On MAIOR_OU_IGUAL shift to state 61
--- On MAIOR shift to state 63
--- On EXPONENCIACAO shift to state 25
--- On EQUIVALENTE shift to state 65
--- On DIV_POR_2 shift to state 47
--- On DIVISAO_INTEIRO shift to state 35
--- On DIVISAO shift to state 37
--- On CONCATENA shift to state 43
--- On AND_BINARIO shift to state 49
--- On AND shift to state 67
--- On ADICAO shift to state 45
+-- On TAMANHO shift to state 25
+-- On SUBTRACAO shift to state 29
+-- On OR_BINARIO_EXCLUSIVO shift to state 41
+-- On OR_BINARIO shift to state 53
+-- On OR shift to state 55
+-- On NOT shift to state 31
+-- On NAO_EQUIVALENTE shift to state 57
+-- On MULT_POR_2 shift to state 43
+-- On MULTIPLICACAO shift to state 33
+-- On MODULO shift to state 35
+-- On MENOR_OU_IGUAL shift to state 59
+-- On MENOR shift to state 61
+-- On MAIOR_OU_IGUAL shift to state 63
+-- On MAIOR shift to state 65
+-- On EXPONENCIACAO shift to state 27
+-- On EQUIVALENTE shift to state 67
+-- On DIV_POR_2 shift to state 49
+-- On DIVISAO_INTEIRO shift to state 37
+-- On DIVISAO shift to state 39
+-- On CONCATENA shift to state 45
+-- On AND_BINARIO shift to state 51
+-- On AND shift to state 69
+-- On ADICAO shift to state 47
 -- On WHILE reduce production comando_atribuicao -> variavel ATRIB expressao 
 -- On RETURN reduce production comando_atribuicao -> variavel ATRIB expressao 
 -- On PRINT reduce production comando_atribuicao -> variavel ATRIB expressao 
@@ -2552,11 +2559,11 @@ expressao -> expressao . EXPONENCIACAO expressao [ WHILE TAMANHO SUBTRACAO RETUR
 -- On END reduce production comando_atribuicao -> variavel ATRIB expressao 
 -- On ELSE reduce production comando_atribuicao -> variavel ATRIB expressao 
 
-State 106:
+State 108:
 comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) . END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On END shift to state 107
+-- On END shift to state 109
 
-State 107:
+State 109:
 comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END 
 -- On RETURN reduce production comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END 
@@ -2567,7 +2574,7 @@ comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(c
 -- On END reduce production comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END 
 -- On ELSE reduce production comando_for -> FOR variavel ATRIB LITINT VIRGULA LITINT VIRGULA LITINT DO list(comando) END 
 
-State 108:
+State 110:
 comando -> comando_while . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando -> comando_while 
 -- On RETURN reduce production comando -> comando_while 
@@ -2578,7 +2585,7 @@ comando -> comando_while . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On END reduce production comando -> comando_while 
 -- On ELSE reduce production comando -> comando_while 
 
-State 109:
+State 111:
 comando -> comando_scan . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando -> comando_scan 
 -- On RETURN reduce production comando -> comando_scan 
@@ -2589,7 +2596,7 @@ comando -> comando_scan . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On END reduce production comando -> comando_scan 
 -- On ELSE reduce production comando -> comando_scan 
 
-State 110:
+State 112:
 comando -> comando_retorno . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando -> comando_retorno 
 -- On RETURN reduce production comando -> comando_retorno 
@@ -2600,7 +2607,7 @@ comando -> comando_retorno . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On END reduce production comando -> comando_retorno 
 -- On ELSE reduce production comando -> comando_retorno 
 
-State 111:
+State 113:
 comando -> comando_print . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando -> comando_print 
 -- On RETURN reduce production comando -> comando_print 
@@ -2611,7 +2618,7 @@ comando -> comando_print . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On END reduce production comando -> comando_print 
 -- On ELSE reduce production comando -> comando_print 
 
-State 112:
+State 114:
 comando -> comando_if . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando -> comando_if 
 -- On RETURN reduce production comando -> comando_if 
@@ -2622,7 +2629,7 @@ comando -> comando_if . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On END reduce production comando -> comando_if 
 -- On ELSE reduce production comando -> comando_if 
 
-State 113:
+State 115:
 comando -> comando_funcao . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando -> comando_funcao 
 -- On RETURN reduce production comando -> comando_funcao 
@@ -2633,7 +2640,7 @@ comando -> comando_funcao . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On END reduce production comando -> comando_funcao 
 -- On ELSE reduce production comando -> comando_funcao 
 
-State 114:
+State 116:
 comando -> comando_for . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando -> comando_for 
 -- On RETURN reduce production comando -> comando_for 
@@ -2644,7 +2651,7 @@ comando -> comando_for . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On END reduce production comando -> comando_for 
 -- On ELSE reduce production comando -> comando_for 
 
-State 115:
+State 117:
 comando -> comando_atribuicao . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando -> comando_atribuicao 
 -- On RETURN reduce production comando -> comando_atribuicao 
@@ -2655,94 +2662,94 @@ comando -> comando_atribuicao . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On END reduce production comando -> comando_atribuicao 
 -- On ELSE reduce production comando -> comando_atribuicao 
 
-State 116:
+State 118:
 list(comando) -> comando . list(comando) [ END ]
--- On WHILE shift to state 16
--- On RETURN shift to state 72
--- On PRINT shift to state 74
--- On IF shift to state 78
--- On ID shift to state 81
--- On FOR shift to state 87
--- On variavel shift to state 96
--- On list(comando) shift to state 117
--- On comando_while shift to state 108
--- On comando_scan shift to state 109
--- On comando_retorno shift to state 110
--- On comando_print shift to state 111
--- On comando_if shift to state 112
--- On comando_funcao shift to state 113
--- On comando_for shift to state 114
--- On comando_atribuicao shift to state 115
--- On comando shift to state 116
+-- On WHILE shift to state 18
+-- On RETURN shift to state 74
+-- On PRINT shift to state 76
+-- On IF shift to state 80
+-- On ID shift to state 83
+-- On FOR shift to state 89
+-- On variavel shift to state 98
+-- On list(comando) shift to state 119
+-- On comando_while shift to state 110
+-- On comando_scan shift to state 111
+-- On comando_retorno shift to state 112
+-- On comando_print shift to state 113
+-- On comando_if shift to state 114
+-- On comando_funcao shift to state 115
+-- On comando_for shift to state 116
+-- On comando_atribuicao shift to state 117
+-- On comando shift to state 118
 -- On END reduce production list(comando) -> 
 
-State 117:
+State 119:
 list(comando) -> comando list(comando) . [ END ]
 -- On END reduce production list(comando) -> comando list(comando) 
 
-State 118:
+State 120:
 comando_if -> IF expressao THEN nonempty_list(comando) . option(__anonymous_0) END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On ELSE shift to state 119
--- On option(__anonymous_0) shift to state 123
+-- On ELSE shift to state 121
+-- On option(__anonymous_0) shift to state 125
 -- On END reduce production option(__anonymous_0) -> 
 
-State 119:
+State 121:
 option(__anonymous_0) -> ELSE . nonempty_list(comando) [ END ]
--- On WHILE shift to state 16
--- On RETURN shift to state 72
--- On PRINT shift to state 74
--- On IF shift to state 78
--- On ID shift to state 81
--- On FOR shift to state 87
--- On variavel shift to state 96
--- On nonempty_list(comando) shift to state 120
--- On comando_while shift to state 108
--- On comando_scan shift to state 109
--- On comando_retorno shift to state 110
--- On comando_print shift to state 111
--- On comando_if shift to state 112
--- On comando_funcao shift to state 113
--- On comando_for shift to state 114
--- On comando_atribuicao shift to state 115
--- On comando shift to state 121
+-- On WHILE shift to state 18
+-- On RETURN shift to state 74
+-- On PRINT shift to state 76
+-- On IF shift to state 80
+-- On ID shift to state 83
+-- On FOR shift to state 89
+-- On variavel shift to state 98
+-- On nonempty_list(comando) shift to state 122
+-- On comando_while shift to state 110
+-- On comando_scan shift to state 111
+-- On comando_retorno shift to state 112
+-- On comando_print shift to state 113
+-- On comando_if shift to state 114
+-- On comando_funcao shift to state 115
+-- On comando_for shift to state 116
+-- On comando_atribuicao shift to state 117
+-- On comando shift to state 123
 
-State 120:
+State 122:
 option(__anonymous_0) -> ELSE nonempty_list(comando) . [ END ]
 -- On END reduce production option(__anonymous_0) -> ELSE nonempty_list(comando) 
 
-State 121:
+State 123:
 nonempty_list(comando) -> comando . [ END ELSE ]
 nonempty_list(comando) -> comando . nonempty_list(comando) [ END ELSE ]
--- On WHILE shift to state 16
--- On RETURN shift to state 72
--- On PRINT shift to state 74
--- On IF shift to state 78
--- On ID shift to state 81
--- On FOR shift to state 87
--- On variavel shift to state 96
--- On nonempty_list(comando) shift to state 122
--- On comando_while shift to state 108
--- On comando_scan shift to state 109
--- On comando_retorno shift to state 110
--- On comando_print shift to state 111
--- On comando_if shift to state 112
--- On comando_funcao shift to state 113
--- On comando_for shift to state 114
--- On comando_atribuicao shift to state 115
--- On comando shift to state 121
+-- On WHILE shift to state 18
+-- On RETURN shift to state 74
+-- On PRINT shift to state 76
+-- On IF shift to state 80
+-- On ID shift to state 83
+-- On FOR shift to state 89
+-- On variavel shift to state 98
+-- On nonempty_list(comando) shift to state 124
+-- On comando_while shift to state 110
+-- On comando_scan shift to state 111
+-- On comando_retorno shift to state 112
+-- On comando_print shift to state 113
+-- On comando_if shift to state 114
+-- On comando_funcao shift to state 115
+-- On comando_for shift to state 116
+-- On comando_atribuicao shift to state 117
+-- On comando shift to state 123
 -- On END reduce production nonempty_list(comando) -> comando 
 -- On ELSE reduce production nonempty_list(comando) -> comando 
 
-State 122:
+State 124:
 nonempty_list(comando) -> comando nonempty_list(comando) . [ END ELSE ]
 -- On END reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
 -- On ELSE reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
 
-State 123:
+State 125:
 comando_if -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) . END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On END shift to state 124
+-- On END shift to state 126
 
-State 124:
+State 126:
 comando_if -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando_if -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
 -- On RETURN reduce production comando_if -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
@@ -2753,11 +2760,11 @@ comando_if -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END
 -- On END reduce production comando_if -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
 -- On ELSE reduce production comando_if -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
 
-State 125:
+State 127:
 comando_while -> WHILE expressao DO list(comando) . END [ WHILE RETURN PRINT IF ID FOR END ELSE ]
--- On END shift to state 126
+-- On END shift to state 128
 
-State 126:
+State 128:
 comando_while -> WHILE expressao DO list(comando) END . [ WHILE RETURN PRINT IF ID FOR END ELSE ]
 -- On WHILE reduce production comando_while -> WHILE expressao DO list(comando) END 
 -- On RETURN reduce production comando_while -> WHILE expressao DO list(comando) END 
@@ -2768,24 +2775,20 @@ comando_while -> WHILE expressao DO list(comando) END . [ WHILE RETURN PRINT IF 
 -- On END reduce production comando_while -> WHILE expressao DO list(comando) END 
 -- On ELSE reduce production comando_while -> WHILE expressao DO list(comando) END 
 
-State 127:
-funcoes -> FUNCAO ID APAR list(argumentos) FPAR list(declaracao) list(comando) . END [ FUNCAO EOF ]
--- On END shift to state 128
-
-State 128:
-funcoes -> FUNCAO ID APAR list(argumentos) FPAR list(declaracao) list(comando) END . [ FUNCAO EOF ]
--- On FUNCAO reduce production funcoes -> FUNCAO ID APAR list(argumentos) FPAR list(declaracao) list(comando) END 
--- On EOF reduce production funcoes -> FUNCAO ID APAR list(argumentos) FPAR list(declaracao) list(comando) END 
-
 State 129:
+funcoes -> FUNCAO tipo_simples ID APAR list(argumentos) FPAR list(declaracao) list(comando) . END [ FUNCAO EOF ]
+-- On END shift to state 130
+
+State 130:
+funcoes -> FUNCAO tipo_simples ID APAR list(argumentos) FPAR list(declaracao) list(comando) END . [ FUNCAO EOF ]
+-- On FUNCAO reduce production funcoes -> FUNCAO tipo_simples ID APAR list(argumentos) FPAR list(declaracao) list(comando) END 
+-- On EOF reduce production funcoes -> FUNCAO tipo_simples ID APAR list(argumentos) FPAR list(declaracao) list(comando) END 
+
+State 131:
 list(declaracao) -> declaracao . list(declaracao) [ WHILE RETURN PRINT IF ID FOR END ]
--- On TIPO_STRING shift to state 4
--- On TIPO_INT shift to state 5
--- On TIPO_BOOLEAN shift to state 6
--- On tipo_simples shift to state 11
--- On tipo shift to state 12
--- On list(declaracao) shift to state 130
--- On declaracao shift to state 129
+-- On LOCAL shift to state 12
+-- On list(declaracao) shift to state 132
+-- On declaracao shift to state 131
 -- On WHILE reduce production list(declaracao) -> 
 -- On RETURN reduce production list(declaracao) -> 
 -- On PRINT reduce production list(declaracao) -> 
@@ -2794,7 +2797,7 @@ list(declaracao) -> declaracao . list(declaracao) [ WHILE RETURN PRINT IF ID FOR
 -- On FOR reduce production list(declaracao) -> 
 -- On END reduce production list(declaracao) -> 
 
-State 130:
+State 132:
 list(declaracao) -> declaracao list(declaracao) . [ WHILE RETURN PRINT IF ID FOR END ]
 -- On WHILE reduce production list(declaracao) -> declaracao list(declaracao) 
 -- On RETURN reduce production list(declaracao) -> declaracao list(declaracao) 
@@ -2804,41 +2807,41 @@ list(declaracao) -> declaracao list(declaracao) . [ WHILE RETURN PRINT IF ID FOR
 -- On FOR reduce production list(declaracao) -> declaracao list(declaracao) 
 -- On END reduce production list(declaracao) -> declaracao list(declaracao) 
 
-State 131:
+State 133:
 list(argumentos) -> argumentos . list(argumentos) [ FPAR ]
--- On TIPO_STRING shift to state 4
--- On TIPO_INT shift to state 5
--- On TIPO_BOOLEAN shift to state 6
--- On tipo_simples shift to state 7
--- On list(argumentos) shift to state 132
--- On argumentos shift to state 131
+-- On TIPO_STRING shift to state 2
+-- On TIPO_INT shift to state 3
+-- On TIPO_BOOLEAN shift to state 4
+-- On tipo_simples shift to state 8
+-- On list(argumentos) shift to state 134
+-- On argumentos shift to state 133
 -- On FPAR reduce production list(argumentos) -> 
 
-State 132:
+State 134:
 list(argumentos) -> argumentos list(argumentos) . [ FPAR ]
 -- On FPAR reduce production list(argumentos) -> argumentos list(argumentos) 
 
-State 133:
+State 135:
 programa' -> programa . [ # ]
 -- On # accept programa
 
-State 134:
+State 136:
 programa -> nonempty_list(funcoes) . EOF [ # ]
--- On EOF shift to state 135
+-- On EOF shift to state 137
 
-State 135:
+State 137:
 programa -> nonempty_list(funcoes) EOF . [ # ]
 -- On # reduce production programa -> nonempty_list(funcoes) EOF 
 
-State 136:
+State 138:
 nonempty_list(funcoes) -> funcoes . [ EOF ]
 nonempty_list(funcoes) -> funcoes . nonempty_list(funcoes) [ EOF ]
 -- On FUNCAO shift to state 1
--- On nonempty_list(funcoes) shift to state 137
--- On funcoes shift to state 136
+-- On nonempty_list(funcoes) shift to state 139
+-- On funcoes shift to state 138
 -- On EOF reduce production nonempty_list(funcoes) -> funcoes 
 
-State 137:
+State 139:
 nonempty_list(funcoes) -> funcoes nonempty_list(funcoes) . [ EOF ]
 -- On EOF reduce production nonempty_list(funcoes) -> funcoes nonempty_list(funcoes) 
 

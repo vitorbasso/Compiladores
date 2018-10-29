@@ -1,0 +1,14 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [],
+     [DecVar (TipoInt, VarSimples "n"); DecVar (TipoInt, VarSimples "m");
+      DecVar (TipoInt, VarSimples "x")],
+     [CmdAtrib (VarSimples "n", ExpInt 1);
+      CmdAtrib (VarSimples "m", ExpInt 2);
+      CmdAtrib (VarSimples "x", ExpInt 5);
+      CmdWhile
+       (ExpOp (Maior, ExpVar (VarSimples "x"), ExpVar (VarSimples "n")),
+       [CmdAtrib (VarSimples "n",
+         ExpOp (Adicao, ExpVar (VarSimples "n"), ExpVar (VarSimples "m")));
+        CmdPrint (ExpVar (VarSimples "n"))])])])

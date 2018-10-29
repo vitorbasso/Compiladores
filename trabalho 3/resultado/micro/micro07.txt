@@ -1,0 +1,24 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [],
+     [DecVar (TipoInt, VarSimples "programa");
+      DecVar (TipoInt, VarSimples "numero");
+      DecVar (TipoInt, VarSimples "opc")],
+     [CmdAtrib (VarSimples "programa", ExpInt 1);
+      CmdWhile
+       (ExpOp (Equivalente, ExpVar (VarSimples "programa"), ExpInt 1),
+       [CmdPrint (ExpString "Digite um numero: ");
+        CmdScan (VarSimples "numero");
+        CmdIf (ExpOp (Maior, ExpVar (VarSimples "numero"), ExpInt 0),
+         [CmdPrint (ExpString "Positivo\n")],
+         Some
+          [CmdIf
+            (ExpOp (Equivalente, ExpVar (VarSimples "numero"), ExpInt 0),
+            [CmdPrint (ExpString "O numero e igual a 0\n")], None);
+           CmdIf (ExpOp (Menor, ExpVar (VarSimples "numero"), ExpInt 0),
+            [CmdPrint (ExpString "Negativo\n")], None)]);
+        CmdPrint (ExpString "Deseja finalizar? (S - 1): ");
+        CmdScan (VarSimples "opc");
+        CmdIf (ExpOp (Equivalente, ExpVar (VarSimples "opc"), ExpInt 1),
+         [CmdAtrib (VarSimples "programa", ExpInt 0)], None)])])])

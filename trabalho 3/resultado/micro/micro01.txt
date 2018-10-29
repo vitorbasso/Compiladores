@@ -1,0 +1,19 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [],
+     [DecVar (TipoInt, VarSimples "cel"); DecVar (TipoInt, VarSimples "far")],
+     [CmdPrint (ExpString " tabela de conversao: Celsius -> Fahrenheit\n");
+      CmdPrint (ExpString "Digite a temperatura em Celsius: ");
+      CmdScan (VarSimples "cel");
+      CmdAtrib (VarSimples "far",
+       ExpOp (Divisao,
+        ExpOp (Adicao,
+         ExpOp (Multiplicacao, ExpInt 9, ExpVar (VarSimples "cel")),
+         ExpInt 160),
+        ExpInt 5));
+      CmdPrint
+       (ExpOp (Concatena,
+         ExpOp (Concatena, ExpString "A nova temperatura e: ",
+          ExpVar (VarSimples "far")),
+         ExpString " F"))])])

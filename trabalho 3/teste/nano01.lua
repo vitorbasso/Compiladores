@@ -1,2 +1,0 @@
-function <int> main()
-end

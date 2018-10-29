@@ -1,0 +1,17 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [], [DecVar (TipoInt, VarSimples "numero")],
+     [CmdPrint (ExpString "Digite um numero: ");
+      CmdScan (VarSimples "numero");
+      CmdIf
+       (ExpOp (Maior_ou_Igual, ExpVar (VarSimples "numero"), ExpInt 100),
+       [CmdIf
+         (ExpOp (Menor_ou_Igual, ExpVar (VarSimples "numero"), ExpInt 200),
+         [CmdPrint (ExpString "O numero esta no intervalo entre 100 e 200\n")],
+         Some
+          [CmdPrint
+            (ExpString "O numero nao esta no intervalo entre 100 e 200\n")])],
+       Some
+        [CmdPrint
+          (ExpString "O numero nao esta no intervalo entre 100 e 200\n")])])])

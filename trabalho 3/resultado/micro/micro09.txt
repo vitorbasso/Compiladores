@@ -1,0 +1,45 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [],
+     [DecVar (TipoInt, VarSimples "preco");
+      DecVar (TipoInt, VarSimples "venda");
+      DecVar (TipoInt, VarSimples "novo_preco")],
+     [CmdPrint (ExpString "Digite o preco: "); CmdScan (VarSimples "preco");
+      CmdPrint (ExpString "Digite a venda: "); CmdScan (VarSimples "venda");
+      CmdIf
+       (ExpOp (Or, ExpOp (Menor, ExpVar (VarSimples "venda"), ExpInt 500),
+         ExpOp (Menor, ExpVar (VarSimples "preco"), ExpInt 30)),
+       [CmdAtrib (VarSimples "novo_preco",
+         ExpOp (Adicao, ExpVar (VarSimples "preco"),
+          ExpOp (Multiplicacao, ExpOp (Divisao, ExpInt 10, ExpInt 100),
+           ExpVar (VarSimples "preco"))))],
+       Some
+        [CmdIf
+          (ExpOp (Or,
+            ExpOp (And,
+             ExpOp (Maior_ou_Igual, ExpVar (VarSimples "venda"), ExpInt 500),
+             ExpOp (Menor_ou_Igual, ExpVar (VarSimples "venda"), ExpInt 1200)),
+            ExpOp (And,
+             ExpOp (Maior_ou_Igual, ExpVar (VarSimples "preco"), ExpInt 30),
+             ExpOp (Menor, ExpVar (VarSimples "preco"), ExpInt 80))),
+          [CmdAtrib (VarSimples "novo_preco",
+            ExpOp (Adicao, ExpVar (VarSimples "preco"),
+             ExpOp (Multiplicacao, ExpOp (Divisao, ExpInt 15, ExpInt 100),
+              ExpVar (VarSimples "preco"))))],
+          Some
+           [CmdIf
+             (ExpOp (Or,
+               ExpOp (Maior_ou_Igual, ExpVar (VarSimples "venda"),
+                ExpInt 1200),
+               ExpOp (Maior_ou_Igual, ExpVar (VarSimples "preco"), ExpInt 80)),
+             [CmdAtrib (VarSimples "novo_preco",
+               ExpOp (Subtracao, ExpVar (VarSimples "preco"),
+                ExpOp (Multiplicacao, ExpOp (Divisao, ExpInt 20, ExpInt 100),
+                 ExpVar (VarSimples "preco"))))],
+             None)])]);
+      CmdPrint
+       (ExpOp (Concatena,
+         ExpOp (Concatena, ExpString "O novo preco e ",
+          ExpVar (VarSimples "novo_preco")),
+         ExpString "\n"))])])

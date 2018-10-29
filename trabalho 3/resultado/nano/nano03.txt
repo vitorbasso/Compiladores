@@ -1,0 +1,5 @@
+- : Ast.programa option =
+Some
+ (Programa
+   [Funcao (TipoInt, "main", [], [DecVar (TipoInt, VarSimples "n")],
+     [CmdAtrib (VarSimples "n", ExpInt 1)])])
