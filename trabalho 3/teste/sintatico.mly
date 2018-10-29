@@ -98,6 +98,7 @@ argumentos:
   ;
 
 declaracao:
+  | t=tipo v=variavel {DecVar (t,v)}
   | LOCAL t=tipo v=variavel { DecVar (t,v) }
   ;
 
