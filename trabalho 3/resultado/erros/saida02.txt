@@ -1,0 +1,4 @@
+Erro sintatico na linha 1, coluna 13 9 - Function espera o seguinte formato: 'function tipo nome (argumentos)'
+.
+
+Exception: Failure "A analise sintatica falhou".

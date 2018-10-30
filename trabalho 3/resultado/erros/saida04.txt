@@ -1,0 +1,4 @@
+Erro sintatico na linha 6, coluna 2 40 - "Atribuicao espera formato: 'variavel ATRIB'"
+.
+
+Exception: Failure "A analise sintatica falhou".

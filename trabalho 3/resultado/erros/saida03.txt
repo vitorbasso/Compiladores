@@ -1,0 +1,4 @@
+Erro sintatico na linha 3, coluna 2 28 - "Comando declaracao espera o formato: 'tipo_string tipo'"
+.
+
+Exception: Failure "A analise sintatica falhou".

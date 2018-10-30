@@ -1,0 +1,4 @@
+Erro sintatico na linha 6, coluna 2 60 - "Comando if espera o seguinte formato: 'if expressao then comandos else comandos end"
+.
+
+Exception: Failure "A analise sintatica falhou".

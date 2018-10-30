@@ -1,0 +1,4 @@
+Erro sintatico na linha 1, coluna 4 0 - Funcao nao definida
+.
+
+Exception: Failure "A analise sintatica falhou".

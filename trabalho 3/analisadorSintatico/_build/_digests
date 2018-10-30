@@ -14,6 +14,7 @@
 "Rule: ocaml dependencies ml (%=sintatico )": "\160\210\202\139\252\2198l\195\236IA\229\195\158\018"
 "Rule: ocaml: mli -> cmi (%=sintatico )": "\235h\145\019\174\019# \015Q\152\129K\238U\214"
 "Rule: ocaml: menhir dependencies (%=sintatico )": "\023\198\223\209\031\156M\172N\238\145\187\159\211\2311"
+"Resource: /home/vitorbasso/Documents/Compiladores/trabalho 3/analisadorSintatico/sintaticoTest.ml": "(\161\165J\026\163t\238\025\163\182C=\178\230\145"
 "Rule: ocaml: ml -> cmo & cmi (%=erroSint )": "@\192c\018Q\156\223\255\241\213q]Ww\024\018"
 "Rule: ocaml: ml -> cmo & cmi (%=sintaticoTest )": "\148\007\162\227\241\022w\196\129:A\167\232\249\1353"
 "Resource: /home/vitorbasso/Documents/Compiladores/trabalho 3/teste/sintaticoTest.ml": "(\161\165J\026\163t\238\025\163\182C=\178\230\145"

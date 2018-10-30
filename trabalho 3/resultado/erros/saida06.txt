@@ -1,0 +1,3 @@
+Erro sintatico na linha 8, coluna 8 80 - "For espera o seguinte formato: 'for variavel atrib litint virgula litint virgula litint do comandos end'".
+
+Exception: Failure "A analise sintatica falhou".
