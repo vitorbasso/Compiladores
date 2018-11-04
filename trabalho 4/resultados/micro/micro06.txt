@@ -1,0 +1,80 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("numero",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 28}),
+        TipoInt)];
+     fn_corpo =
+      [CmdPrint (Tast.ExpString ("Digite um numero de 1 a 5: ", TipoString));
+       CmdScanInt
+        (Tast.ExpVar
+          (VarSimples
+            ("numero",
+             {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 76;
+              pos_cnum = 80}),
+          TipoInt));
+       CmdIf
+        (Tast.ExpOp ((Equivalente, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("numero",
+               {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 103;
+                pos_cnum = 110}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (1, TipoInt), TipoInt)),
+        [CmdPrint (Tast.ExpString ("Um\n", TipoString))], None);
+       CmdIf
+        (Tast.ExpOp ((Equivalente, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("numero",
+               {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 157;
+                pos_cnum = 164}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (2, TipoInt), TipoInt)),
+        [CmdPrint (Tast.ExpString ("Dois\n", TipoString))], None);
+       CmdIf
+        (Tast.ExpOp ((Equivalente, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("numero",
+               {Lexing.pos_fname = ""; pos_lnum = 11; pos_bol = 213;
+                pos_cnum = 220}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (3, TipoInt), TipoInt)),
+        [CmdPrint (Tast.ExpString ("Tres\n", TipoString))], None);
+       CmdIf
+        (Tast.ExpOp ((Equivalente, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("numero",
+               {Lexing.pos_fname = ""; pos_lnum = 14; pos_bol = 269;
+                pos_cnum = 276}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (4, TipoInt), TipoInt)),
+        [CmdPrint (Tast.ExpString ("Quatro\n", TipoString))], None);
+       CmdIf
+        (Tast.ExpOp ((Equivalente, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("numero",
+               {Lexing.pos_fname = ""; pos_lnum = 17; pos_bol = 327;
+                pos_cnum = 334}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (5, TipoInt), TipoInt)),
+        [CmdPrint (Tast.ExpString ("Cinco\n", TipoString))],
+        Some [CmdPrint (Tast.ExpString ("Numero invalido!!!", TipoString))]);
+       CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))]}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)

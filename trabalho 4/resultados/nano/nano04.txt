@@ -1,0 +1,32 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("n",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 25}),
+        TipoInt)];
+     fn_corpo =
+      [CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("n",
+             {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 27;
+              pos_cnum = 28}),
+          TipoInt),
+        Tast.ExpOp ((Adicao, TipoInt), (Tast.ExpInt (1, TipoInt), TipoInt),
+         (Tast.ExpInt (2, TipoInt), TipoInt)));
+       CmdRetorno
+        (Some
+          (Tast.ExpVar
+            (VarSimples
+              ("n",
+               {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 39;
+                pos_cnum = 47}),
+            TipoInt)))]}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)

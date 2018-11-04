@@ -1,7 +1,7 @@
 function int main()
-    local int n
-    local int m
-    local int x
+    int n
+    int m
+    int x
     n = 1
     m = 2
     x = 5
@@ -13,4 +13,7 @@ function int main()
         end
         x = x - 1
     end
+   return 1
 end
+
+main()

@@ -1,0 +1,60 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("n",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 28}),
+        TipoInt);
+       DecVar
+        (("m",
+          {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 30; pos_cnum = 38}),
+        TipoInt)];
+     fn_corpo =
+      [CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("n",
+             {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 41;
+              pos_cnum = 45}),
+          TipoInt),
+        Tast.ExpInt (1, TipoInt));
+       CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("m",
+             {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 52;
+              pos_cnum = 56}),
+          TipoInt),
+        Tast.ExpInt (2, TipoInt));
+       CmdIf
+        (Tast.ExpOp ((Equivalente, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("n",
+               {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 62;
+                pos_cnum = 69}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpVar
+            (VarSimples
+              ("m",
+               {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 62;
+                pos_cnum = 74}),
+            TipoInt),
+           TipoInt)),
+        [CmdPrint
+          (Tast.ExpVar
+            (VarSimples
+              ("n",
+               {Lexing.pos_fname = ""; pos_lnum = 7; pos_bol = 81;
+                pos_cnum = 95}),
+            TipoInt))],
+        Some [CmdPrint (Tast.ExpInt (0, TipoInt))]);
+       CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))]}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)

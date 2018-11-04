@@ -1,7 +1,7 @@
 function int main()
-    local int numero
+    int numero
     print("Digite um numero: ")
-    numero = io.read()
+    numero = io.read('*n')
     if numero >= 100 then
         if numero <= 200 then
             print("O numero esta no intervalo entre 100 e 200\n")
@@ -11,4 +11,7 @@ function int main()
     else
         print("O numero nao esta no intervalo entre 100 e 200\n")
     end
+    return 1
 end
+
+main()

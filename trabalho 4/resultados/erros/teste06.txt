@@ -1,0 +1,3 @@
+Exception:
+Failure
+ "Semantico -> linha 6, coluna 7: O tipo retornado eh float mas foi declarado como inteiro".

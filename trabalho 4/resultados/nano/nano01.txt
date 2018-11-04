@@ -1,0 +1,9 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = []; fn_locais = []; fn_corpo = []}],
+  []),
+ <abstr>)

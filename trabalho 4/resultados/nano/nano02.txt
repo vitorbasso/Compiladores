@@ -1,0 +1,15 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("n",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 30}),
+        TipoFloat)];
+     fn_corpo = []}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)

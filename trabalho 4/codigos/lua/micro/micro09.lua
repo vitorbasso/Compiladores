@@ -1,11 +1,9 @@
 function int main()
-    local int preco
-    local int venda
-    local int novo_preco
+    int preco, venda, novo_preco
     print("Digite o preco: ")
-    preco = io.read()
+    preco = io.read('*n')
     print("Digite a venda: ")
-    venda = io.read()
+    venda = io.read('*n')
     if venda < 500 or preco < 30 then
         novo_preco = preco + 10 / 100 * preco
     else if (venda >= 500 and venda <= 1200) or (preco >=30 and preco <80) then
@@ -15,5 +13,10 @@ function int main()
     end
     end
     end
-    print("O novo preco e "..novo_preco.."\n")
+    print("O novo preco e ")
+    print(novo_preco)
+    print("\n")
+    return 1
 end    
+
+main()

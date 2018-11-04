@@ -1,0 +1,87 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("num1",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 28}),
+        TipoInt);
+       DecVar
+        (("num2",
+          {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 33; pos_cnum = 41}),
+        TipoInt)];
+     fn_corpo =
+      [CmdPrint (Tast.ExpString ("Digite o primeiro numero: ", TipoString));
+       CmdScanInt
+        (Tast.ExpVar
+          (VarSimples
+            ("num1",
+             {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 86;
+              pos_cnum = 90}),
+          TipoInt));
+       CmdPrint (Tast.ExpString ("Digite o segundo numero: ", TipoString));
+       CmdScanInt
+        (Tast.ExpVar
+          (VarSimples
+            ("num2",
+             {Lexing.pos_fname = ""; pos_lnum = 7; pos_bol = 150;
+              pos_cnum = 154}),
+          TipoInt));
+       CmdIf
+        (Tast.ExpOp ((Maior, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("num1",
+               {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 176;
+                pos_cnum = 183}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpVar
+            (VarSimples
+              ("num2",
+               {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 176;
+                pos_cnum = 190}),
+            TipoInt),
+           TipoInt)),
+        [CmdPrint (Tast.ExpString ("O primeiro n\195\186mero ", TipoString));
+         CmdPrint
+          (Tast.ExpVar
+            (VarSimples
+              ("num1",
+               {Lexing.pos_fname = ""; pos_lnum = 11; pos_bol = 237;
+                pos_cnum = 244}),
+            TipoInt));
+         CmdPrint
+          (Tast.ExpString (" \195\169 maior que o segundo ", TipoString));
+         CmdPrint
+          (Tast.ExpVar
+            (VarSimples
+              ("num2",
+               {Lexing.pos_fname = ""; pos_lnum = 13; pos_bol = 285;
+                pos_cnum = 292}),
+            TipoInt))],
+        Some
+         [CmdPrint (Tast.ExpString ("O segundo n\195\186mero ", TipoString));
+          CmdPrint
+           (Tast.ExpVar
+             (VarSimples
+               ("num2",
+                {Lexing.pos_fname = ""; pos_lnum = 16; pos_bol = 343;
+                 pos_cnum = 350}),
+             TipoInt));
+          CmdPrint
+           (Tast.ExpString (" \195\169 maior que o primeiro ", TipoString));
+          CmdPrint
+           (Tast.ExpVar
+             (VarSimples
+               ("num1",
+                {Lexing.pos_fname = ""; pos_lnum = 18; pos_bol = 392;
+                 pos_cnum = 399}),
+             TipoInt))]);
+       CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))]}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)

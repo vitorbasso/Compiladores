@@ -1,0 +1,56 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("numero",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 28}),
+        TipoInt)];
+     fn_corpo =
+      [CmdPrint (Tast.ExpString ("Digite um numero: ", TipoString));
+       CmdScanInt
+        (Tast.ExpVar
+          (VarSimples
+            ("numero",
+             {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 67;
+              pos_cnum = 71}),
+          TipoInt));
+       CmdIf
+        (Tast.ExpOp ((Maior_ou_Igual, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("numero",
+               {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 94;
+                pos_cnum = 101}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (100, TipoInt), TipoInt)),
+        [CmdIf
+          (Tast.ExpOp ((Menor_ou_Igual, TipoBool),
+            (Tast.ExpVar
+              (VarSimples
+                ("numero",
+                 {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 120;
+                  pos_cnum = 131}),
+              TipoInt),
+             TipoInt),
+            (Tast.ExpInt (200, TipoInt), TipoInt)),
+          [CmdPrint
+            (Tast.ExpString ("O numero esta no intervalo entre 100 e 200\n",
+              TipoString))],
+          Some
+           [CmdPrint
+             (Tast.ExpString
+               ("O numero nao esta no intervalo entre 100 e 200\n",
+               TipoString))])],
+        Some
+         [CmdPrint
+           (Tast.ExpString
+             ("O numero nao esta no intervalo entre 100 e 200\n", TipoString))]);
+       CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))]}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)

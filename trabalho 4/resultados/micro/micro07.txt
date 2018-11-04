@@ -1,0 +1,114 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("programa",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 28}),
+        TipoInt);
+       DecVar
+        (("numero",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 38}),
+        TipoInt);
+       DecVar
+        (("opc",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 46}),
+        TipoInt)];
+     fn_corpo =
+      [CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("programa",
+             {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 50;
+              pos_cnum = 54}),
+          TipoInt),
+        Tast.ExpInt (1, TipoInt));
+       CmdWhile
+        (Tast.ExpOp ((Equivalente, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("programa",
+               {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 67;
+                pos_cnum = 77}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (1, TipoInt), TipoInt)),
+        [CmdPrint (Tast.ExpString ("Digite um numero: ", TipoString));
+         CmdScanInt
+          (Tast.ExpVar
+            (VarSimples
+              ("numero",
+               {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 130;
+                pos_cnum = 138}),
+            TipoInt));
+         CmdIf
+          (Tast.ExpOp ((Maior, TipoBool),
+            (Tast.ExpVar
+              (VarSimples
+                ("numero",
+                 {Lexing.pos_fname = ""; pos_lnum = 7; pos_bol = 161;
+                  pos_cnum = 172}),
+              TipoInt),
+             TipoInt),
+            (Tast.ExpInt (0, TipoInt), TipoInt)),
+          [CmdPrint (Tast.ExpString ("Positivo\n", TipoString))],
+          Some
+           [CmdIf
+             (Tast.ExpOp ((Equivalente, TipoBool),
+               (Tast.ExpVar
+                 (VarSimples
+                   ("numero",
+                    {Lexing.pos_fname = ""; pos_lnum = 10; pos_bol = 233;
+                     pos_cnum = 248}),
+                 TipoInt),
+                TipoInt),
+               (Tast.ExpInt (0, TipoInt), TipoInt)),
+             [CmdPrint
+               (Tast.ExpString ("O numero e igual a 0\n", TipoString))],
+             None);
+            CmdIf
+             (Tast.ExpOp ((Menor, TipoBool),
+               (Tast.ExpVar
+                 (VarSimples
+                   ("numero",
+                    {Lexing.pos_fname = ""; pos_lnum = 13; pos_bol = 329;
+                     pos_cnum = 344}),
+                 TipoInt),
+                TipoInt),
+               (Tast.ExpInt (0, TipoInt), TipoInt)),
+             [CmdPrint (Tast.ExpString ("Negativo\n", TipoString))], None)]);
+         CmdPrint
+          (Tast.ExpString ("Deseja finalizar? (S - 1): ", TipoString));
+         CmdScanInt
+          (Tast.ExpVar
+            (VarSimples
+              ("opc",
+               {Lexing.pos_fname = ""; pos_lnum = 18; pos_bol = 469;
+                pos_cnum = 477}),
+            TipoInt));
+         CmdIf
+          (Tast.ExpOp ((Equivalente, TipoBool),
+            (Tast.ExpVar
+              (VarSimples
+                ("opc",
+                 {Lexing.pos_fname = ""; pos_lnum = 19; pos_bol = 497;
+                  pos_cnum = 508}),
+              TipoInt),
+             TipoInt),
+            (Tast.ExpInt (1, TipoInt), TipoInt)),
+          [CmdAtrib
+            (Tast.ExpVar
+              (VarSimples
+                ("programa",
+                 {Lexing.pos_fname = ""; pos_lnum = 20; pos_bol = 522;
+                  pos_cnum = 534}),
+              TipoInt),
+            Tast.ExpInt (0, TipoInt))],
+          None)]);
+       CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))]}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)

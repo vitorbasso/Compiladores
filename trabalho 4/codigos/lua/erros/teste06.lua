@@ -1,11 +1,9 @@
 function int main()
-    int x
-    int y
-
-    x = 9
-
-    for y = 0, 5, 1
-        x = x + 1
-    end
-
+	int x
+	float y
+	x = 10
+	y = 20.0
+	return y
 end
+
+main()

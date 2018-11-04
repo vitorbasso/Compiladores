@@ -1,5 +1,5 @@
 function int fatorial(int n)
-	local int x
+	int x, y
 	
 	if n <= 1 then
 		return 1
@@ -11,10 +11,9 @@ function int fatorial(int n)
 end
 
 function int main()
-	local int numero
-	local int fat
+	int numero, fat
 	print("Digite um numero: ")
-	numero = io.read()
+	numero = io.read('*n')
 	fat = fatorial(numero)
 	print("O fatorial de ")
 	print("numero")
@@ -23,4 +22,6 @@ function int main()
 
 	return 1
 end
+
+main()
 

@@ -1,0 +1,2 @@
+Exception:
+Failure "Semantico -> linha 11, coluna -1: Numero incorreto de parametros".

@@ -1,0 +1,63 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("cel",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 25}),
+        TipoInt);
+       DecVar
+        (("far",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 30}),
+        TipoInt)];
+     fn_corpo =
+      [CmdPrint
+        (Tast.ExpString
+          ("Tabela de convers\195\163o: Celsius -> Fahrenheit\n", TipoString));
+       CmdPrint
+        (Tast.ExpString ("Digite a temperatura em Celsius: ", TipoString));
+       CmdScanInt
+        (Tast.ExpVar
+          (VarSimples
+            ("cel",
+             {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 134;
+              pos_cnum = 135}),
+          TipoInt));
+       CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("far",
+             {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 155;
+              pos_cnum = 156}),
+          TipoInt),
+        Tast.ExpOp ((Divisao, TipoInt),
+         (Tast.ExpOp ((Adicao, TipoInt),
+           (Tast.ExpOp ((Multiplicacao, TipoInt),
+             (Tast.ExpInt (9, TipoInt), TipoInt),
+             (Tast.ExpVar
+               (VarSimples
+                 ("cel",
+                  {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 155;
+                   pos_cnum = 165}),
+               TipoInt),
+              TipoInt)),
+            TipoInt),
+           (Tast.ExpInt (160, TipoInt), TipoInt)),
+          TipoInt),
+         (Tast.ExpInt (5, TipoInt), TipoInt)));
+       CmdPrint (Tast.ExpString ("A nova temperatura eh: ", TipoString));
+       CmdPrint
+        (Tast.ExpVar
+          (VarSimples
+            ("far",
+             {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 210;
+              pos_cnum = 217}),
+          TipoInt));
+       CmdPrint (Tast.ExpString (" F\n", TipoString));
+       CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))]}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)

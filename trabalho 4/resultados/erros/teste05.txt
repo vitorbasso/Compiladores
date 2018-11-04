@@ -1,0 +1,1 @@
+Exception: Failure "Semantico -> linha 1, coluna 21: Parametro duplicado x".

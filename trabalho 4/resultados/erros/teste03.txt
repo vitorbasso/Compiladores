@@ -1,0 +1,3 @@
+Exception:
+Failure
+ "Semantico -> linha 8, coluna 5: O operando esquerdo eh do tipo inteiro mas o direito eh do tipo float".

@@ -1,7 +1,7 @@
 function int main()
-    local int numero
+    int numero
     print("Digite um numero de 1 a 5: ")
-    numero = io.read()
+    numero = io.read('*n')
     if numero == 1 then
         print("Um\n")
     end
@@ -19,5 +19,7 @@ function int main()
     else
         print("Numero invalido!!!")
     end
+   return 1
 end
 
+main()

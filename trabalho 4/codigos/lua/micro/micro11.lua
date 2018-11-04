@@ -1,8 +1,7 @@
 function int main()
-    local int numero
-    local int x
+    int numero, x
     print("Digite um numero ")
-    numero = io.read()
+    numero = io.read('*n')
     x = verifica(numero)
     if x == 1 then
         print("Numero positivo\n")
@@ -12,10 +11,11 @@ function int main()
         print("Numero negativo\n")
     end
     end
+    return 1
 end
 
 function int verifica(int n)
-    local int res
+    int res
     if n > 0 then
         res = 1
     else if n < 0 then
@@ -26,3 +26,5 @@ function int verifica(int n)
     end
     return res
 end
+
+main()

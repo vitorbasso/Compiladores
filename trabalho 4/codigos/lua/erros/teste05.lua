@@ -1,6 +1,10 @@
-function int main()
-    int x
-    x = 9
-    if x == 9 then
+function int main(int x, int x)
+	int x
+	float y
+	x = 10
+	y = 20.0
 
+	return 1
 end
+
+main()

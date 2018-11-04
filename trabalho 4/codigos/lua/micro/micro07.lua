@@ -1,11 +1,9 @@
 function int main()
-    local int programa
-    local int numero
-    local int opc
+    int programa, numero, opc
     programa = 1
     while programa == 1 do
         print("Digite um numero: ")
-        numero = io.read()
+        numero = io.read('*n')
         if numero > 0 then
             print("Positivo\n")
         else
@@ -17,9 +15,12 @@ function int main()
             end
         end
         print("Deseja finalizar? (S - 1): ")
-        opc = io.read()
+        opc = io.read('*n')
         if opc == 1 then
             programa = 0
         end
     end
+    return 1
 end
+
+main()

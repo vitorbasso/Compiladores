@@ -1,17 +1,14 @@
 function int main()
-    local string nome
-    local string sexo
-    local int x
-    local int h
-    local int m
+    string nome, sexo
+    int x, h, m
     x = 1
     h = 0
     m = 0
     for x = 1, 5, 1 do
         print("Digite o nome: ")
-        nome = io.read()
+        nome = io.read('*s')
         print("H - Homem ou M - Mulher: ")
-        sexo = io.read()
+        sexo = io.read('*s')
         if sexo == "H" then
             h = h + 1
         else
@@ -22,6 +19,13 @@ function int main()
             end
         end
     end
-    print("Foram inseridos "..h.." homens\n")
-    print("Foram inseridos "..m.." mulheres\n")
+    print("Foram inseridos ")
+    print(h)
+    print(" homens\n")
+    print("Foram inseridos ")
+    print(m)
+    print(" mulheres\n")
+    return 1
 end
+
+main()

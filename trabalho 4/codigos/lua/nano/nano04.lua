@@ -1,5 +1,10 @@
 function int main()
-    local int n
-    n = 1 + 2
+	int n
+	n = 1 + 2
+
+	return n
+
 end
+
+main()
 

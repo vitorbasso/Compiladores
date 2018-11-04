@@ -1,0 +1,145 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("nome",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 31}),
+        TipoString);
+       DecVar
+        (("sexo",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 37}),
+        TipoString);
+       DecVar
+        (("x",
+          {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 42; pos_cnum = 50}),
+        TipoInt);
+       DecVar
+        (("h",
+          {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 42; pos_cnum = 53}),
+        TipoInt);
+       DecVar
+        (("m",
+          {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 42; pos_cnum = 56}),
+        TipoInt)];
+     fn_corpo =
+      [CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("x",
+             {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 58;
+              pos_cnum = 62}),
+          TipoInt),
+        Tast.ExpInt (1, TipoInt));
+       CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("h",
+             {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 68;
+              pos_cnum = 72}),
+          TipoInt),
+        Tast.ExpInt (0, TipoInt));
+       CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("m",
+             {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 78;
+              pos_cnum = 82}),
+          TipoInt),
+        Tast.ExpInt (0, TipoInt));
+       CmdIf (Tast.ExpBool (true, TipoBool),
+        [CmdAtrib
+          (Tast.ExpVar
+            (VarSimples
+              ("x",
+               {Lexing.pos_fname = ""; pos_lnum = 7; pos_bol = 88;
+                pos_cnum = 96}),
+            TipoInt),
+          Tast.ExpInt (1, TipoInt));
+         CmdWhile
+          (Tast.ExpOp ((Menor_ou_Igual, TipoBool),
+            (Tast.ExpVar
+              (VarSimples
+                ("x",
+                 {Lexing.pos_fname = ""; pos_lnum = 7; pos_bol = 88;
+                  pos_cnum = 96}),
+              TipoInt),
+             TipoInt),
+            (Tast.ExpInt (5, TipoInt), TipoInt)),
+          [CmdPrint (Tast.ExpString ("Digite o nome: ", TipoString));
+           CmdScanString
+            (Tast.ExpVar
+              (VarSimples
+                ("nome",
+                 {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 144;
+                  pos_cnum = 152}),
+              TipoString));
+           CmdPrint
+            (Tast.ExpString ("H - Homem ou M - Mulher: ", TipoString));
+           CmdScanString
+            (Tast.ExpVar
+              (VarSimples
+                ("sexo",
+                 {Lexing.pos_fname = ""; pos_lnum = 11; pos_bol = 216;
+                  pos_cnum = 224}),
+              TipoString));
+           CmdIf
+            (Tast.ExpOp ((Equivalente, TipoBool),
+              (Tast.ExpVar
+                (VarSimples
+                  ("sexo",
+                   {Lexing.pos_fname = ""; pos_lnum = 12; pos_bol = 245;
+                    pos_cnum = 256}),
+                TipoString),
+               TipoString),
+              (Tast.ExpString ("H", TipoString), TipoString)),
+            [CmdAtrib
+              (Tast.ExpVar
+                (VarSimples
+                  ("h",
+                   {Lexing.pos_fname = ""; pos_lnum = 13; pos_bol = 273;
+                    pos_cnum = 285}),
+                TipoInt),
+              Tast.ExpOp ((Adicao, TipoInt),
+               (Tast.ExpVar
+                 (VarSimples
+                   ("h",
+                    {Lexing.pos_fname = ""; pos_lnum = 13; pos_bol = 273;
+                     pos_cnum = 289}),
+                 TipoInt),
+                TipoInt),
+               (Tast.ExpInt (1, TipoInt), TipoInt)))],
+            Some
+             [CmdIf
+               (Tast.ExpOp ((Equivalente, TipoBool),
+                 (Tast.ExpVar
+                   (VarSimples
+                     ("sexo",
+                      {Lexing.pos_fname = ""; pos_lnum = 15; pos_bol = 308;
+                       pos_cnum = 316}),
+                   TipoString),
+                  TipoString),
+                 (Tast.ExpString ("M", TipoString), TipoString)),
+               [CmdAtrib
+                 (Tast.ExpVar
+                   (VarSimples
+                     ("m",
+                      {Lexing.pos_fname = ""; pos_lnum = 16; pos_bol = 333;
+                       pos_cnum = 346}),
+                   TipoInt),
+                 Tast.ExpOp ((Adicao, TipoInt), (Tast.ExpVar (...), ...),
+                  ...));
+                ...],
+               ...);
+              ...]);
+           ...]);
+         ...],
+        ...);
+       ...]};
+   ...],
+  ...),
+ ...)

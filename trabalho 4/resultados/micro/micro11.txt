@@ -1,0 +1,132 @@
+#quit- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("numero",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 28}),
+        TipoInt);
+       DecVar
+        (("x",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 36}),
+        TipoInt)];
+     fn_corpo =
+      [CmdPrint (Tast.ExpString ("Digite um numero ", TipoString));
+       CmdScanInt
+        (Tast.ExpVar
+          (VarSimples
+            ("numero",
+             {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 69;
+              pos_cnum = 73}),
+          TipoInt));
+       CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("x",
+             {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 96;
+              pos_cnum = 100}),
+          TipoInt),
+        Tast.ExpChamada ("verifica",
+         [Tast.ExpVar
+           (VarSimples
+             ("numero",
+              {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 96;
+               pos_cnum = 113}),
+           TipoInt)],
+         TipoInt));
+       CmdIf
+        (Tast.ExpOp ((Equivalente, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("x",
+               {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 121;
+                pos_cnum = 128}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (1, TipoInt), TipoInt)),
+        [CmdPrint (Tast.ExpString ("Numero positivo\n", TipoString))],
+        Some
+         [CmdIf
+           (Tast.ExpOp ((Equivalente, TipoBool),
+             (Tast.ExpVar
+               (VarSimples
+                 ("x",
+                  {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 175;
+                   pos_cnum = 187}),
+               TipoInt),
+              TipoInt),
+             (Tast.ExpInt (0, TipoInt), TipoInt)),
+           [CmdPrint (Tast.ExpString ("Zero\n", TipoString))],
+           Some [CmdPrint (Tast.ExpString ("Numero negativo\n", TipoString))])]);
+       CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))]};
+   DecFun
+    {fn_nome =
+      ("verifica",
+       {Lexing.pos_fname = ""; pos_lnum = 17; pos_bol = 301; pos_cnum = 314});
+     fn_tiporet = TipoInt;
+     fn_formais =
+      [(("n",
+         {Lexing.pos_fname = ""; pos_lnum = 17; pos_bol = 301;
+          pos_cnum = 327}),
+        TipoInt)];
+     fn_locais =
+      [DecVar
+        (("res",
+          {Lexing.pos_fname = ""; pos_lnum = 18; pos_bol = 330;
+           pos_cnum = 338}),
+        TipoInt)];
+     fn_corpo =
+      [CmdIf
+        (Tast.ExpOp ((Maior, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("n",
+               {Lexing.pos_fname = ""; pos_lnum = 19; pos_bol = 342;
+                pos_cnum = 349}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (0, TipoInt), TipoInt)),
+        [CmdAtrib
+          (Tast.ExpVar
+            (VarSimples
+              ("res",
+               {Lexing.pos_fname = ""; pos_lnum = 20; pos_bol = 360;
+                pos_cnum = 368}),
+            TipoInt),
+          Tast.ExpInt (1, TipoInt))],
+        Some
+         [CmdIf
+           (Tast.ExpOp ((Menor, TipoBool),
+             (Tast.ExpVar
+               (VarSimples
+                 ("n",
+                  {Lexing.pos_fname = ""; pos_lnum = 21; pos_bol = 376;
+                   pos_cnum = 388}),
+               TipoInt),
+              TipoInt),
+             (Tast.ExpInt (0, TipoInt), TipoInt)),
+           [CmdAtrib
+             (Tast.ExpVar
+               (VarSimples
+                 ("res",
+                  {Lexing.pos_fname = ""; pos_lnum = 22; pos_bol = 399;
+                   pos_cnum = 407}),
+               TipoInt),
+             Tast.ExpInt (-1, TipoInt))],
+           Some
+            [CmdAtrib
+              (Tast.ExpVar
+                (VarSimples
+                  ("res",
+                   {Lexing.pos_fname = ""; pos_lnum = 24; pos_bol = 425;
+                    pos_cnum = 433}),
+                TipoInt),
+              Tast.ExpInt (0, TipoInt))])]);
+       CmdRetorno (Some (Tast.ExpVar (VarSimples ...))); ...]};
+    ...],
+   ...),
+  ...)

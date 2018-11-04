@@ -1,0 +1,93 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("n",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 28}),
+        TipoInt);
+       DecVar
+        (("m",
+          {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 30; pos_cnum = 38}),
+        TipoInt);
+       DecVar
+        (("x",
+          {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 40; pos_cnum = 48}),
+        TipoInt)];
+     fn_corpo =
+      [CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("n",
+             {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 51;
+              pos_cnum = 55}),
+          TipoInt),
+        Tast.ExpInt (1, TipoInt));
+       CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("m",
+             {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 61;
+              pos_cnum = 65}),
+          TipoInt),
+        Tast.ExpInt (2, TipoInt));
+       CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("x",
+             {Lexing.pos_fname = ""; pos_lnum = 7; pos_bol = 71;
+              pos_cnum = 75}),
+          TipoInt),
+        Tast.ExpInt (5, TipoInt));
+       CmdWhile
+        (Tast.ExpOp ((Maior, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("x",
+               {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 81;
+                pos_cnum = 91}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpVar
+            (VarSimples
+              ("n",
+               {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 81;
+                pos_cnum = 95}),
+            TipoInt),
+           TipoInt)),
+        [CmdAtrib
+          (Tast.ExpVar
+            (VarSimples
+              ("n",
+               {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 100;
+                pos_cnum = 108}),
+            TipoInt),
+          Tast.ExpOp ((Adicao, TipoInt),
+           (Tast.ExpVar
+             (VarSimples
+               ("n",
+                {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 100;
+                 pos_cnum = 112}),
+             TipoInt),
+            TipoInt),
+           (Tast.ExpVar
+             (VarSimples
+               ("m",
+                {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 100;
+                 pos_cnum = 116}),
+             TipoInt),
+            TipoInt)));
+         CmdPrint
+          (Tast.ExpVar
+            (VarSimples
+              ("n",
+               {Lexing.pos_fname = ""; pos_lnum = 10; pos_bol = 118;
+                pos_cnum = 132}),
+            TipoInt))]);
+       CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))]}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)

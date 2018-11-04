@@ -1,6 +1,6 @@
 function int main()
-    local int n
-    local int m 
+    int n
+    int m 
     n = 1 
     m = 2
     if n == m then
@@ -8,4 +8,7 @@ function int main()
     else
         print(0)
     end
+   return 1
 end
+
+main()

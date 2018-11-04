@@ -1,0 +1,124 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("x",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 28}),
+        TipoInt);
+       DecVar
+        (("num",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 31}),
+        TipoInt);
+       DecVar
+        (("intervalo",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 36}),
+        TipoInt)];
+     fn_corpo =
+      [CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("intervalo",
+             {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 46;
+              pos_cnum = 50}),
+          TipoInt),
+        Tast.ExpInt (0, TipoInt));
+       CmdIf (Tast.ExpBool (true, TipoBool),
+        [CmdAtrib
+          (Tast.ExpVar
+            (VarSimples
+              ("x",
+               {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 64;
+                pos_cnum = 72}),
+            TipoInt),
+          Tast.ExpInt (1, TipoInt));
+         CmdWhile
+          (Tast.ExpOp ((Menor_ou_Igual, TipoBool),
+            (Tast.ExpVar
+              (VarSimples
+                ("x",
+                 {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 64;
+                  pos_cnum = 72}),
+              TipoInt),
+             TipoInt),
+            (Tast.ExpInt (5, TipoInt), TipoInt)),
+          [CmdPrint (Tast.ExpString ("Digite um numero: ", TipoString));
+           CmdScanInt
+            (Tast.ExpVar
+              (VarSimples
+                ("num",
+                 {Lexing.pos_fname = ""; pos_lnum = 7; pos_bol = 127;
+                  pos_cnum = 135}),
+              TipoInt));
+           CmdIf
+            (Tast.ExpOp ((Maior_ou_Igual, TipoBool),
+              (Tast.ExpVar
+                (VarSimples
+                  ("num",
+                   {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 155;
+                    pos_cnum = 166}),
+                TipoInt),
+               TipoInt),
+              (Tast.ExpInt (10, TipoInt), TipoInt)),
+            [CmdIf
+              (Tast.ExpOp ((Menor_ou_Igual, TipoBool),
+                (Tast.ExpVar
+                  (VarSimples
+                    ("num",
+                     {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 181;
+                      pos_cnum = 196}),
+                  TipoInt),
+                 TipoInt),
+                (Tast.ExpInt (150, TipoInt), TipoInt)),
+              [CmdAtrib
+                (Tast.ExpVar
+                  (VarSimples
+                    ("intervalo",
+                     {Lexing.pos_fname = ""; pos_lnum = 10; pos_bol = 212;
+                      pos_cnum = 228}),
+                  TipoInt),
+                Tast.ExpOp ((Adicao, TipoInt),
+                 (Tast.ExpVar
+                   (VarSimples
+                     ("intervalo",
+                      {Lexing.pos_fname = ""; pos_lnum = 10; pos_bol = 212;
+                       pos_cnum = 240}),
+                   TipoInt),
+                  TipoInt),
+                 (Tast.ExpInt (1, TipoInt), TipoInt)))],
+              None)],
+            None);
+           CmdAtrib
+            (Tast.ExpVar
+              (VarSimples
+                ("x",
+                 {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 64;
+                  pos_cnum = 72}),
+              TipoInt),
+            Tast.ExpOp ((Adicao, TipoInt),
+             (Tast.ExpVar
+               (VarSimples
+                 ("x",
+                  {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 64;
+                   pos_cnum = 72}),
+               TipoInt),
+              TipoInt),
+             (Tast.ExpInt (1, TipoInt), TipoInt)))])],
+        None);
+       CmdPrint (Tast.ExpString ("Ao total, foram digitados ", TipoString));
+       CmdPrint
+        (Tast.ExpVar
+          (VarSimples
+            ("intervalo",
+             {Lexing.pos_fname = ""; pos_lnum = 15; pos_bol = 330;
+              pos_cnum = 340}),
+          TipoInt));
+       CmdPrint
+        (Tast.ExpString (" numeros no intervalo entre 10 e 150", TipoString));
+       CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))]}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)

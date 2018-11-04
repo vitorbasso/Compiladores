@@ -1,0 +1,131 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("preco",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 28}),
+        TipoInt);
+       DecVar
+        (("venda",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 35}),
+        TipoInt);
+       DecVar
+        (("novo_preco",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 42}),
+        TipoInt)];
+     fn_corpo =
+      [CmdPrint (Tast.ExpString ("Digite o preco: ", TipoString));
+       CmdScanInt
+        (Tast.ExpVar
+          (VarSimples
+            ("preco",
+             {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 83;
+              pos_cnum = 87}),
+          TipoInt));
+       CmdPrint (Tast.ExpString ("Digite a venda: ", TipoString));
+       CmdScanInt
+        (Tast.ExpVar
+          (VarSimples
+            ("venda",
+             {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 139;
+              pos_cnum = 143}),
+          TipoInt));
+       CmdIf
+        (Tast.ExpOp ((Or, TipoBool),
+          (Tast.ExpOp ((Menor, TipoBool),
+            (Tast.ExpVar
+              (VarSimples
+                ("venda",
+                 {Lexing.pos_fname = ""; pos_lnum = 7; pos_bol = 165;
+                  pos_cnum = 172}),
+              TipoInt),
+             TipoInt),
+            (Tast.ExpInt (500, TipoInt), TipoInt)),
+           TipoBool),
+          (Tast.ExpOp ((Menor, TipoBool),
+            (Tast.ExpVar
+              (VarSimples
+                ("preco",
+                 {Lexing.pos_fname = ""; pos_lnum = 7; pos_bol = 165;
+                  pos_cnum = 187}),
+              TipoInt),
+             TipoInt),
+            (Tast.ExpInt (30, TipoInt), TipoInt)),
+           TipoBool)),
+        [CmdAtrib
+          (Tast.ExpVar
+            (VarSimples
+              ("novo_preco",
+               {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 203;
+                pos_cnum = 211}),
+            TipoInt),
+          Tast.ExpOp ((Adicao, TipoInt),
+           (Tast.ExpVar
+             (VarSimples
+               ("preco",
+                {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 203;
+                 pos_cnum = 224}),
+             TipoInt),
+            TipoInt),
+           (Tast.ExpOp ((Multiplicacao, TipoInt),
+             (Tast.ExpOp ((Divisao, TipoInt),
+               (Tast.ExpInt (10, TipoInt), TipoInt),
+               (Tast.ExpInt (100, TipoInt), TipoInt)),
+              TipoInt),
+             (Tast.ExpVar
+               (VarSimples
+                 ("preco",
+                  {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 203;
+                   pos_cnum = 243}),
+               TipoInt),
+              TipoInt)),
+            TipoInt)))],
+        Some
+         [CmdIf
+           (Tast.ExpOp ((Or, TipoBool),
+             (Tast.ExpOp ((And, TipoBool),
+               (Tast.ExpOp ((Maior_ou_Igual, TipoBool),
+                 (Tast.ExpVar
+                   (VarSimples
+                     ("venda",
+                      {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 249;
+                       pos_cnum = 262}),
+                   TipoInt),
+                  TipoInt),
+                 (Tast.ExpInt (500, TipoInt), TipoInt)),
+                TipoBool),
+               (Tast.ExpOp ((Menor_ou_Igual, TipoBool),
+                 (Tast.ExpVar
+                   (VarSimples
+                     ("venda",
+                      {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 249;
+                       pos_cnum = 279}),
+                   TipoInt),
+                  TipoInt),
+                 (Tast.ExpInt (1200, TipoInt), TipoInt)),
+                TipoBool)),
+              TipoBool),
+             (Tast.ExpOp ((And, TipoBool),
+               (Tast.ExpOp ((Maior_ou_Igual, TipoBool),
+                 (Tast.ExpVar
+                   (VarSimples
+                     ("preco",
+                      {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 249;
+                       pos_cnum = 298}),
+                   TipoInt),
+                  TipoInt),
+                 (Tast.ExpInt (30, TipoInt), TipoInt)),
+                TipoBool),
+               (Tast.ExpOp ((Menor, TipoBool), (...), ...), ...)),
+              ...)),
+           ...);
+          ...]);
+       ...]};
+   ...],
+  ...),
+ ...)

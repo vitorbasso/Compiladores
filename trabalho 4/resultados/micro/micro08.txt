@@ -1,0 +1,71 @@
+- : Tast.expressao Ast.programa * Ambiente.t =
+(Programa ([],
+  [DecFun
+    {fn_nome =
+      ("main",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 13});
+     fn_tiporet = TipoInt; fn_formais = [];
+     fn_locais =
+      [DecVar
+        (("numero",
+          {Lexing.pos_fname = ""; pos_lnum = 2; pos_bol = 20; pos_cnum = 28}),
+        TipoInt)];
+     fn_corpo =
+      [CmdAtrib
+        (Tast.ExpVar
+          (VarSimples
+            ("numero",
+             {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 35;
+              pos_cnum = 39}),
+          TipoInt),
+        Tast.ExpInt (1, TipoInt));
+       CmdWhile
+        (Tast.ExpOp ((Nao_Equivalente, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("numero",
+               {Lexing.pos_fname = ""; pos_lnum = 4; pos_bol = 50;
+                pos_cnum = 60}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (0, TipoInt), TipoInt)),
+        [CmdPrint (Tast.ExpString ("Digite um numero: ", TipoString));
+         CmdScanInt
+          (Tast.ExpVar
+            (VarSimples
+              ("numero",
+               {Lexing.pos_fname = ""; pos_lnum = 6; pos_bol = 111;
+                pos_cnum = 119}),
+            TipoInt));
+         CmdIf
+          (Tast.ExpOp ((Maior, TipoBool),
+            (Tast.ExpVar
+              (VarSimples
+                ("numero",
+                 {Lexing.pos_fname = ""; pos_lnum = 7; pos_bol = 142;
+                  pos_cnum = 153}),
+              TipoInt),
+             TipoInt),
+            (Tast.ExpInt (10, TipoInt), TipoInt)),
+          [CmdPrint (Tast.ExpString ("O numero ", TipoString));
+           CmdPrint
+            (Tast.ExpVar
+              (VarSimples
+                ("numero",
+                 {Lexing.pos_fname = ""; pos_lnum = 9; pos_bol = 201;
+                  pos_cnum = 213}),
+              TipoInt));
+           CmdPrint (Tast.ExpString (" e maior que 10\n", TipoString))],
+          Some
+           [CmdPrint (Tast.ExpString ("O numero ", TipoString));
+            CmdPrint
+             (Tast.ExpVar
+               (VarSimples
+                 ("numero",
+                  {Lexing.pos_fname = ""; pos_lnum = 13; pos_bol = 297;
+                   pos_cnum = 315}),
+               TipoInt));
+            CmdPrint (Tast.ExpString (" e menor que 10\n", TipoString))])]);
+       CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))]}],
+  [CmdChamada (Tast.ExpChamada ("main", [], TipoInt))]),
+ <abstr>)
