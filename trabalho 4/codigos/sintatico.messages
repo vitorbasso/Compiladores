@@ -30,7 +30,7 @@ programa: APAR LITSTRING WHILE
 ## APAR expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While indevido - 1>
 
 programa: APAR WHILE
 ##
@@ -42,7 +42,7 @@ programa: APAR WHILE
 ## APAR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<"(" incorreto antes do while - 2>
 
 programa: FOR ID ATRIB LITSTRING VIRGULA LITSTRING VIRGULA LITSTRING DO RETURN EOF
 ##
@@ -64,7 +64,7 @@ programa: FOR ID ATRIB LITSTRING VIRGULA LITSTRING VIRGULA LITSTRING DO RETURN E
 ## In state 128, spurious reduction of production list(comando) -> comando list(comando) 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Definição incorreta de FOR - 3>
 
 programa: FOR ID ATRIB LITSTRING VIRGULA LITSTRING VIRGULA LITSTRING DO VIRGULA
 ##
@@ -76,7 +76,7 @@ programa: FOR ID ATRIB LITSTRING VIRGULA LITSTRING VIRGULA LITSTRING DO VIRGULA
 ## FOR ID ATRIB expressao VIRGULA expressao VIRGULA expressao DO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Definição incorreta do FOR - 4>
 
 programa: FOR ID ATRIB LITSTRING VIRGULA LITSTRING VIRGULA LITSTRING WHILE
 ##
@@ -110,7 +110,7 @@ programa: FOR ID ATRIB LITSTRING VIRGULA LITSTRING VIRGULA LITSTRING WHILE
 ## FOR ID ATRIB expressao VIRGULA expressao VIRGULA expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Definição incorreta do FOR - 5>
 
 programa: FOR ID ATRIB LITSTRING VIRGULA LITSTRING VIRGULA WHILE
 ##
@@ -122,7 +122,7 @@ programa: FOR ID ATRIB LITSTRING VIRGULA LITSTRING VIRGULA WHILE
 ## FOR ID ATRIB expressao VIRGULA expressao VIRGULA 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Definição incorreta do FOR - 6>
 
 programa: FOR ID ATRIB LITSTRING VIRGULA LITSTRING WHILE
 ##
@@ -156,7 +156,7 @@ programa: FOR ID ATRIB LITSTRING VIRGULA LITSTRING WHILE
 ## FOR ID ATRIB expressao VIRGULA expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Definição incorreta do FOR - 7>
 
 programa: FOR ID ATRIB LITSTRING VIRGULA WHILE
 ##
@@ -168,7 +168,7 @@ programa: FOR ID ATRIB LITSTRING VIRGULA WHILE
 ## FOR ID ATRIB expressao VIRGULA 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Definição incorreta do FOR - 8>
 
 programa: FOR ID ATRIB LITSTRING WHILE
 ##
@@ -202,7 +202,7 @@ programa: FOR ID ATRIB LITSTRING WHILE
 ## FOR ID ATRIB expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Definição incorreta do FOR - 9>
 
 programa: FOR ID ATRIB WHILE
 ##
@@ -214,7 +214,7 @@ programa: FOR ID ATRIB WHILE
 ## FOR ID ATRIB 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Definição incorreta do FOR - 10>
 
 programa: FOR ID WHILE
 ##
@@ -226,7 +226,7 @@ programa: FOR ID WHILE
 ## FOR ID 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Definição incorreta do FOR - 11>
 
 programa: FOR WHILE
 ##
@@ -238,7 +238,7 @@ programa: FOR WHILE
 ## FOR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Definição incorreta do FOR - 12>
 
 programa: FUNCAO TIPO_STRING ID APAR FPAR END VIRGULA
 ##
@@ -250,7 +250,7 @@ programa: FUNCAO TIPO_STRING ID APAR FPAR END VIRGULA
 ## declaracao_de_funcao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<"," em lugar indevido - 13>
 
 programa: FUNCAO TIPO_STRING ID APAR FPAR RETURN EOF
 ##
@@ -272,7 +272,7 @@ programa: FUNCAO TIPO_STRING ID APAR FPAR RETURN EOF
 ## In state 128, spurious reduction of production list(comando) -> comando list(comando) 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se um "end" no final da função - 14>
 
 programa: FUNCAO TIPO_STRING ID APAR FPAR TIPO_STRING ID FUNCAO
 ##
@@ -293,7 +293,7 @@ programa: FUNCAO TIPO_STRING ID APAR FPAR TIPO_STRING ID FUNCAO
 ## In state 142, spurious reduction of production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<function em posição indevida - 15>
 
 programa: FUNCAO TIPO_STRING ID APAR FPAR VIRGULA
 ##
@@ -305,7 +305,7 @@ programa: FUNCAO TIPO_STRING ID APAR FPAR VIRGULA
 ## FUNCAO tipo ID APAR loption(separated_nonempty_list(VIRGULA,parametro)) FPAR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<"," em lugar indevido - 16>
 
 programa: FUNCAO TIPO_STRING ID APAR TIPO_STRING ID VIRGULA WHILE
 ##
@@ -317,7 +317,7 @@ programa: FUNCAO TIPO_STRING ID APAR TIPO_STRING ID VIRGULA WHILE
 ## parametro VIRGULA 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Erro nos parametros da função - 17>
 
 programa: FUNCAO TIPO_STRING ID APAR TIPO_STRING ID WHILE
 ##
@@ -330,7 +330,7 @@ programa: FUNCAO TIPO_STRING ID APAR TIPO_STRING ID WHILE
 ## parametro 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Erro nos parametros da função - 18>
 
 programa: FUNCAO TIPO_STRING ID APAR TIPO_STRING WHILE
 ##
@@ -342,7 +342,7 @@ programa: FUNCAO TIPO_STRING ID APAR TIPO_STRING WHILE
 ## tipo 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Erro nos parametros da função - 19>
 
 programa: FUNCAO TIPO_STRING ID APAR WHILE
 ##
@@ -354,7 +354,7 @@ programa: FUNCAO TIPO_STRING ID APAR WHILE
 ## FUNCAO tipo ID APAR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Erro nos parametros da função - 20>
 
 programa: FUNCAO TIPO_STRING ID WHILE
 ##
@@ -366,7 +366,7 @@ programa: FUNCAO TIPO_STRING ID WHILE
 ## FUNCAO tipo ID 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Declaracao incorreta de função - 21>
 
 programa: FUNCAO TIPO_STRING WHILE
 ##
@@ -378,7 +378,7 @@ programa: FUNCAO TIPO_STRING WHILE
 ## FUNCAO tipo 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Declaracao incorreta de função - 22>
 
 programa: FUNCAO WHILE
 ##
@@ -390,7 +390,7 @@ programa: FUNCAO WHILE
 ## FUNCAO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Declaracao incorreta de função - 23>
 
 programa: ID APAR FPAR VIRGULA
 ##
@@ -403,7 +403,7 @@ programa: ID APAR FPAR VIRGULA
 ## chamada 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<"," em lugar indevido - 24>
 
 programa: ID APAR LITSTRING VIRGULA WHILE
 ##
@@ -415,7 +415,7 @@ programa: ID APAR LITSTRING VIRGULA WHILE
 ## expressao VIRGULA 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se um valor, porém obteve-se um while - 25>
 
 programa: ID APAR LITSTRING WHILE
 ##
@@ -450,7 +450,7 @@ programa: ID APAR LITSTRING WHILE
 ## expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se um valor, porém obteve-se um while - 26>
 
 programa: ID APAR WHILE
 ##
@@ -462,7 +462,7 @@ programa: ID APAR WHILE
 ## ID APAR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se um valor, porém obteve-se um while - 27>
 
 programa: ID UNTIL
 ##
@@ -475,7 +475,7 @@ programa: ID UNTIL
 ## ID 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 28>
 
 programa: IF LITSTRING THEN RETURN ELSE RETURN ELSE
 ##
@@ -497,7 +497,7 @@ programa: IF LITSTRING THEN RETURN ELSE RETURN ELSE
 ## In state 132, spurious reduction of production option(__anonymous_0) -> ELSE nonempty_list(comando) 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se um end, porém obteve-se um else - 29>
 
 programa: IF LITSTRING THEN RETURN ELSE VIRGULA
 ##
@@ -509,7 +509,7 @@ programa: IF LITSTRING THEN RETURN ELSE VIRGULA
 ## ELSE 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se um end, porém obteve-se uma "," - 30>
 
 programa: IF LITSTRING THEN RETURN EOF
 ##
@@ -530,7 +530,7 @@ programa: IF LITSTRING THEN RETURN EOF
 ## In state 121, spurious reduction of production comando -> comando_retorno 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se um end, porém obteve-se EOF - 31>
 
 programa: IF LITSTRING THEN VIRGULA
 ##
@@ -542,7 +542,7 @@ programa: IF LITSTRING THEN VIRGULA
 ## IF expressao THEN 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se um end, porém obteve-se uma "," - 32>
 
 programa: IF LITSTRING WHILE
 ##
@@ -576,7 +576,7 @@ programa: IF LITSTRING WHILE
 ## IF expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Declaração incorreta de if - 33>
 
 programa: IF WHILE
 ##
@@ -588,7 +588,7 @@ programa: IF WHILE
 ## IF 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Declaração incorreta de if - 34>
 
 programa: LITSTRING ADICAO LITSTRING UNTIL
 ##
@@ -622,7 +622,7 @@ programa: LITSTRING ADICAO LITSTRING UNTIL
 ## expressao ADICAO expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 35>
 
 programa: LITSTRING ADICAO WHILE
 ##
@@ -634,7 +634,7 @@ programa: LITSTRING ADICAO WHILE
 ## expressao ADICAO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se uma string, porém obteve-se um while - 36>
 
 programa: LITSTRING AND LITSTRING UNTIL
 ##
@@ -668,7 +668,7 @@ programa: LITSTRING AND LITSTRING UNTIL
 ## expressao AND expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 37>
 
 programa: LITSTRING AND WHILE
 ##
@@ -680,7 +680,7 @@ programa: LITSTRING AND WHILE
 ## expressao AND 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se uma string, porém obteve-se um while - 38>
 
 programa: LITSTRING AND_BINARIO LITSTRING UNTIL
 ##
@@ -714,7 +714,7 @@ programa: LITSTRING AND_BINARIO LITSTRING UNTIL
 ## expressao AND_BINARIO expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 39>
 
 programa: LITSTRING AND_BINARIO WHILE
 ##
@@ -726,7 +726,7 @@ programa: LITSTRING AND_BINARIO WHILE
 ## expressao AND_BINARIO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 40>
 
 programa: LITSTRING ATRIB LITSTRING VIRGULA
 ##
@@ -760,7 +760,7 @@ programa: LITSTRING ATRIB LITSTRING VIRGULA
 ## expressao ATRIB expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<"," em lugar indevido - 41>
 
 programa: LITSTRING ATRIB WHILE
 ##
@@ -775,7 +775,7 @@ programa: LITSTRING ATRIB WHILE
 ## expressao ATRIB 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se uma string, porém obteve-se um while - 42>
 
 programa: LITSTRING CONCATENA LITSTRING UNTIL
 ##
@@ -809,7 +809,7 @@ programa: LITSTRING CONCATENA LITSTRING UNTIL
 ## expressao CONCATENA expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 43>
 
 programa: LITSTRING CONCATENA WHILE
 ##
@@ -821,7 +821,7 @@ programa: LITSTRING CONCATENA WHILE
 ## expressao CONCATENA 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se uma string, porém obteve-se um while - 44>
 
 programa: LITSTRING DIVISAO LITSTRING UNTIL
 ##
@@ -855,7 +855,7 @@ programa: LITSTRING DIVISAO LITSTRING UNTIL
 ## expressao DIVISAO expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Nao pode-se realizar divisão de strings (e until em lugar indevido) - 45>
 
 programa: LITSTRING DIVISAO WHILE
 ##
@@ -867,7 +867,7 @@ programa: LITSTRING DIVISAO WHILE
 ## expressao DIVISAO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Nao pode-se realizar divisão de strings (e until em lugar indevido) - 46>
 
 programa: LITSTRING DIVISAO_INTEIRO LITSTRING UNTIL
 ##
@@ -901,7 +901,7 @@ programa: LITSTRING DIVISAO_INTEIRO LITSTRING UNTIL
 ## expressao DIVISAO_INTEIRO expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se divisão de inteiros, porém obteve-se duas strings (e until em lugar indevido) - 47>
 
 programa: LITSTRING DIVISAO_INTEIRO WHILE
 ##
@@ -913,7 +913,7 @@ programa: LITSTRING DIVISAO_INTEIRO WHILE
 ## expressao DIVISAO_INTEIRO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Não pode realizar divisão de strings (e While em lugar indevido) - 48>
 
 programa: LITSTRING DIV_POR_2 LITSTRING UNTIL
 ##
@@ -947,7 +947,7 @@ programa: LITSTRING DIV_POR_2 LITSTRING UNTIL
 ## expressao DIV_POR_2 expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Não pode realizar divisão de strings (e until em lugar indevido) - 49>
 
 programa: LITSTRING DIV_POR_2 WHILE
 ##
@@ -959,7 +959,7 @@ programa: LITSTRING DIV_POR_2 WHILE
 ## expressao DIV_POR_2 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Não pode realizar divisão de strings (e while em lugar indevido) - 50>
 
 programa: LITSTRING EQUIVALENTE LITSTRING UNTIL
 ##
@@ -993,7 +993,7 @@ programa: LITSTRING EQUIVALENTE LITSTRING UNTIL
 ## expressao EQUIVALENTE expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 51>
 
 programa: LITSTRING EQUIVALENTE WHILE
 ##
@@ -1005,7 +1005,7 @@ programa: LITSTRING EQUIVALENTE WHILE
 ## expressao EQUIVALENTE 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 52>
 
 programa: LITSTRING EXPONENCIACAO WHILE
 ##
@@ -1017,7 +1017,7 @@ programa: LITSTRING EXPONENCIACAO WHILE
 ## expressao EXPONENCIACAO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido (e não se pode realizar exponenciação de strings) - 53>
 
 programa: LITSTRING MAIOR LITSTRING UNTIL
 ##
@@ -1051,7 +1051,7 @@ programa: LITSTRING MAIOR LITSTRING UNTIL
 ## expressao MAIOR expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 54>
 
 programa: LITSTRING MAIOR WHILE
 ##
@@ -1063,7 +1063,7 @@ programa: LITSTRING MAIOR WHILE
 ## expressao MAIOR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 55>
 
 programa: LITSTRING MAIOR_OU_IGUAL LITSTRING UNTIL
 ##
@@ -1097,7 +1097,7 @@ programa: LITSTRING MAIOR_OU_IGUAL LITSTRING UNTIL
 ## expressao MAIOR_OU_IGUAL expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 56>
 
 programa: LITSTRING MAIOR_OU_IGUAL WHILE
 ##
@@ -1109,7 +1109,7 @@ programa: LITSTRING MAIOR_OU_IGUAL WHILE
 ## expressao MAIOR_OU_IGUAL 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - esperava-se uma string - 57>
 
 programa: LITSTRING MENOR LITSTRING UNTIL
 ##
@@ -1143,7 +1143,7 @@ programa: LITSTRING MENOR LITSTRING UNTIL
 ## expressao MENOR expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 58>
 
 programa: LITSTRING MENOR WHILE
 ##
@@ -1155,7 +1155,7 @@ programa: LITSTRING MENOR WHILE
 ## expressao MENOR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 59>
 
 programa: LITSTRING MENOR_OU_IGUAL LITSTRING UNTIL
 ##
@@ -1189,7 +1189,7 @@ programa: LITSTRING MENOR_OU_IGUAL LITSTRING UNTIL
 ## expressao MENOR_OU_IGUAL expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 60>
 
 programa: LITSTRING MENOR_OU_IGUAL WHILE
 ##
@@ -1201,7 +1201,7 @@ programa: LITSTRING MENOR_OU_IGUAL WHILE
 ## expressao MENOR_OU_IGUAL 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 61>
 
 programa: LITSTRING MODULO LITSTRING UNTIL
 ##
@@ -1235,7 +1235,7 @@ programa: LITSTRING MODULO LITSTRING UNTIL
 ## expressao MODULO expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido  - 62>
 
 programa: LITSTRING MODULO WHILE
 ##
@@ -1247,7 +1247,7 @@ programa: LITSTRING MODULO WHILE
 ## expressao MODULO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 63>
 
 programa: LITSTRING MULTIPLICACAO LITSTRING UNTIL
 ##
@@ -1281,7 +1281,7 @@ programa: LITSTRING MULTIPLICACAO LITSTRING UNTIL
 ## expressao MULTIPLICACAO expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 64>
 
 programa: LITSTRING MULTIPLICACAO WHILE
 ##
@@ -1293,7 +1293,7 @@ programa: LITSTRING MULTIPLICACAO WHILE
 ## expressao MULTIPLICACAO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 65>
 
 programa: LITSTRING MULT_POR_2 LITSTRING UNTIL
 ##
@@ -1327,7 +1327,7 @@ programa: LITSTRING MULT_POR_2 LITSTRING UNTIL
 ## expressao MULT_POR_2 expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 66>
 
 programa: LITSTRING MULT_POR_2 WHILE
 ##
@@ -1339,7 +1339,7 @@ programa: LITSTRING MULT_POR_2 WHILE
 ## expressao MULT_POR_2 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 67>
 
 programa: LITSTRING NAO_EQUIVALENTE LITSTRING UNTIL
 ##
@@ -1373,7 +1373,7 @@ programa: LITSTRING NAO_EQUIVALENTE LITSTRING UNTIL
 ## expressao NAO_EQUIVALENTE expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 68>
 
 programa: LITSTRING NAO_EQUIVALENTE WHILE
 ##
@@ -1385,7 +1385,7 @@ programa: LITSTRING NAO_EQUIVALENTE WHILE
 ## expressao NAO_EQUIVALENTE 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 69>
 
 programa: LITSTRING NOT LITSTRING UNTIL
 ##
@@ -1419,7 +1419,7 @@ programa: LITSTRING NOT LITSTRING UNTIL
 ## expressao NOT expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 70>
 
 programa: LITSTRING NOT WHILE
 ##
@@ -1431,7 +1431,7 @@ programa: LITSTRING NOT WHILE
 ## expressao NOT 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 71>
 
 programa: LITSTRING OR LITSTRING UNTIL
 ##
@@ -1465,7 +1465,7 @@ programa: LITSTRING OR LITSTRING UNTIL
 ## expressao OR expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 72>
 
 programa: LITSTRING OR WHILE
 ##
@@ -1477,7 +1477,7 @@ programa: LITSTRING OR WHILE
 ## expressao OR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 73>
 
 programa: LITSTRING OR_BINARIO LITSTRING UNTIL
 ##
@@ -1511,7 +1511,7 @@ programa: LITSTRING OR_BINARIO LITSTRING UNTIL
 ## expressao OR_BINARIO expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 74>
 
 programa: LITSTRING OR_BINARIO WHILE
 ##
@@ -1523,7 +1523,7 @@ programa: LITSTRING OR_BINARIO WHILE
 ## expressao OR_BINARIO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 75>
 
 programa: LITSTRING OR_BINARIO_EXCLUSIVO LITSTRING UNTIL
 ##
@@ -1557,7 +1557,7 @@ programa: LITSTRING OR_BINARIO_EXCLUSIVO LITSTRING UNTIL
 ## expressao OR_BINARIO_EXCLUSIVO expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 76>
 
 programa: LITSTRING OR_BINARIO_EXCLUSIVO WHILE
 ##
@@ -1569,7 +1569,7 @@ programa: LITSTRING OR_BINARIO_EXCLUSIVO WHILE
 ## expressao OR_BINARIO_EXCLUSIVO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 77>
 
 programa: LITSTRING SUBTRACAO LITSTRING UNTIL
 ##
@@ -1603,7 +1603,7 @@ programa: LITSTRING SUBTRACAO LITSTRING UNTIL
 ## expressao SUBTRACAO expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 78>
 
 programa: LITSTRING SUBTRACAO WHILE
 ##
@@ -1615,7 +1615,7 @@ programa: LITSTRING SUBTRACAO WHILE
 ## expressao SUBTRACAO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 79>
 
 programa: LITSTRING WHILE
 ##
@@ -1652,7 +1652,7 @@ programa: LITSTRING WHILE
 ## expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 80>
 
 programa: PRINT APAR LITSTRING WHILE
 ##
@@ -1686,7 +1686,7 @@ programa: PRINT APAR LITSTRING WHILE
 ## PRINT APAR expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 81>
 
 programa: PRINT APAR WHILE
 ##
@@ -1698,7 +1698,7 @@ programa: PRINT APAR WHILE
 ## PRINT APAR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 82>
 
 programa: PRINT WHILE
 ##
@@ -1710,7 +1710,7 @@ programa: PRINT WHILE
 ## PRINT 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 83>
 
 programa: RETURN ELSE
 ##
@@ -1730,7 +1730,7 @@ programa: RETURN ELSE
 ## In state 121, spurious reduction of production comando -> comando_retorno 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Return sem parametro - 84>
 
 programa: RETURN END
 ##
@@ -1752,7 +1752,7 @@ programa: RETURN END
 ## In state 128, spurious reduction of production list(comando) -> comando list(comando) 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Return sem parametro - 85>
 
 programa: RETURN LITSTRING VIRGULA
 ##
@@ -1786,7 +1786,7 @@ programa: RETURN LITSTRING VIRGULA
 ## expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<"," em lugar indevido - 86>
 
 programa: RETURN VIRGULA
 ##
@@ -1798,7 +1798,7 @@ programa: RETURN VIRGULA
 ## RETURN 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Return sem parametro - 87>
 
 programa: TIPO_STRING ID END
 ##
@@ -1819,7 +1819,7 @@ programa: TIPO_STRING ID END
 ## In state 142, spurious reduction of production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<End em lugar indevido - 88>
 
 programa: TIPO_STRING ID UNTIL
 ##
@@ -1832,7 +1832,7 @@ programa: TIPO_STRING ID UNTIL
 ## ID 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Until em lugar indevido - 89>
 
 programa: TIPO_STRING ID VIRGULA WHILE
 ##
@@ -1844,7 +1844,7 @@ programa: TIPO_STRING ID VIRGULA WHILE
 ## ID VIRGULA 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 90>
 
 programa: TIPO_STRING WHILE
 ##
@@ -1856,7 +1856,7 @@ programa: TIPO_STRING WHILE
 ## tipo 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 91>
 
 programa: VIRGULA
 ##
@@ -1868,7 +1868,7 @@ programa: VIRGULA
 ## 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<"," em lugar indevido - 92>
 
 programa: WHILE LITSTRING DO RETURN EOF
 ##
@@ -1890,7 +1890,7 @@ programa: WHILE LITSTRING DO RETURN EOF
 ## In state 128, spurious reduction of production list(comando) -> comando list(comando) 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se uma condição, obteve-se uma string - 93>
 
 programa: WHILE LITSTRING DO VIRGULA
 ##
@@ -1902,7 +1902,7 @@ programa: WHILE LITSTRING DO VIRGULA
 ## WHILE expressao DO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<"," em lugar indevido - 94>
 
 programa: WHILE LITSTRING WHILE
 ##
@@ -1936,7 +1936,7 @@ programa: WHILE LITSTRING WHILE
 ## WHILE expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<Esperava-se um do, porém obteve-se um while - 95>
 
 programa: WHILE WHILE
 ##
@@ -1948,5 +1948,5 @@ programa: WHILE WHILE
 ## WHILE 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+<While em lugar indevido - 96>
 

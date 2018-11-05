@@ -104,7 +104,7 @@ let rec infere_exp amb exp =
         A.TipoInt
       | A.TipoFloat -> 
          let _ = mesmo_tipo (snd op)
-                      "O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
+                      "(Aritmetico) O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
                       tesq tdir
          in tesq (* O tipo da expressão aritmética como um todo *)
 
@@ -120,7 +120,7 @@ let rec infere_exp amb exp =
         | A.TipoBool
         | A.TipoString ->
          let _ = mesmo_tipo (snd op)
-                   "O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
+                   "(Relacional) O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
                    tesq tdir
          in A.TipoBool (* O tipo da expressão relacional é sempre booleano *)
 
@@ -133,7 +133,7 @@ let rec infere_exp amb exp =
       (match tesq with
          A.TipoBool ->
          let _ = mesmo_tipo (snd op)
-                   "O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
+                   "(Logico) O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
                    tesq tdir
          in A.TipoBool (* O tipo da expressão lógica é sempre booleano *)
 
@@ -145,7 +145,7 @@ let rec infere_exp amb exp =
       (match tesq with
          A.TipoString ->
          let _ = mesmo_tipo (snd op)
-                   "O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
+                   "(Cadeia) O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
                    tesq tdir
          in A.TipoString (* O tipo da expressão relacional é sempre string *)
 
