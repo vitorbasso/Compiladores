@@ -38,46 +38,13 @@ ocamlfind ocamlc -c -package menhirLib -o semantico.cmi semantico.mli # cached
 # Target: semanticoTest.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:semanticoTest.cmo, file:semanticoTest.ml, implem, ocaml, quiet }
 ocamlfind ocamlc -c -package menhirLib -o semanticoTest.cmo semanticoTest.ml # cached
 # Target: semantico.ml.depends, tags: { package(menhirLib), extension:ml, file:semantico.ml, ocaml, ocamldep, quiet }
-ocamlfind ocamldep -package menhirLib -modules semantico.ml > semantico.ml.depends
+ocamlfind ocamldep -package menhirLib -modules semantico.ml > semantico.ml.depends # cached
+# Target: semantico.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:semantico.cmo, file:semantico.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -package menhirLib -o semantico.cmo semantico.ml # cached
 # Target: sintatico.ml.depends, tags: { package(menhirLib), extension:ml, file:sintatico.ml, ocaml, ocamldep, quiet }
 ocamlfind ocamldep -package menhirLib -modules sintatico.ml > sintatico.ml.depends # cached
 # Target: sintatico.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:sintatico.cmo, file:sintatico.ml, implem, ocaml, quiet }
 ocamlfind ocamlc -c -package menhirLib -o sintatico.cmo sintatico.ml # cached
-# Target: semantico.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:semantico.cmo, file:semantico.ml, implem, ocaml, quiet }
-ocamlfind ocamlc -c -package menhirLib -o semantico.cmo semantico.ml
-+ ocamlfind ocamlc -c -package menhirLib -o semantico.cmo semantico.ml
-File "semantico.ml", line 258, characters 8-14:
-Warning 40: ExpVar was selected from type S.expressao.
-It is not visible in the current scope, and will not 
-be selected if the type becomes unknown.
-File "semantico.ml", line 257, characters 6-901:
-Warning 8: this pattern-matching is not exhaustive.
-Here is an example of a case that is not matched:
-ExpInt (_, _)
-File "semantico.ml", line 281, characters 6-12:
-Warning 40: ExpVar was selected from type S.expressao.
-It is not visible in the current scope, and will not 
-be selected if the type becomes unknown.
-File "semantico.ml", line 280, characters 4-825:
-Warning 8: this pattern-matching is not exhaustive.
-Here is an example of a case that is not matched:
-ExpInt (_, _)
-File "semantico.ml", line 305, characters 6-12:
-Warning 40: ExpVar was selected from type S.expressao.
-It is not visible in the current scope, and will not 
-be selected if the type becomes unknown.
-File "semantico.ml", line 304, characters 4-793:
-Warning 8: this pattern-matching is not exhaustive.
-Here is an example of a case that is not matched:
-ExpInt (_, _)
-File "semantico.ml", line 96, characters 7-8:
-Warning 11: this match case is unused.
-File "semantico.ml", line 277, characters 18-19:
-Warning 11: this match case is unused.
-File "semantico.ml", line 300, characters 12-13:
-Warning 11: this match case is unused.
-File "semantico.ml", line 324, characters 8-9:
-Warning 11: this match case is unused.
 # Target: ambiente.ml.depends, tags: { package(menhirLib), extension:ml, file:ambiente.ml, ocaml, ocamldep, quiet }
 ocamlfind ocamldep -package menhirLib -modules ambiente.ml > ambiente.ml.depends # cached
 # Target: tabsimb.mli.depends, tags: { package(menhirLib), extension:mli, file:tabsimb.mli, ocaml, ocamldep, quiet }
@@ -91,5 +58,5 @@ ocamlfind ocamldep -package menhirLib -modules tabsimb.ml > tabsimb.ml.depends #
 # Target: tabsimb.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:tabsimb.cmo, file:tabsimb.ml, implem, ocaml, quiet }
 ocamlfind ocamlc -c -package menhirLib -o tabsimb.cmo tabsimb.ml # cached
 # Target: semanticoTest.byte, tags: { package(menhirLib), byte, dont_link_with, extension:byte, file:semanticoTest.byte, link, ocaml, program, quiet }
-ocamlfind ocamlc -linkpkg -package menhirLib ast.cmo sast.cmo sintatico.cmo lexico.cmo tabsimb.cmo ambiente.cmo tast.cmo semantico.cmo semanticoTest.cmo -o semanticoTest.byte
+ocamlfind ocamlc -linkpkg -package menhirLib ast.cmo sast.cmo sintatico.cmo lexico.cmo tabsimb.cmo ambiente.cmo tast.cmo semantico.cmo semanticoTest.cmo -o semanticoTest.byte # cached
 # Compilation successful.
