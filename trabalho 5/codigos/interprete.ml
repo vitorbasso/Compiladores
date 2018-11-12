@@ -36,7 +36,7 @@ let pega_bool exp =
 
 type classe_op = Aritmetico | Relacional | Logico | Cadeia
 
-type classifica op = 
+let classifica op = 
     let open A in 
       match op with
             Or
@@ -107,7 +107,7 @@ let rec interpreta_exp amb exp =
                           (match op with
                             | Menor           -> ExpBool (pega_int vesq < pega_int vdir, top)
                             | Maior           -> ExpBool (pega_int vesq > pega_int vdir, top)
-                            | Equivalente     -> ExpBool (pega_int vesq == pega_int vdir, top)
+                            | Equivalente     -> ExpBool (pega_int vesq = pega_int vdir, top)
                             | Nao_Equivalente -> ExpBool (pega_int vesq != pega_int vdir, top)
                             | Menor_ou_Igual  -> ExpBool (pega_int vesq <= pega_int vdir, top)
                             | Maior_ou_Igual  -> ExpBool (pega_int vesq >= pega_int vdir, top)
@@ -116,7 +116,7 @@ let rec interpreta_exp amb exp =
                           (match op with
                             | Menor           -> ExpBool (pega_float vesq < pega_float vdir, top)
                             | Maior           -> ExpBool (pega_float vesq > pega_float vdir, top)
-                            | Equivalente     -> ExpBool (pega_float vesq == pega_float vdir, top)
+                            | Equivalente     -> ExpBool (pega_float vesq = pega_float vdir, top)
                             | Nao_Equivalente -> ExpBool (pega_float vesq != pega_float vdir, top)
                             | Menor_ou_Igual  -> ExpBool (pega_float vesq <= pega_float vdir, top)
                             | Maior_ou_Igual  -> ExpBool (pega_float vesq >= pega_float vdir, top)
@@ -125,7 +125,7 @@ let rec interpreta_exp amb exp =
                           (match op with
                             | Menor           -> ExpBool (pega_string vesq < pega_string vdir, top)
                             | Maior           -> ExpBool (pega_string vesq > pega_string vdir, top)
-                            | Equivalente     -> ExpBool (pega_string vesq == pega_string vdir, top)
+                            | Equivalente     -> ExpBool (pega_string vesq = pega_string vdir, top)
                             | Nao_Equivalente -> ExpBool (pega_string vesq != pega_string vdir, top)
                             | Menor_ou_Igual  -> ExpBool (pega_string vesq <= pega_string vdir, top)
                             | Maior_ou_Igual  -> ExpBool (pega_string vesq >= pega_string vdir, top)
@@ -134,14 +134,14 @@ let rec interpreta_exp amb exp =
                             (match op with
                               | Menor           -> ExpBool (pega_bool vesq < pega_bool vdir, top)
                               | Maior           -> ExpBool (pega_bool vesq > pega_bool vdir, top)
-                              | Equivalente     -> ExpBool (pega_bool vesq == pega_bool vdir, top)
+                              | Equivalente     -> ExpBool (pega_bool vesq = pega_bool vdir, top)
                               | Nao_Equivalente -> ExpBool (pega_bool vesq != pega_bool vdir, top)
                               | Menor_ou_Igual  -> ExpBool (pega_bool vesq <= pega_bool vdir, top)
                               | Maior_ou_Igual  -> ExpBool (pega_bool vesq >= pega_bool vdir, top)
                               | _               -> failwith ("interpreta_relacional: bool"))
                         | _ ->  failwith  ("interpreta_relacional: type error"))
                 and interpreta_logico () =
-                    (match testq with
+                    (match tesq with
                         | TipoBool  ->
                           (match op with
                             | Or  ->  ExpBool (pega_bool vesq || pega_bool vdir, top)
@@ -150,7 +150,7 @@ let rec interpreta_exp amb exp =
                         | _ ->  failwith ("interpreta_logico: type problem"))
 
                 and interpreta_cadeia () =
-                    (match testq with
+                    (match tesq with
                         | TipoString  ->
                           (match op with
                             | Concatena ->  ExpString (pega_string vesq ^ pega_string vdir, top)
@@ -170,7 +170,7 @@ let rec interpreta_exp amb exp =
                   (match (Amb.busca amb id) with
                     | Amb.EntFun {tipo_fn; formais; locais; corpo} ->
                         let vargs = List.map (interpreta_exp amb) args in
-                        let vformais = List.map2 (fun (n, t) v -> (n, t, Some, v))
+                        let vformais = List.map2 (fun (n, t) v -> (n, t, Some v))
                           formais vargs
                         in interpreta_fun amb id vformais locais corpo
                     | _ ->  failwith ("interpreta_exp: expchamada"))
