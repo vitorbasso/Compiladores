@@ -1,0 +1,98 @@
+
+** Conflict (reduce/reduce) in state 108.
+** Token involved: INPUT
+** This state is reached from programa after reading:
+
+list(declaracao_de_funcao) chamada 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+list(declaracao_de_funcao) list(comando) EOF 
+                           (?)
+
+** In state 108, looking ahead at INPUT, reducing production
+** comando_Chamada -> chamada 
+** is permitted because of the following sub-derivation:
+
+comando list(comando) // lookahead token appears because list(comando) can begin with INPUT
+comando_Chamada // lookahead token is inherited
+chamada . 
+
+** In state 108, looking ahead at INPUT, reducing production
+** expressao -> chamada 
+** is permitted because of the following sub-derivation:
+
+comando list(comando) 
+comando_Input 
+loption(separated_nonempty_list(VIRG,expressao)) INPUT // lookahead token appears
+separated_nonempty_list(VIRG,expressao) // lookahead token is inherited
+expressao // lookahead token is inherited
+chamada . 
+
+** Conflict (shift/reduce) in state 71.
+** Tokens involved: NOT LITSTRING LITINT LITFLOAT ID BOOL APAR
+** The following explanations concentrate on token NOT.
+** This state is reached from programa after reading:
+
+list(declaracao_de_funcao) RETURN 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+list(declaracao_de_funcao) list(comando) EOF 
+                           (?)
+
+** In state 71, looking ahead at NOT, shifting is permitted
+** because of the following sub-derivation:
+
+comando list(comando) 
+comando_Retorno 
+RETURN option(expressao) 
+       expressao 
+       . NOT expressao 
+
+** In state 71, looking ahead at NOT, reducing production
+** option(expressao) -> 
+** is permitted because of the following sub-derivation:
+
+comando list(comando) // lookahead token appears because list(comando) can begin with NOT
+comando_Retorno // lookahead token is inherited
+RETURN option(expressao) // lookahead token is inherited
+       . 
+
+** Conflict (shift/reduce) in state 30.
+** Token involved: APAR
+** This state is reached from programa after reading:
+
+list(declaracao_de_funcao) RETURN ID 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+list(declaracao_de_funcao) list(comando) EOF 
+                           (?)
+
+** In state 30, looking ahead at APAR, shifting is permitted
+** because of the following sub-derivation:
+
+comando list(comando) 
+comando_Retorno 
+RETURN option(expressao) 
+       expressao 
+       chamada 
+       ID . APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+
+** In state 30, looking ahead at APAR, reducing production
+** variavel -> ID 
+** is permitted because of the following sub-derivation:
+
+comando list(comando) // lookahead token appears because list(comando) can begin with APAR
+comando_Retorno // lookahead token is inherited
+RETURN option(expressao) // lookahead token is inherited
+       expressao // lookahead token is inherited
+       variavel // lookahead token is inherited
+       ID . 

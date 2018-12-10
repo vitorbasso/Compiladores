@@ -1,0 +1,30 @@
+beginFun main(0,2)
+local cel,inteiro
+local far,inteiro
+t0 := Tabela de conversão: Celsius -> Fahrenheit
+
+call print((t0,string)): void
+t1 := Digite a temperatura em Celsius: 
+call print((t1,string)): void
+call read((cel,inteiro)): void
+t2 := 9
+t3 := t2 * cel
+t4 := 160
+t5 := t3 + t4
+t6 := 5
+t7 := t5 / t6
+far := t7
+t8 := A nova temperatura eh: 
+t9 :=  F
+
+call print((t8,string), (far,inteiro), (t9,string)): void
+t10 := 1
+return t10
+endFun
+
+beginFun main(0,0)
+call main(): inteiro
+endFun
+
+
+- : unit = ()

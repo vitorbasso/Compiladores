@@ -1,0 +1,13 @@
+beginFun main(0,1)
+local n,inteiro
+n := 2
+call print((n,inteiro)): void
+return n
+endFun
+
+beginFun main(0,0)
+call main(): inteiro
+endFun
+
+
+- : unit = ()

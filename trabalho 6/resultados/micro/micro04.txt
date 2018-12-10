@@ -1,0 +1,38 @@
+beginFun main(0,3)
+local x,inteiro
+local num,inteiro
+local intervalo,inteiro
+intervalo := 0
+x := 0
+L2: t0 := 5
+t1 := x < t0
+ifFalse t1 goto L3: 
+t2 := Digite um numero: 
+call print((t2,string)): void
+call read((num,inteiro)): void
+t3 := 10
+t4 := num >= t3
+ifFalse t4 goto L1: 
+t5 := 150
+t6 := num <= t5
+ifFalse t6 goto L0: 
+t7 := 1
+t8 := intervalo + t7
+intervalo := t8
+L0: L1: t9 := 1
+t10 := x + t9
+x := t10
+goto L2: 
+L3: t11 := Ao total, foram digitados 
+t12 :=  numeros no intervalo entre 10 e 150
+call print((t11,string), (intervalo,inteiro), (t12,string)): void
+t13 := 1
+return t13
+endFun
+
+beginFun main(0,0)
+call main(): inteiro
+endFun
+
+
+- : unit = ()

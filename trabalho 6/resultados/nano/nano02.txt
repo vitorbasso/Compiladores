@@ -1,0 +1,10 @@
+beginFun main(0,1)
+local n,float
+endFun
+
+beginFun main(0,0)
+call main(): inteiro
+endFun
+
+
+- : unit = ()

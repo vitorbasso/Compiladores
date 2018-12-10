@@ -1,0 +1,2597 @@
+State 0:
+programa' -> . programa [ # ]
+-- On FUNCTION shift to state 1
+-- On programa shift to state 122
+-- On list(declaracao_de_funcao) shift to state 123
+-- On declaracao_de_funcao shift to state 126
+-- On WHILE reduce production list(declaracao_de_funcao) -> 
+-- On RETURN reduce production list(declaracao_de_funcao) -> 
+-- On OUTPUT reduce production list(declaracao_de_funcao) -> 
+-- On NOT reduce production list(declaracao_de_funcao) -> 
+-- On LITSTRING reduce production list(declaracao_de_funcao) -> 
+-- On LITINT reduce production list(declaracao_de_funcao) -> 
+-- On LITFLOAT reduce production list(declaracao_de_funcao) -> 
+-- On INPUT reduce production list(declaracao_de_funcao) -> 
+-- On IF reduce production list(declaracao_de_funcao) -> 
+-- On ID reduce production list(declaracao_de_funcao) -> 
+-- On FOR reduce production list(declaracao_de_funcao) -> 
+-- On EOF reduce production list(declaracao_de_funcao) -> 
+-- On BOOL reduce production list(declaracao_de_funcao) -> 
+-- On APAR reduce production list(declaracao_de_funcao) -> 
+
+State 1:
+declaracao_de_funcao -> FUNCTION . ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FUNCTION FOR EOF BOOL APAR ]
+-- On ID shift to state 2
+
+State 2:
+declaracao_de_funcao -> FUNCTION ID . APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FUNCTION FOR EOF BOOL APAR ]
+-- On APAR shift to state 3
+
+State 3:
+declaracao_de_funcao -> FUNCTION ID APAR . loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FUNCTION FOR EOF BOOL APAR ]
+-- On ID shift to state 4
+-- On separated_nonempty_list(VIRG,parametro) shift to state 12
+-- On parametro shift to state 13
+-- On loption(separated_nonempty_list(VIRG,parametro)) shift to state 16
+-- On FPAR reduce production loption(separated_nonempty_list(VIRG,parametro)) -> 
+
+State 4:
+parametro -> ID . tipo [ VIRG FPAR ]
+-- On VOID shift to state 5
+-- On STRING shift to state 6
+-- On INT shift to state 7
+-- On FLOAT shift to state 8
+-- On BOOLEANO shift to state 9
+-- On tipo_simples shift to state 10
+-- On tipo shift to state 11
+
+State 5:
+tipo_simples -> VOID . [ WHILE VOID VIRG STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FPAR FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On WHILE reduce production tipo_simples -> VOID 
+-- On VOID reduce production tipo_simples -> VOID 
+-- On VIRG reduce production tipo_simples -> VOID 
+-- On STRING reduce production tipo_simples -> VOID 
+-- On RETURN reduce production tipo_simples -> VOID 
+-- On OUTPUT reduce production tipo_simples -> VOID 
+-- On NOT reduce production tipo_simples -> VOID 
+-- On LITSTRING reduce production tipo_simples -> VOID 
+-- On LITINT reduce production tipo_simples -> VOID 
+-- On LITFLOAT reduce production tipo_simples -> VOID 
+-- On INT reduce production tipo_simples -> VOID 
+-- On INPUT reduce production tipo_simples -> VOID 
+-- On IF reduce production tipo_simples -> VOID 
+-- On ID reduce production tipo_simples -> VOID 
+-- On FPAR reduce production tipo_simples -> VOID 
+-- On FOR reduce production tipo_simples -> VOID 
+-- On FLOAT reduce production tipo_simples -> VOID 
+-- On END reduce production tipo_simples -> VOID 
+-- On BOOLEANO reduce production tipo_simples -> VOID 
+-- On BOOL reduce production tipo_simples -> VOID 
+-- On APAR reduce production tipo_simples -> VOID 
+
+State 6:
+tipo_simples -> STRING . [ WHILE VOID VIRG STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FPAR FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On WHILE reduce production tipo_simples -> STRING 
+-- On VOID reduce production tipo_simples -> STRING 
+-- On VIRG reduce production tipo_simples -> STRING 
+-- On STRING reduce production tipo_simples -> STRING 
+-- On RETURN reduce production tipo_simples -> STRING 
+-- On OUTPUT reduce production tipo_simples -> STRING 
+-- On NOT reduce production tipo_simples -> STRING 
+-- On LITSTRING reduce production tipo_simples -> STRING 
+-- On LITINT reduce production tipo_simples -> STRING 
+-- On LITFLOAT reduce production tipo_simples -> STRING 
+-- On INT reduce production tipo_simples -> STRING 
+-- On INPUT reduce production tipo_simples -> STRING 
+-- On IF reduce production tipo_simples -> STRING 
+-- On ID reduce production tipo_simples -> STRING 
+-- On FPAR reduce production tipo_simples -> STRING 
+-- On FOR reduce production tipo_simples -> STRING 
+-- On FLOAT reduce production tipo_simples -> STRING 
+-- On END reduce production tipo_simples -> STRING 
+-- On BOOLEANO reduce production tipo_simples -> STRING 
+-- On BOOL reduce production tipo_simples -> STRING 
+-- On APAR reduce production tipo_simples -> STRING 
+
+State 7:
+tipo_simples -> INT . [ WHILE VOID VIRG STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FPAR FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On WHILE reduce production tipo_simples -> INT 
+-- On VOID reduce production tipo_simples -> INT 
+-- On VIRG reduce production tipo_simples -> INT 
+-- On STRING reduce production tipo_simples -> INT 
+-- On RETURN reduce production tipo_simples -> INT 
+-- On OUTPUT reduce production tipo_simples -> INT 
+-- On NOT reduce production tipo_simples -> INT 
+-- On LITSTRING reduce production tipo_simples -> INT 
+-- On LITINT reduce production tipo_simples -> INT 
+-- On LITFLOAT reduce production tipo_simples -> INT 
+-- On INT reduce production tipo_simples -> INT 
+-- On INPUT reduce production tipo_simples -> INT 
+-- On IF reduce production tipo_simples -> INT 
+-- On ID reduce production tipo_simples -> INT 
+-- On FPAR reduce production tipo_simples -> INT 
+-- On FOR reduce production tipo_simples -> INT 
+-- On FLOAT reduce production tipo_simples -> INT 
+-- On END reduce production tipo_simples -> INT 
+-- On BOOLEANO reduce production tipo_simples -> INT 
+-- On BOOL reduce production tipo_simples -> INT 
+-- On APAR reduce production tipo_simples -> INT 
+
+State 8:
+tipo_simples -> FLOAT . [ WHILE VOID VIRG STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FPAR FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On WHILE reduce production tipo_simples -> FLOAT 
+-- On VOID reduce production tipo_simples -> FLOAT 
+-- On VIRG reduce production tipo_simples -> FLOAT 
+-- On STRING reduce production tipo_simples -> FLOAT 
+-- On RETURN reduce production tipo_simples -> FLOAT 
+-- On OUTPUT reduce production tipo_simples -> FLOAT 
+-- On NOT reduce production tipo_simples -> FLOAT 
+-- On LITSTRING reduce production tipo_simples -> FLOAT 
+-- On LITINT reduce production tipo_simples -> FLOAT 
+-- On LITFLOAT reduce production tipo_simples -> FLOAT 
+-- On INT reduce production tipo_simples -> FLOAT 
+-- On INPUT reduce production tipo_simples -> FLOAT 
+-- On IF reduce production tipo_simples -> FLOAT 
+-- On ID reduce production tipo_simples -> FLOAT 
+-- On FPAR reduce production tipo_simples -> FLOAT 
+-- On FOR reduce production tipo_simples -> FLOAT 
+-- On FLOAT reduce production tipo_simples -> FLOAT 
+-- On END reduce production tipo_simples -> FLOAT 
+-- On BOOLEANO reduce production tipo_simples -> FLOAT 
+-- On BOOL reduce production tipo_simples -> FLOAT 
+-- On APAR reduce production tipo_simples -> FLOAT 
+
+State 9:
+tipo_simples -> BOOLEANO . [ WHILE VOID VIRG STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FPAR FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On WHILE reduce production tipo_simples -> BOOLEANO 
+-- On VOID reduce production tipo_simples -> BOOLEANO 
+-- On VIRG reduce production tipo_simples -> BOOLEANO 
+-- On STRING reduce production tipo_simples -> BOOLEANO 
+-- On RETURN reduce production tipo_simples -> BOOLEANO 
+-- On OUTPUT reduce production tipo_simples -> BOOLEANO 
+-- On NOT reduce production tipo_simples -> BOOLEANO 
+-- On LITSTRING reduce production tipo_simples -> BOOLEANO 
+-- On LITINT reduce production tipo_simples -> BOOLEANO 
+-- On LITFLOAT reduce production tipo_simples -> BOOLEANO 
+-- On INT reduce production tipo_simples -> BOOLEANO 
+-- On INPUT reduce production tipo_simples -> BOOLEANO 
+-- On IF reduce production tipo_simples -> BOOLEANO 
+-- On ID reduce production tipo_simples -> BOOLEANO 
+-- On FPAR reduce production tipo_simples -> BOOLEANO 
+-- On FOR reduce production tipo_simples -> BOOLEANO 
+-- On FLOAT reduce production tipo_simples -> BOOLEANO 
+-- On END reduce production tipo_simples -> BOOLEANO 
+-- On BOOLEANO reduce production tipo_simples -> BOOLEANO 
+-- On BOOL reduce production tipo_simples -> BOOLEANO 
+-- On APAR reduce production tipo_simples -> BOOLEANO 
+
+State 10:
+tipo -> tipo_simples . [ WHILE VOID VIRG STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FPAR FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On WHILE reduce production tipo -> tipo_simples 
+-- On VOID reduce production tipo -> tipo_simples 
+-- On VIRG reduce production tipo -> tipo_simples 
+-- On STRING reduce production tipo -> tipo_simples 
+-- On RETURN reduce production tipo -> tipo_simples 
+-- On OUTPUT reduce production tipo -> tipo_simples 
+-- On NOT reduce production tipo -> tipo_simples 
+-- On LITSTRING reduce production tipo -> tipo_simples 
+-- On LITINT reduce production tipo -> tipo_simples 
+-- On LITFLOAT reduce production tipo -> tipo_simples 
+-- On INT reduce production tipo -> tipo_simples 
+-- On INPUT reduce production tipo -> tipo_simples 
+-- On IF reduce production tipo -> tipo_simples 
+-- On ID reduce production tipo -> tipo_simples 
+-- On FPAR reduce production tipo -> tipo_simples 
+-- On FOR reduce production tipo -> tipo_simples 
+-- On FLOAT reduce production tipo -> tipo_simples 
+-- On END reduce production tipo -> tipo_simples 
+-- On BOOLEANO reduce production tipo -> tipo_simples 
+-- On BOOL reduce production tipo -> tipo_simples 
+-- On APAR reduce production tipo -> tipo_simples 
+
+State 11:
+parametro -> ID tipo . [ VIRG FPAR ]
+-- On VIRG reduce production parametro -> ID tipo 
+-- On FPAR reduce production parametro -> ID tipo 
+
+State 12:
+loption(separated_nonempty_list(VIRG,parametro)) -> separated_nonempty_list(VIRG,parametro) . [ FPAR ]
+-- On FPAR reduce production loption(separated_nonempty_list(VIRG,parametro)) -> separated_nonempty_list(VIRG,parametro) 
+
+State 13:
+separated_nonempty_list(VIRG,parametro) -> parametro . [ FPAR ]
+separated_nonempty_list(VIRG,parametro) -> parametro . VIRG separated_nonempty_list(VIRG,parametro) [ FPAR ]
+-- On VIRG shift to state 14
+-- On FPAR reduce production separated_nonempty_list(VIRG,parametro) -> parametro 
+
+State 14:
+separated_nonempty_list(VIRG,parametro) -> parametro VIRG . separated_nonempty_list(VIRG,parametro) [ FPAR ]
+-- On ID shift to state 4
+-- On separated_nonempty_list(VIRG,parametro) shift to state 15
+-- On parametro shift to state 13
+
+State 15:
+separated_nonempty_list(VIRG,parametro) -> parametro VIRG separated_nonempty_list(VIRG,parametro) . [ FPAR ]
+-- On FPAR reduce production separated_nonempty_list(VIRG,parametro) -> parametro VIRG separated_nonempty_list(VIRG,parametro) 
+
+State 16:
+declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) . FPAR tipo list(declaracao_de_variavel) list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FUNCTION FOR EOF BOOL APAR ]
+-- On FPAR shift to state 17
+
+State 17:
+declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR . tipo list(declaracao_de_variavel) list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FUNCTION FOR EOF BOOL APAR ]
+-- On VOID shift to state 5
+-- On STRING shift to state 6
+-- On INT shift to state 7
+-- On FLOAT shift to state 8
+-- On BOOLEANO shift to state 9
+-- On tipo_simples shift to state 10
+-- On tipo shift to state 18
+
+State 18:
+declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo . list(declaracao_de_variavel) list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FUNCTION FOR EOF BOOL APAR ]
+-- On VOID shift to state 5
+-- On STRING shift to state 6
+-- On INT shift to state 7
+-- On FLOAT shift to state 8
+-- On BOOLEANO shift to state 9
+-- On tipo_simples shift to state 10
+-- On tipo shift to state 19
+-- On list(declaracao_de_variavel) shift to state 24
+-- On declaracao_de_variavel shift to state 120
+-- On WHILE reduce production list(declaracao_de_variavel) -> 
+-- On RETURN reduce production list(declaracao_de_variavel) -> 
+-- On OUTPUT reduce production list(declaracao_de_variavel) -> 
+-- On NOT reduce production list(declaracao_de_variavel) -> 
+-- On LITSTRING reduce production list(declaracao_de_variavel) -> 
+-- On LITINT reduce production list(declaracao_de_variavel) -> 
+-- On LITFLOAT reduce production list(declaracao_de_variavel) -> 
+-- On INPUT reduce production list(declaracao_de_variavel) -> 
+-- On IF reduce production list(declaracao_de_variavel) -> 
+-- On ID reduce production list(declaracao_de_variavel) -> 
+-- On FOR reduce production list(declaracao_de_variavel) -> 
+-- On END reduce production list(declaracao_de_variavel) -> 
+-- On BOOL reduce production list(declaracao_de_variavel) -> 
+-- On APAR reduce production list(declaracao_de_variavel) -> 
+
+State 19:
+declaracao_de_variavel -> tipo . separated_nonempty_list(VIRG,ID) [ WHILE VOID STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On ID shift to state 20
+-- On separated_nonempty_list(VIRG,ID) shift to state 23
+
+State 20:
+separated_nonempty_list(VIRG,ID) -> ID . [ WHILE VOID STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FOR FLOAT END BOOLEANO BOOL APAR ]
+separated_nonempty_list(VIRG,ID) -> ID . VIRG separated_nonempty_list(VIRG,ID) [ WHILE VOID STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On VIRG shift to state 21
+-- On WHILE reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On VOID reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On STRING reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On RETURN reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On OUTPUT reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On NOT reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On LITSTRING reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On LITINT reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On LITFLOAT reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On INT reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On INPUT reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On IF reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On ID reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On FOR reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On FLOAT reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On END reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On BOOLEANO reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On BOOL reduce production separated_nonempty_list(VIRG,ID) -> ID 
+-- On APAR reduce production separated_nonempty_list(VIRG,ID) -> ID 
+
+State 21:
+separated_nonempty_list(VIRG,ID) -> ID VIRG . separated_nonempty_list(VIRG,ID) [ WHILE VOID STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On ID shift to state 20
+-- On separated_nonempty_list(VIRG,ID) shift to state 22
+
+State 22:
+separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) . [ WHILE VOID STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On WHILE reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On VOID reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On STRING reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On RETURN reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On OUTPUT reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On NOT reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On LITSTRING reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On LITINT reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On LITFLOAT reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On INT reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On INPUT reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On IF reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On ID reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On FOR reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On FLOAT reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On END reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On BOOLEANO reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On BOOL reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+-- On APAR reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+
+State 23:
+declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) . [ WHILE VOID STRING RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INT INPUT IF ID FOR FLOAT END BOOLEANO BOOL APAR ]
+-- On WHILE reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On VOID reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On STRING reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On RETURN reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On OUTPUT reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On NOT reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On LITSTRING reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On LITINT reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On LITFLOAT reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On INT reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On INPUT reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On IF reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On ID reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On FOR reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On FLOAT reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On END reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On BOOLEANO reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On BOOL reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+-- On APAR reduce production declaracao_de_variavel -> tipo separated_nonempty_list(VIRG,ID) 
+
+State 24:
+declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) . list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FUNCTION FOR EOF BOOL APAR ]
+-- On WHILE shift to state 25
+-- On RETURN shift to state 71
+-- On OUTPUT shift to state 74
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On IF shift to state 78
+-- On ID shift to state 30
+-- On FOR shift to state 81
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 93
+-- On separated_nonempty_list(VIRG,expressao) shift to state 62
+-- On loption(separated_nonempty_list(VIRG,expressao)) shift to state 94
+-- On list(comando) shift to state 118
+-- On expressaoAtrib shift to state 84
+-- On expressao shift to state 65
+-- On comando_While shift to state 98
+-- On comando_Se shift to state 99
+-- On comando_Retorno shift to state 100
+-- On comando_Output shift to state 101
+-- On comando_Input shift to state 102
+-- On comando_For shift to state 103
+-- On comando_Chamada shift to state 104
+-- On comando_Atribuicao shift to state 105
+-- On comando shift to state 106
+-- On chamada shift to state 108
+-- On INPUT reduce production loption(separated_nonempty_list(VIRG,expressao)) -> 
+-- On END reduce production list(comando) -> 
+
+State 25:
+comando_While -> WHILE . expressao DO list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 69
+-- On chamada shift to state 40
+
+State 26:
+expressao -> NOT . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 68
+-- On chamada shift to state 40
+
+State 27:
+expressao -> LITSTRING . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On WHILE reduce production expressao -> LITSTRING 
+-- On VIRG reduce production expressao -> LITSTRING 
+-- On THEN reduce production expressao -> LITSTRING 
+-- On RETURN reduce production expressao -> LITSTRING 
+-- On OUTPUT reduce production expressao -> LITSTRING 
+-- On OULOG reduce production expressao -> LITSTRING 
+-- On NOT reduce production expressao -> LITSTRING 
+-- On MULTI reduce production expressao -> LITSTRING 
+-- On MENOS reduce production expressao -> LITSTRING 
+-- On MENORIGUAL reduce production expressao -> LITSTRING 
+-- On MENOR reduce production expressao -> LITSTRING 
+-- On MAIS reduce production expressao -> LITSTRING 
+-- On MAIORIGUAL reduce production expressao -> LITSTRING 
+-- On MAIOR reduce production expressao -> LITSTRING 
+-- On LITSTRING reduce production expressao -> LITSTRING 
+-- On LITINT reduce production expressao -> LITSTRING 
+-- On LITFLOAT reduce production expressao -> LITSTRING 
+-- On INPUT reduce production expressao -> LITSTRING 
+-- On IGUAL reduce production expressao -> LITSTRING 
+-- On IF reduce production expressao -> LITSTRING 
+-- On ID reduce production expressao -> LITSTRING 
+-- On FPAR reduce production expressao -> LITSTRING 
+-- On FOR reduce production expressao -> LITSTRING 
+-- On EOF reduce production expressao -> LITSTRING 
+-- On END reduce production expressao -> LITSTRING 
+-- On ELSE reduce production expressao -> LITSTRING 
+-- On ELOG reduce production expressao -> LITSTRING 
+-- On DO reduce production expressao -> LITSTRING 
+-- On DIVI reduce production expressao -> LITSTRING 
+-- On DIF reduce production expressao -> LITSTRING 
+-- On BOOL reduce production expressao -> LITSTRING 
+-- On APAR reduce production expressao -> LITSTRING 
+
+State 28:
+expressao -> LITINT . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On WHILE reduce production expressao -> LITINT 
+-- On VIRG reduce production expressao -> LITINT 
+-- On THEN reduce production expressao -> LITINT 
+-- On RETURN reduce production expressao -> LITINT 
+-- On OUTPUT reduce production expressao -> LITINT 
+-- On OULOG reduce production expressao -> LITINT 
+-- On NOT reduce production expressao -> LITINT 
+-- On MULTI reduce production expressao -> LITINT 
+-- On MENOS reduce production expressao -> LITINT 
+-- On MENORIGUAL reduce production expressao -> LITINT 
+-- On MENOR reduce production expressao -> LITINT 
+-- On MAIS reduce production expressao -> LITINT 
+-- On MAIORIGUAL reduce production expressao -> LITINT 
+-- On MAIOR reduce production expressao -> LITINT 
+-- On LITSTRING reduce production expressao -> LITINT 
+-- On LITINT reduce production expressao -> LITINT 
+-- On LITFLOAT reduce production expressao -> LITINT 
+-- On INPUT reduce production expressao -> LITINT 
+-- On IGUAL reduce production expressao -> LITINT 
+-- On IF reduce production expressao -> LITINT 
+-- On ID reduce production expressao -> LITINT 
+-- On FPAR reduce production expressao -> LITINT 
+-- On FOR reduce production expressao -> LITINT 
+-- On EOF reduce production expressao -> LITINT 
+-- On END reduce production expressao -> LITINT 
+-- On ELSE reduce production expressao -> LITINT 
+-- On ELOG reduce production expressao -> LITINT 
+-- On DO reduce production expressao -> LITINT 
+-- On DIVI reduce production expressao -> LITINT 
+-- On DIF reduce production expressao -> LITINT 
+-- On BOOL reduce production expressao -> LITINT 
+-- On APAR reduce production expressao -> LITINT 
+
+State 29:
+expressao -> LITFLOAT . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On WHILE reduce production expressao -> LITFLOAT 
+-- On VIRG reduce production expressao -> LITFLOAT 
+-- On THEN reduce production expressao -> LITFLOAT 
+-- On RETURN reduce production expressao -> LITFLOAT 
+-- On OUTPUT reduce production expressao -> LITFLOAT 
+-- On OULOG reduce production expressao -> LITFLOAT 
+-- On NOT reduce production expressao -> LITFLOAT 
+-- On MULTI reduce production expressao -> LITFLOAT 
+-- On MENOS reduce production expressao -> LITFLOAT 
+-- On MENORIGUAL reduce production expressao -> LITFLOAT 
+-- On MENOR reduce production expressao -> LITFLOAT 
+-- On MAIS reduce production expressao -> LITFLOAT 
+-- On MAIORIGUAL reduce production expressao -> LITFLOAT 
+-- On MAIOR reduce production expressao -> LITFLOAT 
+-- On LITSTRING reduce production expressao -> LITFLOAT 
+-- On LITINT reduce production expressao -> LITFLOAT 
+-- On LITFLOAT reduce production expressao -> LITFLOAT 
+-- On INPUT reduce production expressao -> LITFLOAT 
+-- On IGUAL reduce production expressao -> LITFLOAT 
+-- On IF reduce production expressao -> LITFLOAT 
+-- On ID reduce production expressao -> LITFLOAT 
+-- On FPAR reduce production expressao -> LITFLOAT 
+-- On FOR reduce production expressao -> LITFLOAT 
+-- On EOF reduce production expressao -> LITFLOAT 
+-- On END reduce production expressao -> LITFLOAT 
+-- On ELSE reduce production expressao -> LITFLOAT 
+-- On ELOG reduce production expressao -> LITFLOAT 
+-- On DO reduce production expressao -> LITFLOAT 
+-- On DIVI reduce production expressao -> LITFLOAT 
+-- On DIF reduce production expressao -> LITFLOAT 
+-- On BOOL reduce production expressao -> LITFLOAT 
+-- On APAR reduce production expressao -> LITFLOAT 
+
+State 30:
+chamada -> ID . APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+variavel -> ID . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL ATRIB APAR ]
+-- On APAR shift to state 31
+-- On WHILE reduce production variavel -> ID 
+-- On VIRG reduce production variavel -> ID 
+-- On THEN reduce production variavel -> ID 
+-- On RETURN reduce production variavel -> ID 
+-- On OUTPUT reduce production variavel -> ID 
+-- On OULOG reduce production variavel -> ID 
+-- On NOT reduce production variavel -> ID 
+-- On MULTI reduce production variavel -> ID 
+-- On MENOS reduce production variavel -> ID 
+-- On MENORIGUAL reduce production variavel -> ID 
+-- On MENOR reduce production variavel -> ID 
+-- On MAIS reduce production variavel -> ID 
+-- On MAIORIGUAL reduce production variavel -> ID 
+-- On MAIOR reduce production variavel -> ID 
+-- On LITSTRING reduce production variavel -> ID 
+-- On LITINT reduce production variavel -> ID 
+-- On LITFLOAT reduce production variavel -> ID 
+-- On INPUT reduce production variavel -> ID 
+-- On IGUAL reduce production variavel -> ID 
+-- On IF reduce production variavel -> ID 
+-- On ID reduce production variavel -> ID 
+-- On FPAR reduce production variavel -> ID 
+-- On FOR reduce production variavel -> ID 
+-- On EOF reduce production variavel -> ID 
+-- On END reduce production variavel -> ID 
+-- On ELSE reduce production variavel -> ID 
+-- On ELOG reduce production variavel -> ID 
+-- On DO reduce production variavel -> ID 
+-- On DIVI reduce production variavel -> ID 
+-- On DIF reduce production variavel -> ID 
+-- On BOOL reduce production variavel -> ID 
+-- On ATRIB reduce production variavel -> ID 
+-- On APAR reduce production variavel -> ID 
+** Conflict on APAR
+
+State 31:
+chamada -> ID APAR . loption(separated_nonempty_list(VIRG,expressao)) FPAR [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On separated_nonempty_list(VIRG,expressao) shift to state 62
+-- On loption(separated_nonempty_list(VIRG,expressao)) shift to state 63
+-- On expressao shift to state 65
+-- On chamada shift to state 40
+-- On FPAR reduce production loption(separated_nonempty_list(VIRG,expressao)) -> 
+
+State 32:
+expressao -> BOOL . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On WHILE reduce production expressao -> BOOL 
+-- On VIRG reduce production expressao -> BOOL 
+-- On THEN reduce production expressao -> BOOL 
+-- On RETURN reduce production expressao -> BOOL 
+-- On OUTPUT reduce production expressao -> BOOL 
+-- On OULOG reduce production expressao -> BOOL 
+-- On NOT reduce production expressao -> BOOL 
+-- On MULTI reduce production expressao -> BOOL 
+-- On MENOS reduce production expressao -> BOOL 
+-- On MENORIGUAL reduce production expressao -> BOOL 
+-- On MENOR reduce production expressao -> BOOL 
+-- On MAIS reduce production expressao -> BOOL 
+-- On MAIORIGUAL reduce production expressao -> BOOL 
+-- On MAIOR reduce production expressao -> BOOL 
+-- On LITSTRING reduce production expressao -> BOOL 
+-- On LITINT reduce production expressao -> BOOL 
+-- On LITFLOAT reduce production expressao -> BOOL 
+-- On INPUT reduce production expressao -> BOOL 
+-- On IGUAL reduce production expressao -> BOOL 
+-- On IF reduce production expressao -> BOOL 
+-- On ID reduce production expressao -> BOOL 
+-- On FPAR reduce production expressao -> BOOL 
+-- On FOR reduce production expressao -> BOOL 
+-- On EOF reduce production expressao -> BOOL 
+-- On END reduce production expressao -> BOOL 
+-- On ELSE reduce production expressao -> BOOL 
+-- On ELOG reduce production expressao -> BOOL 
+-- On DO reduce production expressao -> BOOL 
+-- On DIVI reduce production expressao -> BOOL 
+-- On DIF reduce production expressao -> BOOL 
+-- On BOOL reduce production expressao -> BOOL 
+-- On APAR reduce production expressao -> BOOL 
+
+State 33:
+expressao -> APAR . expressao FPAR [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 35
+-- On chamada shift to state 40
+
+State 34:
+expressao -> variavel . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On WHILE reduce production expressao -> variavel 
+-- On VIRG reduce production expressao -> variavel 
+-- On THEN reduce production expressao -> variavel 
+-- On RETURN reduce production expressao -> variavel 
+-- On OUTPUT reduce production expressao -> variavel 
+-- On OULOG reduce production expressao -> variavel 
+-- On NOT reduce production expressao -> variavel 
+-- On MULTI reduce production expressao -> variavel 
+-- On MENOS reduce production expressao -> variavel 
+-- On MENORIGUAL reduce production expressao -> variavel 
+-- On MENOR reduce production expressao -> variavel 
+-- On MAIS reduce production expressao -> variavel 
+-- On MAIORIGUAL reduce production expressao -> variavel 
+-- On MAIOR reduce production expressao -> variavel 
+-- On LITSTRING reduce production expressao -> variavel 
+-- On LITINT reduce production expressao -> variavel 
+-- On LITFLOAT reduce production expressao -> variavel 
+-- On INPUT reduce production expressao -> variavel 
+-- On IGUAL reduce production expressao -> variavel 
+-- On IF reduce production expressao -> variavel 
+-- On ID reduce production expressao -> variavel 
+-- On FPAR reduce production expressao -> variavel 
+-- On FOR reduce production expressao -> variavel 
+-- On EOF reduce production expressao -> variavel 
+-- On END reduce production expressao -> variavel 
+-- On ELSE reduce production expressao -> variavel 
+-- On ELOG reduce production expressao -> variavel 
+-- On DO reduce production expressao -> variavel 
+-- On DIVI reduce production expressao -> variavel 
+-- On DIF reduce production expressao -> variavel 
+-- On BOOL reduce production expressao -> variavel 
+-- On APAR reduce production expressao -> variavel 
+
+State 35:
+expressao -> expressao . MAIS expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MENOS expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MULTI expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . DIVI expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MENOR expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MENORIGUAL expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . IGUAL expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . DIF expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MAIOR expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MAIORIGUAL expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . ELOG expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . OULOG expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIVI DIF ]
+expressao -> APAR expressao . FPAR [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On OULOG shift to state 36
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On IGUAL shift to state 55
+-- On FPAR shift to state 61
+-- On ELOG shift to state 57
+-- On DIVI shift to state 43
+-- On DIF shift to state 59
+
+State 36:
+expressao -> expressao OULOG . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 37
+-- On chamada shift to state 40
+
+State 37:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao OULOG expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On IGUAL shift to state 55
+-- On ELOG shift to state 57
+-- On DIVI shift to state 43
+-- On DIF shift to state 59
+-- On WHILE reduce production expressao -> expressao OULOG expressao 
+-- On VIRG reduce production expressao -> expressao OULOG expressao 
+-- On THEN reduce production expressao -> expressao OULOG expressao 
+-- On RETURN reduce production expressao -> expressao OULOG expressao 
+-- On OUTPUT reduce production expressao -> expressao OULOG expressao 
+-- On OULOG reduce production expressao -> expressao OULOG expressao 
+-- On NOT reduce production expressao -> expressao OULOG expressao 
+-- On LITSTRING reduce production expressao -> expressao OULOG expressao 
+-- On LITINT reduce production expressao -> expressao OULOG expressao 
+-- On LITFLOAT reduce production expressao -> expressao OULOG expressao 
+-- On INPUT reduce production expressao -> expressao OULOG expressao 
+-- On IF reduce production expressao -> expressao OULOG expressao 
+-- On ID reduce production expressao -> expressao OULOG expressao 
+-- On FPAR reduce production expressao -> expressao OULOG expressao 
+-- On FOR reduce production expressao -> expressao OULOG expressao 
+-- On EOF reduce production expressao -> expressao OULOG expressao 
+-- On END reduce production expressao -> expressao OULOG expressao 
+-- On ELSE reduce production expressao -> expressao OULOG expressao 
+-- On DO reduce production expressao -> expressao OULOG expressao 
+-- On BOOL reduce production expressao -> expressao OULOG expressao 
+-- On APAR reduce production expressao -> expressao OULOG expressao 
+
+State 38:
+expressao -> expressao MULTI . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 39
+-- On chamada shift to state 40
+
+State 39:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao MULTI expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On WHILE reduce production expressao -> expressao MULTI expressao 
+-- On VIRG reduce production expressao -> expressao MULTI expressao 
+-- On THEN reduce production expressao -> expressao MULTI expressao 
+-- On RETURN reduce production expressao -> expressao MULTI expressao 
+-- On OUTPUT reduce production expressao -> expressao MULTI expressao 
+-- On OULOG reduce production expressao -> expressao MULTI expressao 
+-- On NOT reduce production expressao -> expressao MULTI expressao 
+-- On MULTI reduce production expressao -> expressao MULTI expressao 
+-- On MENOS reduce production expressao -> expressao MULTI expressao 
+-- On MENORIGUAL reduce production expressao -> expressao MULTI expressao 
+-- On MENOR reduce production expressao -> expressao MULTI expressao 
+-- On MAIS reduce production expressao -> expressao MULTI expressao 
+-- On MAIORIGUAL reduce production expressao -> expressao MULTI expressao 
+-- On MAIOR reduce production expressao -> expressao MULTI expressao 
+-- On LITSTRING reduce production expressao -> expressao MULTI expressao 
+-- On LITINT reduce production expressao -> expressao MULTI expressao 
+-- On LITFLOAT reduce production expressao -> expressao MULTI expressao 
+-- On INPUT reduce production expressao -> expressao MULTI expressao 
+-- On IGUAL reduce production expressao -> expressao MULTI expressao 
+-- On IF reduce production expressao -> expressao MULTI expressao 
+-- On ID reduce production expressao -> expressao MULTI expressao 
+-- On FPAR reduce production expressao -> expressao MULTI expressao 
+-- On FOR reduce production expressao -> expressao MULTI expressao 
+-- On EOF reduce production expressao -> expressao MULTI expressao 
+-- On END reduce production expressao -> expressao MULTI expressao 
+-- On ELSE reduce production expressao -> expressao MULTI expressao 
+-- On ELOG reduce production expressao -> expressao MULTI expressao 
+-- On DO reduce production expressao -> expressao MULTI expressao 
+-- On DIVI reduce production expressao -> expressao MULTI expressao 
+-- On DIF reduce production expressao -> expressao MULTI expressao 
+-- On BOOL reduce production expressao -> expressao MULTI expressao 
+-- On APAR reduce production expressao -> expressao MULTI expressao 
+
+State 40:
+expressao -> chamada . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On WHILE reduce production expressao -> chamada 
+-- On VIRG reduce production expressao -> chamada 
+-- On THEN reduce production expressao -> chamada 
+-- On RETURN reduce production expressao -> chamada 
+-- On OUTPUT reduce production expressao -> chamada 
+-- On OULOG reduce production expressao -> chamada 
+-- On NOT reduce production expressao -> chamada 
+-- On MULTI reduce production expressao -> chamada 
+-- On MENOS reduce production expressao -> chamada 
+-- On MENORIGUAL reduce production expressao -> chamada 
+-- On MENOR reduce production expressao -> chamada 
+-- On MAIS reduce production expressao -> chamada 
+-- On MAIORIGUAL reduce production expressao -> chamada 
+-- On MAIOR reduce production expressao -> chamada 
+-- On LITSTRING reduce production expressao -> chamada 
+-- On LITINT reduce production expressao -> chamada 
+-- On LITFLOAT reduce production expressao -> chamada 
+-- On INPUT reduce production expressao -> chamada 
+-- On IGUAL reduce production expressao -> chamada 
+-- On IF reduce production expressao -> chamada 
+-- On ID reduce production expressao -> chamada 
+-- On FPAR reduce production expressao -> chamada 
+-- On FOR reduce production expressao -> chamada 
+-- On EOF reduce production expressao -> chamada 
+-- On END reduce production expressao -> chamada 
+-- On ELSE reduce production expressao -> chamada 
+-- On ELOG reduce production expressao -> chamada 
+-- On DO reduce production expressao -> chamada 
+-- On DIVI reduce production expressao -> chamada 
+-- On DIF reduce production expressao -> chamada 
+-- On BOOL reduce production expressao -> chamada 
+-- On APAR reduce production expressao -> chamada 
+
+State 41:
+expressao -> expressao MENOS . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 42
+-- On chamada shift to state 40
+
+State 42:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao MENOS expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On MULTI shift to state 38
+-- On DIVI shift to state 43
+-- On WHILE reduce production expressao -> expressao MENOS expressao 
+-- On VIRG reduce production expressao -> expressao MENOS expressao 
+-- On THEN reduce production expressao -> expressao MENOS expressao 
+-- On RETURN reduce production expressao -> expressao MENOS expressao 
+-- On OUTPUT reduce production expressao -> expressao MENOS expressao 
+-- On OULOG reduce production expressao -> expressao MENOS expressao 
+-- On NOT reduce production expressao -> expressao MENOS expressao 
+-- On MENOS reduce production expressao -> expressao MENOS expressao 
+-- On MENORIGUAL reduce production expressao -> expressao MENOS expressao 
+-- On MENOR reduce production expressao -> expressao MENOS expressao 
+-- On MAIS reduce production expressao -> expressao MENOS expressao 
+-- On MAIORIGUAL reduce production expressao -> expressao MENOS expressao 
+-- On MAIOR reduce production expressao -> expressao MENOS expressao 
+-- On LITSTRING reduce production expressao -> expressao MENOS expressao 
+-- On LITINT reduce production expressao -> expressao MENOS expressao 
+-- On LITFLOAT reduce production expressao -> expressao MENOS expressao 
+-- On INPUT reduce production expressao -> expressao MENOS expressao 
+-- On IGUAL reduce production expressao -> expressao MENOS expressao 
+-- On IF reduce production expressao -> expressao MENOS expressao 
+-- On ID reduce production expressao -> expressao MENOS expressao 
+-- On FPAR reduce production expressao -> expressao MENOS expressao 
+-- On FOR reduce production expressao -> expressao MENOS expressao 
+-- On EOF reduce production expressao -> expressao MENOS expressao 
+-- On END reduce production expressao -> expressao MENOS expressao 
+-- On ELSE reduce production expressao -> expressao MENOS expressao 
+-- On ELOG reduce production expressao -> expressao MENOS expressao 
+-- On DO reduce production expressao -> expressao MENOS expressao 
+-- On DIF reduce production expressao -> expressao MENOS expressao 
+-- On BOOL reduce production expressao -> expressao MENOS expressao 
+-- On APAR reduce production expressao -> expressao MENOS expressao 
+
+State 43:
+expressao -> expressao DIVI . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 44
+-- On chamada shift to state 40
+
+State 44:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao DIVI expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On WHILE reduce production expressao -> expressao DIVI expressao 
+-- On VIRG reduce production expressao -> expressao DIVI expressao 
+-- On THEN reduce production expressao -> expressao DIVI expressao 
+-- On RETURN reduce production expressao -> expressao DIVI expressao 
+-- On OUTPUT reduce production expressao -> expressao DIVI expressao 
+-- On OULOG reduce production expressao -> expressao DIVI expressao 
+-- On NOT reduce production expressao -> expressao DIVI expressao 
+-- On MULTI reduce production expressao -> expressao DIVI expressao 
+-- On MENOS reduce production expressao -> expressao DIVI expressao 
+-- On MENORIGUAL reduce production expressao -> expressao DIVI expressao 
+-- On MENOR reduce production expressao -> expressao DIVI expressao 
+-- On MAIS reduce production expressao -> expressao DIVI expressao 
+-- On MAIORIGUAL reduce production expressao -> expressao DIVI expressao 
+-- On MAIOR reduce production expressao -> expressao DIVI expressao 
+-- On LITSTRING reduce production expressao -> expressao DIVI expressao 
+-- On LITINT reduce production expressao -> expressao DIVI expressao 
+-- On LITFLOAT reduce production expressao -> expressao DIVI expressao 
+-- On INPUT reduce production expressao -> expressao DIVI expressao 
+-- On IGUAL reduce production expressao -> expressao DIVI expressao 
+-- On IF reduce production expressao -> expressao DIVI expressao 
+-- On ID reduce production expressao -> expressao DIVI expressao 
+-- On FPAR reduce production expressao -> expressao DIVI expressao 
+-- On FOR reduce production expressao -> expressao DIVI expressao 
+-- On EOF reduce production expressao -> expressao DIVI expressao 
+-- On END reduce production expressao -> expressao DIVI expressao 
+-- On ELSE reduce production expressao -> expressao DIVI expressao 
+-- On ELOG reduce production expressao -> expressao DIVI expressao 
+-- On DO reduce production expressao -> expressao DIVI expressao 
+-- On DIVI reduce production expressao -> expressao DIVI expressao 
+-- On DIF reduce production expressao -> expressao DIVI expressao 
+-- On BOOL reduce production expressao -> expressao DIVI expressao 
+-- On APAR reduce production expressao -> expressao DIVI expressao 
+
+State 45:
+expressao -> expressao MENORIGUAL . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 46
+-- On chamada shift to state 40
+
+State 46:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao MENORIGUAL expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MAIS shift to state 47
+-- On DIVI shift to state 43
+-- On WHILE reduce production expressao -> expressao MENORIGUAL expressao 
+-- On VIRG reduce production expressao -> expressao MENORIGUAL expressao 
+-- On THEN reduce production expressao -> expressao MENORIGUAL expressao 
+-- On RETURN reduce production expressao -> expressao MENORIGUAL expressao 
+-- On OUTPUT reduce production expressao -> expressao MENORIGUAL expressao 
+-- On OULOG reduce production expressao -> expressao MENORIGUAL expressao 
+-- On NOT reduce production expressao -> expressao MENORIGUAL expressao 
+-- On MENORIGUAL reduce production expressao -> expressao MENORIGUAL expressao 
+-- On MENOR reduce production expressao -> expressao MENORIGUAL expressao 
+-- On MAIORIGUAL reduce production expressao -> expressao MENORIGUAL expressao 
+-- On MAIOR reduce production expressao -> expressao MENORIGUAL expressao 
+-- On LITSTRING reduce production expressao -> expressao MENORIGUAL expressao 
+-- On LITINT reduce production expressao -> expressao MENORIGUAL expressao 
+-- On LITFLOAT reduce production expressao -> expressao MENORIGUAL expressao 
+-- On INPUT reduce production expressao -> expressao MENORIGUAL expressao 
+-- On IGUAL reduce production expressao -> expressao MENORIGUAL expressao 
+-- On IF reduce production expressao -> expressao MENORIGUAL expressao 
+-- On ID reduce production expressao -> expressao MENORIGUAL expressao 
+-- On FPAR reduce production expressao -> expressao MENORIGUAL expressao 
+-- On FOR reduce production expressao -> expressao MENORIGUAL expressao 
+-- On EOF reduce production expressao -> expressao MENORIGUAL expressao 
+-- On END reduce production expressao -> expressao MENORIGUAL expressao 
+-- On ELSE reduce production expressao -> expressao MENORIGUAL expressao 
+-- On ELOG reduce production expressao -> expressao MENORIGUAL expressao 
+-- On DO reduce production expressao -> expressao MENORIGUAL expressao 
+-- On DIF reduce production expressao -> expressao MENORIGUAL expressao 
+-- On BOOL reduce production expressao -> expressao MENORIGUAL expressao 
+-- On APAR reduce production expressao -> expressao MENORIGUAL expressao 
+
+State 47:
+expressao -> expressao MAIS . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 48
+-- On chamada shift to state 40
+
+State 48:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao MAIS expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On MULTI shift to state 38
+-- On DIVI shift to state 43
+-- On WHILE reduce production expressao -> expressao MAIS expressao 
+-- On VIRG reduce production expressao -> expressao MAIS expressao 
+-- On THEN reduce production expressao -> expressao MAIS expressao 
+-- On RETURN reduce production expressao -> expressao MAIS expressao 
+-- On OUTPUT reduce production expressao -> expressao MAIS expressao 
+-- On OULOG reduce production expressao -> expressao MAIS expressao 
+-- On NOT reduce production expressao -> expressao MAIS expressao 
+-- On MENOS reduce production expressao -> expressao MAIS expressao 
+-- On MENORIGUAL reduce production expressao -> expressao MAIS expressao 
+-- On MENOR reduce production expressao -> expressao MAIS expressao 
+-- On MAIS reduce production expressao -> expressao MAIS expressao 
+-- On MAIORIGUAL reduce production expressao -> expressao MAIS expressao 
+-- On MAIOR reduce production expressao -> expressao MAIS expressao 
+-- On LITSTRING reduce production expressao -> expressao MAIS expressao 
+-- On LITINT reduce production expressao -> expressao MAIS expressao 
+-- On LITFLOAT reduce production expressao -> expressao MAIS expressao 
+-- On INPUT reduce production expressao -> expressao MAIS expressao 
+-- On IGUAL reduce production expressao -> expressao MAIS expressao 
+-- On IF reduce production expressao -> expressao MAIS expressao 
+-- On ID reduce production expressao -> expressao MAIS expressao 
+-- On FPAR reduce production expressao -> expressao MAIS expressao 
+-- On FOR reduce production expressao -> expressao MAIS expressao 
+-- On EOF reduce production expressao -> expressao MAIS expressao 
+-- On END reduce production expressao -> expressao MAIS expressao 
+-- On ELSE reduce production expressao -> expressao MAIS expressao 
+-- On ELOG reduce production expressao -> expressao MAIS expressao 
+-- On DO reduce production expressao -> expressao MAIS expressao 
+-- On DIF reduce production expressao -> expressao MAIS expressao 
+-- On BOOL reduce production expressao -> expressao MAIS expressao 
+-- On APAR reduce production expressao -> expressao MAIS expressao 
+
+State 49:
+expressao -> expressao MENOR . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 50
+-- On chamada shift to state 40
+
+State 50:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao MENOR expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On DIVI shift to state 43
+-- On WHILE reduce production expressao -> expressao MENOR expressao 
+-- On VIRG reduce production expressao -> expressao MENOR expressao 
+-- On THEN reduce production expressao -> expressao MENOR expressao 
+-- On RETURN reduce production expressao -> expressao MENOR expressao 
+-- On OUTPUT reduce production expressao -> expressao MENOR expressao 
+-- On OULOG reduce production expressao -> expressao MENOR expressao 
+-- On NOT reduce production expressao -> expressao MENOR expressao 
+-- On MENOR reduce production expressao -> expressao MENOR expressao 
+-- On MAIOR reduce production expressao -> expressao MENOR expressao 
+-- On LITSTRING reduce production expressao -> expressao MENOR expressao 
+-- On LITINT reduce production expressao -> expressao MENOR expressao 
+-- On LITFLOAT reduce production expressao -> expressao MENOR expressao 
+-- On INPUT reduce production expressao -> expressao MENOR expressao 
+-- On IGUAL reduce production expressao -> expressao MENOR expressao 
+-- On IF reduce production expressao -> expressao MENOR expressao 
+-- On ID reduce production expressao -> expressao MENOR expressao 
+-- On FPAR reduce production expressao -> expressao MENOR expressao 
+-- On FOR reduce production expressao -> expressao MENOR expressao 
+-- On EOF reduce production expressao -> expressao MENOR expressao 
+-- On END reduce production expressao -> expressao MENOR expressao 
+-- On ELSE reduce production expressao -> expressao MENOR expressao 
+-- On ELOG reduce production expressao -> expressao MENOR expressao 
+-- On DO reduce production expressao -> expressao MENOR expressao 
+-- On DIF reduce production expressao -> expressao MENOR expressao 
+-- On BOOL reduce production expressao -> expressao MENOR expressao 
+-- On APAR reduce production expressao -> expressao MENOR expressao 
+
+State 51:
+expressao -> expressao MAIORIGUAL . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 52
+-- On chamada shift to state 40
+
+State 52:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao MAIORIGUAL expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MAIS shift to state 47
+-- On DIVI shift to state 43
+-- On WHILE reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On VIRG reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On THEN reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On RETURN reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On OUTPUT reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On OULOG reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On NOT reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On MENORIGUAL reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On MENOR reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On MAIORIGUAL reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On MAIOR reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On LITSTRING reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On LITINT reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On LITFLOAT reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On INPUT reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On IGUAL reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On IF reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On ID reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On FPAR reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On FOR reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On EOF reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On END reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On ELSE reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On ELOG reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On DO reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On DIF reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On BOOL reduce production expressao -> expressao MAIORIGUAL expressao 
+-- On APAR reduce production expressao -> expressao MAIORIGUAL expressao 
+
+State 53:
+expressao -> expressao MAIOR . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 54
+-- On chamada shift to state 40
+
+State 54:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao MAIOR expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On DIVI shift to state 43
+-- On WHILE reduce production expressao -> expressao MAIOR expressao 
+-- On VIRG reduce production expressao -> expressao MAIOR expressao 
+-- On THEN reduce production expressao -> expressao MAIOR expressao 
+-- On RETURN reduce production expressao -> expressao MAIOR expressao 
+-- On OUTPUT reduce production expressao -> expressao MAIOR expressao 
+-- On OULOG reduce production expressao -> expressao MAIOR expressao 
+-- On NOT reduce production expressao -> expressao MAIOR expressao 
+-- On MENOR reduce production expressao -> expressao MAIOR expressao 
+-- On MAIOR reduce production expressao -> expressao MAIOR expressao 
+-- On LITSTRING reduce production expressao -> expressao MAIOR expressao 
+-- On LITINT reduce production expressao -> expressao MAIOR expressao 
+-- On LITFLOAT reduce production expressao -> expressao MAIOR expressao 
+-- On INPUT reduce production expressao -> expressao MAIOR expressao 
+-- On IGUAL reduce production expressao -> expressao MAIOR expressao 
+-- On IF reduce production expressao -> expressao MAIOR expressao 
+-- On ID reduce production expressao -> expressao MAIOR expressao 
+-- On FPAR reduce production expressao -> expressao MAIOR expressao 
+-- On FOR reduce production expressao -> expressao MAIOR expressao 
+-- On EOF reduce production expressao -> expressao MAIOR expressao 
+-- On END reduce production expressao -> expressao MAIOR expressao 
+-- On ELSE reduce production expressao -> expressao MAIOR expressao 
+-- On ELOG reduce production expressao -> expressao MAIOR expressao 
+-- On DO reduce production expressao -> expressao MAIOR expressao 
+-- On DIF reduce production expressao -> expressao MAIOR expressao 
+-- On BOOL reduce production expressao -> expressao MAIOR expressao 
+-- On APAR reduce production expressao -> expressao MAIOR expressao 
+
+State 55:
+expressao -> expressao IGUAL . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 56
+-- On chamada shift to state 40
+
+State 56:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao IGUAL expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On DIVI shift to state 43
+-- On WHILE reduce production expressao -> expressao IGUAL expressao 
+-- On VIRG reduce production expressao -> expressao IGUAL expressao 
+-- On THEN reduce production expressao -> expressao IGUAL expressao 
+-- On RETURN reduce production expressao -> expressao IGUAL expressao 
+-- On OUTPUT reduce production expressao -> expressao IGUAL expressao 
+-- On OULOG reduce production expressao -> expressao IGUAL expressao 
+-- On NOT reduce production expressao -> expressao IGUAL expressao 
+-- On LITSTRING reduce production expressao -> expressao IGUAL expressao 
+-- On LITINT reduce production expressao -> expressao IGUAL expressao 
+-- On LITFLOAT reduce production expressao -> expressao IGUAL expressao 
+-- On INPUT reduce production expressao -> expressao IGUAL expressao 
+-- On IGUAL reduce production expressao -> expressao IGUAL expressao 
+-- On IF reduce production expressao -> expressao IGUAL expressao 
+-- On ID reduce production expressao -> expressao IGUAL expressao 
+-- On FPAR reduce production expressao -> expressao IGUAL expressao 
+-- On FOR reduce production expressao -> expressao IGUAL expressao 
+-- On EOF reduce production expressao -> expressao IGUAL expressao 
+-- On END reduce production expressao -> expressao IGUAL expressao 
+-- On ELSE reduce production expressao -> expressao IGUAL expressao 
+-- On ELOG reduce production expressao -> expressao IGUAL expressao 
+-- On DO reduce production expressao -> expressao IGUAL expressao 
+-- On DIF reduce production expressao -> expressao IGUAL expressao 
+-- On BOOL reduce production expressao -> expressao IGUAL expressao 
+-- On APAR reduce production expressao -> expressao IGUAL expressao 
+
+State 57:
+expressao -> expressao ELOG . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 58
+-- On chamada shift to state 40
+
+State 58:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao ELOG expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On IGUAL shift to state 55
+-- On DIVI shift to state 43
+-- On DIF shift to state 59
+-- On WHILE reduce production expressao -> expressao ELOG expressao 
+-- On VIRG reduce production expressao -> expressao ELOG expressao 
+-- On THEN reduce production expressao -> expressao ELOG expressao 
+-- On RETURN reduce production expressao -> expressao ELOG expressao 
+-- On OUTPUT reduce production expressao -> expressao ELOG expressao 
+-- On OULOG reduce production expressao -> expressao ELOG expressao 
+-- On NOT reduce production expressao -> expressao ELOG expressao 
+-- On LITSTRING reduce production expressao -> expressao ELOG expressao 
+-- On LITINT reduce production expressao -> expressao ELOG expressao 
+-- On LITFLOAT reduce production expressao -> expressao ELOG expressao 
+-- On INPUT reduce production expressao -> expressao ELOG expressao 
+-- On IF reduce production expressao -> expressao ELOG expressao 
+-- On ID reduce production expressao -> expressao ELOG expressao 
+-- On FPAR reduce production expressao -> expressao ELOG expressao 
+-- On FOR reduce production expressao -> expressao ELOG expressao 
+-- On EOF reduce production expressao -> expressao ELOG expressao 
+-- On END reduce production expressao -> expressao ELOG expressao 
+-- On ELSE reduce production expressao -> expressao ELOG expressao 
+-- On ELOG reduce production expressao -> expressao ELOG expressao 
+-- On DO reduce production expressao -> expressao ELOG expressao 
+-- On BOOL reduce production expressao -> expressao ELOG expressao 
+-- On APAR reduce production expressao -> expressao ELOG expressao 
+
+State 59:
+expressao -> expressao DIF . expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 60
+-- On chamada shift to state 40
+
+State 60:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao DIF expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On DIVI shift to state 43
+-- On WHILE reduce production expressao -> expressao DIF expressao 
+-- On VIRG reduce production expressao -> expressao DIF expressao 
+-- On THEN reduce production expressao -> expressao DIF expressao 
+-- On RETURN reduce production expressao -> expressao DIF expressao 
+-- On OUTPUT reduce production expressao -> expressao DIF expressao 
+-- On OULOG reduce production expressao -> expressao DIF expressao 
+-- On NOT reduce production expressao -> expressao DIF expressao 
+-- On LITSTRING reduce production expressao -> expressao DIF expressao 
+-- On LITINT reduce production expressao -> expressao DIF expressao 
+-- On LITFLOAT reduce production expressao -> expressao DIF expressao 
+-- On INPUT reduce production expressao -> expressao DIF expressao 
+-- On IGUAL reduce production expressao -> expressao DIF expressao 
+-- On IF reduce production expressao -> expressao DIF expressao 
+-- On ID reduce production expressao -> expressao DIF expressao 
+-- On FPAR reduce production expressao -> expressao DIF expressao 
+-- On FOR reduce production expressao -> expressao DIF expressao 
+-- On EOF reduce production expressao -> expressao DIF expressao 
+-- On END reduce production expressao -> expressao DIF expressao 
+-- On ELSE reduce production expressao -> expressao DIF expressao 
+-- On ELOG reduce production expressao -> expressao DIF expressao 
+-- On DO reduce production expressao -> expressao DIF expressao 
+-- On DIF reduce production expressao -> expressao DIF expressao 
+-- On BOOL reduce production expressao -> expressao DIF expressao 
+-- On APAR reduce production expressao -> expressao DIF expressao 
+
+State 61:
+expressao -> APAR expressao FPAR . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On WHILE reduce production expressao -> APAR expressao FPAR 
+-- On VIRG reduce production expressao -> APAR expressao FPAR 
+-- On THEN reduce production expressao -> APAR expressao FPAR 
+-- On RETURN reduce production expressao -> APAR expressao FPAR 
+-- On OUTPUT reduce production expressao -> APAR expressao FPAR 
+-- On OULOG reduce production expressao -> APAR expressao FPAR 
+-- On NOT reduce production expressao -> APAR expressao FPAR 
+-- On MULTI reduce production expressao -> APAR expressao FPAR 
+-- On MENOS reduce production expressao -> APAR expressao FPAR 
+-- On MENORIGUAL reduce production expressao -> APAR expressao FPAR 
+-- On MENOR reduce production expressao -> APAR expressao FPAR 
+-- On MAIS reduce production expressao -> APAR expressao FPAR 
+-- On MAIORIGUAL reduce production expressao -> APAR expressao FPAR 
+-- On MAIOR reduce production expressao -> APAR expressao FPAR 
+-- On LITSTRING reduce production expressao -> APAR expressao FPAR 
+-- On LITINT reduce production expressao -> APAR expressao FPAR 
+-- On LITFLOAT reduce production expressao -> APAR expressao FPAR 
+-- On INPUT reduce production expressao -> APAR expressao FPAR 
+-- On IGUAL reduce production expressao -> APAR expressao FPAR 
+-- On IF reduce production expressao -> APAR expressao FPAR 
+-- On ID reduce production expressao -> APAR expressao FPAR 
+-- On FPAR reduce production expressao -> APAR expressao FPAR 
+-- On FOR reduce production expressao -> APAR expressao FPAR 
+-- On EOF reduce production expressao -> APAR expressao FPAR 
+-- On END reduce production expressao -> APAR expressao FPAR 
+-- On ELSE reduce production expressao -> APAR expressao FPAR 
+-- On ELOG reduce production expressao -> APAR expressao FPAR 
+-- On DO reduce production expressao -> APAR expressao FPAR 
+-- On DIVI reduce production expressao -> APAR expressao FPAR 
+-- On DIF reduce production expressao -> APAR expressao FPAR 
+-- On BOOL reduce production expressao -> APAR expressao FPAR 
+-- On APAR reduce production expressao -> APAR expressao FPAR 
+
+State 62:
+loption(separated_nonempty_list(VIRG,expressao)) -> separated_nonempty_list(VIRG,expressao) . [ INPUT FPAR ]
+-- On INPUT reduce production loption(separated_nonempty_list(VIRG,expressao)) -> separated_nonempty_list(VIRG,expressao) 
+-- On FPAR reduce production loption(separated_nonempty_list(VIRG,expressao)) -> separated_nonempty_list(VIRG,expressao) 
+
+State 63:
+chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) . FPAR [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On FPAR shift to state 64
+
+State 64:
+chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On WHILE reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On VIRG reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On THEN reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On RETURN reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On OUTPUT reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On OULOG reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On NOT reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On MULTI reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On MENOS reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On MENORIGUAL reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On MENOR reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On MAIS reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On MAIORIGUAL reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On MAIOR reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On LITSTRING reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On LITINT reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On LITFLOAT reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On INPUT reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On IGUAL reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On IF reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On ID reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On FPAR reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On FOR reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On EOF reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On END reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On ELSE reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On ELOG reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On DO reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On DIVI reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On DIF reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On BOOL reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On APAR reduce production chamada -> ID APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+
+State 65:
+expressao -> expressao . MAIS expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MENOS expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MULTI expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . DIVI expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MENOR expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MENORIGUAL expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . IGUAL expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . DIF expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MAIOR expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . MAIORIGUAL expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . ELOG expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+expressao -> expressao . OULOG expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL FPAR ELOG DIVI DIF ]
+separated_nonempty_list(VIRG,expressao) -> expressao . [ INPUT FPAR ]
+separated_nonempty_list(VIRG,expressao) -> expressao . VIRG separated_nonempty_list(VIRG,expressao) [ INPUT FPAR ]
+-- On VIRG shift to state 66
+-- On OULOG shift to state 36
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On IGUAL shift to state 55
+-- On ELOG shift to state 57
+-- On DIVI shift to state 43
+-- On DIF shift to state 59
+-- On INPUT reduce production separated_nonempty_list(VIRG,expressao) -> expressao 
+-- On FPAR reduce production separated_nonempty_list(VIRG,expressao) -> expressao 
+
+State 66:
+separated_nonempty_list(VIRG,expressao) -> expressao VIRG . separated_nonempty_list(VIRG,expressao) [ INPUT FPAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On separated_nonempty_list(VIRG,expressao) shift to state 67
+-- On expressao shift to state 65
+-- On chamada shift to state 40
+
+State 67:
+separated_nonempty_list(VIRG,expressao) -> expressao VIRG separated_nonempty_list(VIRG,expressao) . [ INPUT FPAR ]
+-- On INPUT reduce production separated_nonempty_list(VIRG,expressao) -> expressao VIRG separated_nonempty_list(VIRG,expressao) 
+-- On FPAR reduce production separated_nonempty_list(VIRG,expressao) -> expressao VIRG separated_nonempty_list(VIRG,expressao) 
+
+State 68:
+expressao -> expressao . MAIS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> NOT expressao . [ WHILE VIRG THEN RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FPAR FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On OULOG shift to state 36
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On IGUAL shift to state 55
+-- On ELOG shift to state 57
+-- On DIVI shift to state 43
+-- On DIF shift to state 59
+-- On WHILE reduce production expressao -> NOT expressao 
+-- On VIRG reduce production expressao -> NOT expressao 
+-- On THEN reduce production expressao -> NOT expressao 
+-- On RETURN reduce production expressao -> NOT expressao 
+-- On OUTPUT reduce production expressao -> NOT expressao 
+-- On NOT reduce production expressao -> NOT expressao 
+-- On LITSTRING reduce production expressao -> NOT expressao 
+-- On LITINT reduce production expressao -> NOT expressao 
+-- On LITFLOAT reduce production expressao -> NOT expressao 
+-- On INPUT reduce production expressao -> NOT expressao 
+-- On IF reduce production expressao -> NOT expressao 
+-- On ID reduce production expressao -> NOT expressao 
+-- On FPAR reduce production expressao -> NOT expressao 
+-- On FOR reduce production expressao -> NOT expressao 
+-- On EOF reduce production expressao -> NOT expressao 
+-- On END reduce production expressao -> NOT expressao 
+-- On ELSE reduce production expressao -> NOT expressao 
+-- On DO reduce production expressao -> NOT expressao 
+-- On BOOL reduce production expressao -> NOT expressao 
+-- On APAR reduce production expressao -> NOT expressao 
+
+State 69:
+comando_While -> WHILE expressao . DO list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+expressao -> expressao . MAIS expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . MENOS expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . MULTI expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . DIVI expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . MENOR expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . MENORIGUAL expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . IGUAL expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . DIF expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . MAIOR expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . MAIORIGUAL expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . ELOG expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+expressao -> expressao . OULOG expressao [ OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DO DIVI DIF ]
+-- On OULOG shift to state 36
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On IGUAL shift to state 55
+-- On ELOG shift to state 57
+-- On DO shift to state 70
+-- On DIVI shift to state 43
+-- On DIF shift to state 59
+
+State 70:
+comando_While -> WHILE expressao DO . list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE shift to state 25
+-- On RETURN shift to state 71
+-- On OUTPUT shift to state 74
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On IF shift to state 78
+-- On ID shift to state 30
+-- On FOR shift to state 81
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 93
+-- On separated_nonempty_list(VIRG,expressao) shift to state 62
+-- On loption(separated_nonempty_list(VIRG,expressao)) shift to state 94
+-- On list(comando) shift to state 116
+-- On expressaoAtrib shift to state 84
+-- On expressao shift to state 65
+-- On comando_While shift to state 98
+-- On comando_Se shift to state 99
+-- On comando_Retorno shift to state 100
+-- On comando_Output shift to state 101
+-- On comando_Input shift to state 102
+-- On comando_For shift to state 103
+-- On comando_Chamada shift to state 104
+-- On comando_Atribuicao shift to state 105
+-- On comando shift to state 106
+-- On chamada shift to state 108
+-- On INPUT reduce production loption(separated_nonempty_list(VIRG,expressao)) -> 
+-- On END reduce production list(comando) -> 
+
+State 71:
+comando_Retorno -> RETURN . option(expressao) [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On option(expressao) shift to state 72
+-- On expressao shift to state 73
+-- On chamada shift to state 40
+-- On WHILE reduce production option(expressao) -> 
+-- On RETURN reduce production option(expressao) -> 
+-- On OUTPUT reduce production option(expressao) -> 
+-- On NOT reduce production option(expressao) -> 
+-- On LITSTRING reduce production option(expressao) -> 
+-- On LITINT reduce production option(expressao) -> 
+-- On LITFLOAT reduce production option(expressao) -> 
+-- On INPUT reduce production option(expressao) -> 
+-- On IF reduce production option(expressao) -> 
+-- On ID reduce production option(expressao) -> 
+-- On FOR reduce production option(expressao) -> 
+-- On EOF reduce production option(expressao) -> 
+-- On END reduce production option(expressao) -> 
+-- On ELSE reduce production option(expressao) -> 
+-- On BOOL reduce production option(expressao) -> 
+-- On APAR reduce production option(expressao) -> 
+** Conflict on NOT LITSTRING LITINT LITFLOAT ID BOOL APAR
+
+State 72:
+comando_Retorno -> RETURN option(expressao) . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando_Retorno -> RETURN option(expressao) 
+-- On RETURN reduce production comando_Retorno -> RETURN option(expressao) 
+-- On OUTPUT reduce production comando_Retorno -> RETURN option(expressao) 
+-- On NOT reduce production comando_Retorno -> RETURN option(expressao) 
+-- On LITSTRING reduce production comando_Retorno -> RETURN option(expressao) 
+-- On LITINT reduce production comando_Retorno -> RETURN option(expressao) 
+-- On LITFLOAT reduce production comando_Retorno -> RETURN option(expressao) 
+-- On INPUT reduce production comando_Retorno -> RETURN option(expressao) 
+-- On IF reduce production comando_Retorno -> RETURN option(expressao) 
+-- On ID reduce production comando_Retorno -> RETURN option(expressao) 
+-- On FOR reduce production comando_Retorno -> RETURN option(expressao) 
+-- On EOF reduce production comando_Retorno -> RETURN option(expressao) 
+-- On END reduce production comando_Retorno -> RETURN option(expressao) 
+-- On ELSE reduce production comando_Retorno -> RETURN option(expressao) 
+-- On BOOL reduce production comando_Retorno -> RETURN option(expressao) 
+-- On APAR reduce production comando_Retorno -> RETURN option(expressao) 
+
+State 73:
+expressao -> expressao . MAIS expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DIVI DIF BOOL APAR ]
+option(expressao) -> expressao . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On OULOG shift to state 36
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On IGUAL shift to state 55
+-- On ELOG shift to state 57
+-- On DIVI shift to state 43
+-- On DIF shift to state 59
+-- On WHILE reduce production option(expressao) -> expressao 
+-- On RETURN reduce production option(expressao) -> expressao 
+-- On OUTPUT reduce production option(expressao) -> expressao 
+-- On NOT reduce production option(expressao) -> expressao 
+-- On LITSTRING reduce production option(expressao) -> expressao 
+-- On LITINT reduce production option(expressao) -> expressao 
+-- On LITFLOAT reduce production option(expressao) -> expressao 
+-- On INPUT reduce production option(expressao) -> expressao 
+-- On IF reduce production option(expressao) -> expressao 
+-- On ID reduce production option(expressao) -> expressao 
+-- On FOR reduce production option(expressao) -> expressao 
+-- On EOF reduce production option(expressao) -> expressao 
+-- On END reduce production option(expressao) -> expressao 
+-- On ELSE reduce production option(expressao) -> expressao 
+-- On BOOL reduce production option(expressao) -> expressao 
+-- On APAR reduce production option(expressao) -> expressao 
+
+State 74:
+comando_Output -> OUTPUT . APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On APAR shift to state 75
+
+State 75:
+comando_Output -> OUTPUT APAR . loption(separated_nonempty_list(VIRG,expressao)) FPAR [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On separated_nonempty_list(VIRG,expressao) shift to state 62
+-- On loption(separated_nonempty_list(VIRG,expressao)) shift to state 76
+-- On expressao shift to state 65
+-- On chamada shift to state 40
+-- On FPAR reduce production loption(separated_nonempty_list(VIRG,expressao)) -> 
+
+State 76:
+comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) . FPAR [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On FPAR shift to state 77
+
+State 77:
+comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On RETURN reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On OUTPUT reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On NOT reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On LITSTRING reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On LITINT reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On LITFLOAT reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On INPUT reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On IF reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On ID reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On FOR reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On EOF reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On END reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On ELSE reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On BOOL reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+-- On APAR reduce production comando_Output -> OUTPUT APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+
+State 78:
+comando_Se -> IF . expressao THEN nonempty_list(comando) option(__anonymous_0) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 79
+-- On chamada shift to state 40
+
+State 79:
+comando_Se -> IF expressao . THEN nonempty_list(comando) option(__anonymous_0) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+expressao -> expressao . MAIS expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MENOS expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MULTI expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . DIVI expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MENOR expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MENORIGUAL expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . IGUAL expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . DIF expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MAIOR expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MAIORIGUAL expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . ELOG expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . OULOG expressao [ THEN OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+-- On THEN shift to state 80
+-- On OULOG shift to state 36
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On IGUAL shift to state 55
+-- On ELOG shift to state 57
+-- On DIVI shift to state 43
+-- On DIF shift to state 59
+
+State 80:
+comando_Se -> IF expressao THEN . nonempty_list(comando) option(__anonymous_0) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE shift to state 25
+-- On RETURN shift to state 71
+-- On OUTPUT shift to state 74
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On IF shift to state 78
+-- On ID shift to state 30
+-- On FOR shift to state 81
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 93
+-- On separated_nonempty_list(VIRG,expressao) shift to state 62
+-- On nonempty_list(comando) shift to state 109
+-- On loption(separated_nonempty_list(VIRG,expressao)) shift to state 94
+-- On expressaoAtrib shift to state 84
+-- On expressao shift to state 65
+-- On comando_While shift to state 98
+-- On comando_Se shift to state 99
+-- On comando_Retorno shift to state 100
+-- On comando_Output shift to state 101
+-- On comando_Input shift to state 102
+-- On comando_For shift to state 103
+-- On comando_Chamada shift to state 104
+-- On comando_Atribuicao shift to state 105
+-- On comando shift to state 112
+-- On chamada shift to state 108
+-- On INPUT reduce production loption(separated_nonempty_list(VIRG,expressao)) -> 
+
+State 81:
+comando_For -> FOR . comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On ID shift to state 82
+-- On variavel shift to state 83
+-- On expressaoAtrib shift to state 84
+-- On comando_Atribuicao shift to state 87
+
+State 82:
+variavel -> ID . [ ATRIB ]
+-- On ATRIB reduce production variavel -> ID 
+
+State 83:
+expressaoAtrib -> variavel . [ ATRIB ]
+-- On ATRIB reduce production expressaoAtrib -> variavel 
+
+State 84:
+comando_Atribuicao -> expressaoAtrib . ATRIB expressao [ WHILE VIRG RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE DO BOOL APAR ]
+-- On ATRIB shift to state 85
+
+State 85:
+comando_Atribuicao -> expressaoAtrib ATRIB . expressao [ WHILE VIRG RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE DO BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 86
+-- On chamada shift to state 40
+
+State 86:
+comando_Atribuicao -> expressaoAtrib ATRIB expressao . [ WHILE VIRG RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE DO BOOL APAR ]
+expressao -> expressao . MAIS expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIVI expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENOR expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MENORIGUAL expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . IGUAL expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . DIF expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIOR expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . MAIORIGUAL expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . ELOG expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+expressao -> expressao . OULOG expressao [ WHILE VIRG RETURN OUTPUT OULOG NOT MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR LITSTRING LITINT LITFLOAT INPUT IGUAL IF ID FOR EOF END ELSE ELOG DO DIVI DIF BOOL APAR ]
+-- On OULOG shift to state 36
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On IGUAL shift to state 55
+-- On ELOG shift to state 57
+-- On DIVI shift to state 43
+-- On DIF shift to state 59
+-- On WHILE reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On VIRG reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On RETURN reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On OUTPUT reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On NOT reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On LITSTRING reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On LITINT reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On LITFLOAT reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On INPUT reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On IF reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On ID reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On FOR reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On EOF reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On END reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On ELSE reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On DO reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On BOOL reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+-- On APAR reduce production comando_Atribuicao -> expressaoAtrib ATRIB expressao 
+
+State 87:
+comando_For -> FOR comando_Atribuicao . VIRG expressao VIRG comando_Atribuicao DO list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On VIRG shift to state 88
+
+State 88:
+comando_For -> FOR comando_Atribuicao VIRG . expressao VIRG comando_Atribuicao DO list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On ID shift to state 30
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 34
+-- On expressao shift to state 89
+-- On chamada shift to state 40
+
+State 89:
+comando_For -> FOR comando_Atribuicao VIRG expressao . VIRG comando_Atribuicao DO list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+expressao -> expressao . MAIS expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MENOS expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MULTI expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . DIVI expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MENOR expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MENORIGUAL expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . IGUAL expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . DIF expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MAIOR expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . MAIORIGUAL expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . ELOG expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+expressao -> expressao . OULOG expressao [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVI DIF ]
+-- On VIRG shift to state 90
+-- On OULOG shift to state 36
+-- On MULTI shift to state 38
+-- On MENOS shift to state 41
+-- On MENORIGUAL shift to state 45
+-- On MENOR shift to state 49
+-- On MAIS shift to state 47
+-- On MAIORIGUAL shift to state 51
+-- On MAIOR shift to state 53
+-- On IGUAL shift to state 55
+-- On ELOG shift to state 57
+-- On DIVI shift to state 43
+-- On DIF shift to state 59
+
+State 90:
+comando_For -> FOR comando_Atribuicao VIRG expressao VIRG . comando_Atribuicao DO list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On ID shift to state 82
+-- On variavel shift to state 83
+-- On expressaoAtrib shift to state 84
+-- On comando_Atribuicao shift to state 91
+
+State 91:
+comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao . DO list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On DO shift to state 92
+
+State 92:
+comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO . list(comando) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE shift to state 25
+-- On RETURN shift to state 71
+-- On OUTPUT shift to state 74
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On IF shift to state 78
+-- On ID shift to state 30
+-- On FOR shift to state 81
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 93
+-- On separated_nonempty_list(VIRG,expressao) shift to state 62
+-- On loption(separated_nonempty_list(VIRG,expressao)) shift to state 94
+-- On list(comando) shift to state 96
+-- On expressaoAtrib shift to state 84
+-- On expressao shift to state 65
+-- On comando_While shift to state 98
+-- On comando_Se shift to state 99
+-- On comando_Retorno shift to state 100
+-- On comando_Output shift to state 101
+-- On comando_Input shift to state 102
+-- On comando_For shift to state 103
+-- On comando_Chamada shift to state 104
+-- On comando_Atribuicao shift to state 105
+-- On comando shift to state 106
+-- On chamada shift to state 108
+-- On INPUT reduce production loption(separated_nonempty_list(VIRG,expressao)) -> 
+-- On END reduce production list(comando) -> 
+
+State 93:
+expressao -> variavel . [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL ELOG DIVI DIF ]
+expressaoAtrib -> variavel . [ ATRIB ]
+-- On VIRG reduce production expressao -> variavel 
+-- On OULOG reduce production expressao -> variavel 
+-- On MULTI reduce production expressao -> variavel 
+-- On MENOS reduce production expressao -> variavel 
+-- On MENORIGUAL reduce production expressao -> variavel 
+-- On MENOR reduce production expressao -> variavel 
+-- On MAIS reduce production expressao -> variavel 
+-- On MAIORIGUAL reduce production expressao -> variavel 
+-- On MAIOR reduce production expressao -> variavel 
+-- On INPUT reduce production expressao -> variavel 
+-- On IGUAL reduce production expressao -> variavel 
+-- On ELOG reduce production expressao -> variavel 
+-- On DIVI reduce production expressao -> variavel 
+-- On DIF reduce production expressao -> variavel 
+-- On ATRIB reduce production expressaoAtrib -> variavel 
+
+State 94:
+comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) . INPUT [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On INPUT shift to state 95
+
+State 95:
+comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On RETURN reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On OUTPUT reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On NOT reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On LITSTRING reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On LITINT reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On LITFLOAT reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On INPUT reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On IF reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On ID reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On FOR reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On EOF reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On END reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On ELSE reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On BOOL reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+-- On APAR reduce production comando_Input -> loption(separated_nonempty_list(VIRG,expressao)) INPUT 
+
+State 96:
+comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) . END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On END shift to state 97
+
+State 97:
+comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On RETURN reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On OUTPUT reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On NOT reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On LITSTRING reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On LITINT reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On LITFLOAT reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On INPUT reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On IF reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On ID reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On FOR reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On EOF reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On END reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On ELSE reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On BOOL reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+-- On APAR reduce production comando_For -> FOR comando_Atribuicao VIRG expressao VIRG comando_Atribuicao DO list(comando) END 
+
+State 98:
+comando -> comando_While . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando -> comando_While 
+-- On RETURN reduce production comando -> comando_While 
+-- On OUTPUT reduce production comando -> comando_While 
+-- On NOT reduce production comando -> comando_While 
+-- On LITSTRING reduce production comando -> comando_While 
+-- On LITINT reduce production comando -> comando_While 
+-- On LITFLOAT reduce production comando -> comando_While 
+-- On INPUT reduce production comando -> comando_While 
+-- On IF reduce production comando -> comando_While 
+-- On ID reduce production comando -> comando_While 
+-- On FOR reduce production comando -> comando_While 
+-- On EOF reduce production comando -> comando_While 
+-- On END reduce production comando -> comando_While 
+-- On ELSE reduce production comando -> comando_While 
+-- On BOOL reduce production comando -> comando_While 
+-- On APAR reduce production comando -> comando_While 
+
+State 99:
+comando -> comando_Se . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando -> comando_Se 
+-- On RETURN reduce production comando -> comando_Se 
+-- On OUTPUT reduce production comando -> comando_Se 
+-- On NOT reduce production comando -> comando_Se 
+-- On LITSTRING reduce production comando -> comando_Se 
+-- On LITINT reduce production comando -> comando_Se 
+-- On LITFLOAT reduce production comando -> comando_Se 
+-- On INPUT reduce production comando -> comando_Se 
+-- On IF reduce production comando -> comando_Se 
+-- On ID reduce production comando -> comando_Se 
+-- On FOR reduce production comando -> comando_Se 
+-- On EOF reduce production comando -> comando_Se 
+-- On END reduce production comando -> comando_Se 
+-- On ELSE reduce production comando -> comando_Se 
+-- On BOOL reduce production comando -> comando_Se 
+-- On APAR reduce production comando -> comando_Se 
+
+State 100:
+comando -> comando_Retorno . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando -> comando_Retorno 
+-- On RETURN reduce production comando -> comando_Retorno 
+-- On OUTPUT reduce production comando -> comando_Retorno 
+-- On NOT reduce production comando -> comando_Retorno 
+-- On LITSTRING reduce production comando -> comando_Retorno 
+-- On LITINT reduce production comando -> comando_Retorno 
+-- On LITFLOAT reduce production comando -> comando_Retorno 
+-- On INPUT reduce production comando -> comando_Retorno 
+-- On IF reduce production comando -> comando_Retorno 
+-- On ID reduce production comando -> comando_Retorno 
+-- On FOR reduce production comando -> comando_Retorno 
+-- On EOF reduce production comando -> comando_Retorno 
+-- On END reduce production comando -> comando_Retorno 
+-- On ELSE reduce production comando -> comando_Retorno 
+-- On BOOL reduce production comando -> comando_Retorno 
+-- On APAR reduce production comando -> comando_Retorno 
+
+State 101:
+comando -> comando_Output . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando -> comando_Output 
+-- On RETURN reduce production comando -> comando_Output 
+-- On OUTPUT reduce production comando -> comando_Output 
+-- On NOT reduce production comando -> comando_Output 
+-- On LITSTRING reduce production comando -> comando_Output 
+-- On LITINT reduce production comando -> comando_Output 
+-- On LITFLOAT reduce production comando -> comando_Output 
+-- On INPUT reduce production comando -> comando_Output 
+-- On IF reduce production comando -> comando_Output 
+-- On ID reduce production comando -> comando_Output 
+-- On FOR reduce production comando -> comando_Output 
+-- On EOF reduce production comando -> comando_Output 
+-- On END reduce production comando -> comando_Output 
+-- On ELSE reduce production comando -> comando_Output 
+-- On BOOL reduce production comando -> comando_Output 
+-- On APAR reduce production comando -> comando_Output 
+
+State 102:
+comando -> comando_Input . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando -> comando_Input 
+-- On RETURN reduce production comando -> comando_Input 
+-- On OUTPUT reduce production comando -> comando_Input 
+-- On NOT reduce production comando -> comando_Input 
+-- On LITSTRING reduce production comando -> comando_Input 
+-- On LITINT reduce production comando -> comando_Input 
+-- On LITFLOAT reduce production comando -> comando_Input 
+-- On INPUT reduce production comando -> comando_Input 
+-- On IF reduce production comando -> comando_Input 
+-- On ID reduce production comando -> comando_Input 
+-- On FOR reduce production comando -> comando_Input 
+-- On EOF reduce production comando -> comando_Input 
+-- On END reduce production comando -> comando_Input 
+-- On ELSE reduce production comando -> comando_Input 
+-- On BOOL reduce production comando -> comando_Input 
+-- On APAR reduce production comando -> comando_Input 
+
+State 103:
+comando -> comando_For . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando -> comando_For 
+-- On RETURN reduce production comando -> comando_For 
+-- On OUTPUT reduce production comando -> comando_For 
+-- On NOT reduce production comando -> comando_For 
+-- On LITSTRING reduce production comando -> comando_For 
+-- On LITINT reduce production comando -> comando_For 
+-- On LITFLOAT reduce production comando -> comando_For 
+-- On INPUT reduce production comando -> comando_For 
+-- On IF reduce production comando -> comando_For 
+-- On ID reduce production comando -> comando_For 
+-- On FOR reduce production comando -> comando_For 
+-- On EOF reduce production comando -> comando_For 
+-- On END reduce production comando -> comando_For 
+-- On ELSE reduce production comando -> comando_For 
+-- On BOOL reduce production comando -> comando_For 
+-- On APAR reduce production comando -> comando_For 
+
+State 104:
+comando -> comando_Chamada . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando -> comando_Chamada 
+-- On RETURN reduce production comando -> comando_Chamada 
+-- On OUTPUT reduce production comando -> comando_Chamada 
+-- On NOT reduce production comando -> comando_Chamada 
+-- On LITSTRING reduce production comando -> comando_Chamada 
+-- On LITINT reduce production comando -> comando_Chamada 
+-- On LITFLOAT reduce production comando -> comando_Chamada 
+-- On INPUT reduce production comando -> comando_Chamada 
+-- On IF reduce production comando -> comando_Chamada 
+-- On ID reduce production comando -> comando_Chamada 
+-- On FOR reduce production comando -> comando_Chamada 
+-- On EOF reduce production comando -> comando_Chamada 
+-- On END reduce production comando -> comando_Chamada 
+-- On ELSE reduce production comando -> comando_Chamada 
+-- On BOOL reduce production comando -> comando_Chamada 
+-- On APAR reduce production comando -> comando_Chamada 
+
+State 105:
+comando -> comando_Atribuicao . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando -> comando_Atribuicao 
+-- On RETURN reduce production comando -> comando_Atribuicao 
+-- On OUTPUT reduce production comando -> comando_Atribuicao 
+-- On NOT reduce production comando -> comando_Atribuicao 
+-- On LITSTRING reduce production comando -> comando_Atribuicao 
+-- On LITINT reduce production comando -> comando_Atribuicao 
+-- On LITFLOAT reduce production comando -> comando_Atribuicao 
+-- On INPUT reduce production comando -> comando_Atribuicao 
+-- On IF reduce production comando -> comando_Atribuicao 
+-- On ID reduce production comando -> comando_Atribuicao 
+-- On FOR reduce production comando -> comando_Atribuicao 
+-- On EOF reduce production comando -> comando_Atribuicao 
+-- On END reduce production comando -> comando_Atribuicao 
+-- On ELSE reduce production comando -> comando_Atribuicao 
+-- On BOOL reduce production comando -> comando_Atribuicao 
+-- On APAR reduce production comando -> comando_Atribuicao 
+
+State 106:
+list(comando) -> comando . list(comando) [ EOF END ]
+-- On WHILE shift to state 25
+-- On RETURN shift to state 71
+-- On OUTPUT shift to state 74
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On IF shift to state 78
+-- On ID shift to state 30
+-- On FOR shift to state 81
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 93
+-- On separated_nonempty_list(VIRG,expressao) shift to state 62
+-- On loption(separated_nonempty_list(VIRG,expressao)) shift to state 94
+-- On list(comando) shift to state 107
+-- On expressaoAtrib shift to state 84
+-- On expressao shift to state 65
+-- On comando_While shift to state 98
+-- On comando_Se shift to state 99
+-- On comando_Retorno shift to state 100
+-- On comando_Output shift to state 101
+-- On comando_Input shift to state 102
+-- On comando_For shift to state 103
+-- On comando_Chamada shift to state 104
+-- On comando_Atribuicao shift to state 105
+-- On comando shift to state 106
+-- On chamada shift to state 108
+-- On INPUT reduce production loption(separated_nonempty_list(VIRG,expressao)) -> 
+-- On EOF reduce production list(comando) -> 
+-- On END reduce production list(comando) -> 
+
+State 107:
+list(comando) -> comando list(comando) . [ EOF END ]
+-- On EOF reduce production list(comando) -> comando list(comando) 
+-- On END reduce production list(comando) -> comando list(comando) 
+
+State 108:
+comando_Chamada -> chamada . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+expressao -> chamada . [ VIRG OULOG MULTI MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR INPUT IGUAL ELOG DIVI DIF ]
+-- On WHILE reduce production comando_Chamada -> chamada 
+-- On VIRG reduce production expressao -> chamada 
+-- On RETURN reduce production comando_Chamada -> chamada 
+-- On OUTPUT reduce production comando_Chamada -> chamada 
+-- On OULOG reduce production expressao -> chamada 
+-- On NOT reduce production comando_Chamada -> chamada 
+-- On MULTI reduce production expressao -> chamada 
+-- On MENOS reduce production expressao -> chamada 
+-- On MENORIGUAL reduce production expressao -> chamada 
+-- On MENOR reduce production expressao -> chamada 
+-- On MAIS reduce production expressao -> chamada 
+-- On MAIORIGUAL reduce production expressao -> chamada 
+-- On MAIOR reduce production expressao -> chamada 
+-- On LITSTRING reduce production comando_Chamada -> chamada 
+-- On LITINT reduce production comando_Chamada -> chamada 
+-- On LITFLOAT reduce production comando_Chamada -> chamada 
+-- On INPUT reduce production comando_Chamada -> chamada 
+-- On INPUT reduce production expressao -> chamada 
+-- On IGUAL reduce production expressao -> chamada 
+-- On IF reduce production comando_Chamada -> chamada 
+-- On ID reduce production comando_Chamada -> chamada 
+-- On FOR reduce production comando_Chamada -> chamada 
+-- On EOF reduce production comando_Chamada -> chamada 
+-- On END reduce production comando_Chamada -> chamada 
+-- On ELSE reduce production comando_Chamada -> chamada 
+-- On ELOG reduce production expressao -> chamada 
+-- On DIVI reduce production expressao -> chamada 
+-- On DIF reduce production expressao -> chamada 
+-- On BOOL reduce production comando_Chamada -> chamada 
+-- On APAR reduce production comando_Chamada -> chamada 
+** Conflict on INPUT
+
+State 109:
+comando_Se -> IF expressao THEN nonempty_list(comando) . option(__anonymous_0) END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On ELSE shift to state 110
+-- On option(__anonymous_0) shift to state 114
+-- On END reduce production option(__anonymous_0) -> 
+
+State 110:
+option(__anonymous_0) -> ELSE . nonempty_list(comando) [ END ]
+-- On WHILE shift to state 25
+-- On RETURN shift to state 71
+-- On OUTPUT shift to state 74
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On IF shift to state 78
+-- On ID shift to state 30
+-- On FOR shift to state 81
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 93
+-- On separated_nonempty_list(VIRG,expressao) shift to state 62
+-- On nonempty_list(comando) shift to state 111
+-- On loption(separated_nonempty_list(VIRG,expressao)) shift to state 94
+-- On expressaoAtrib shift to state 84
+-- On expressao shift to state 65
+-- On comando_While shift to state 98
+-- On comando_Se shift to state 99
+-- On comando_Retorno shift to state 100
+-- On comando_Output shift to state 101
+-- On comando_Input shift to state 102
+-- On comando_For shift to state 103
+-- On comando_Chamada shift to state 104
+-- On comando_Atribuicao shift to state 105
+-- On comando shift to state 112
+-- On chamada shift to state 108
+-- On INPUT reduce production loption(separated_nonempty_list(VIRG,expressao)) -> 
+
+State 111:
+option(__anonymous_0) -> ELSE nonempty_list(comando) . [ END ]
+-- On END reduce production option(__anonymous_0) -> ELSE nonempty_list(comando) 
+
+State 112:
+nonempty_list(comando) -> comando . [ END ELSE ]
+nonempty_list(comando) -> comando . nonempty_list(comando) [ END ELSE ]
+-- On WHILE shift to state 25
+-- On RETURN shift to state 71
+-- On OUTPUT shift to state 74
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On IF shift to state 78
+-- On ID shift to state 30
+-- On FOR shift to state 81
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 93
+-- On separated_nonempty_list(VIRG,expressao) shift to state 62
+-- On nonempty_list(comando) shift to state 113
+-- On loption(separated_nonempty_list(VIRG,expressao)) shift to state 94
+-- On expressaoAtrib shift to state 84
+-- On expressao shift to state 65
+-- On comando_While shift to state 98
+-- On comando_Se shift to state 99
+-- On comando_Retorno shift to state 100
+-- On comando_Output shift to state 101
+-- On comando_Input shift to state 102
+-- On comando_For shift to state 103
+-- On comando_Chamada shift to state 104
+-- On comando_Atribuicao shift to state 105
+-- On comando shift to state 112
+-- On chamada shift to state 108
+-- On INPUT reduce production loption(separated_nonempty_list(VIRG,expressao)) -> 
+-- On END reduce production nonempty_list(comando) -> comando 
+-- On ELSE reduce production nonempty_list(comando) -> comando 
+
+State 113:
+nonempty_list(comando) -> comando nonempty_list(comando) . [ END ELSE ]
+-- On END reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
+-- On ELSE reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
+
+State 114:
+comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) . END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On END shift to state 115
+
+State 115:
+comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On RETURN reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On OUTPUT reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On NOT reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On LITSTRING reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On LITINT reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On LITFLOAT reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On INPUT reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On IF reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On ID reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On FOR reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On EOF reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On END reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On ELSE reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On BOOL reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+-- On APAR reduce production comando_Se -> IF expressao THEN nonempty_list(comando) option(__anonymous_0) END 
+
+State 116:
+comando_While -> WHILE expressao DO list(comando) . END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On END shift to state 117
+
+State 117:
+comando_While -> WHILE expressao DO list(comando) END . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF END ELSE BOOL APAR ]
+-- On WHILE reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On RETURN reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On OUTPUT reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On NOT reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On LITSTRING reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On LITINT reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On LITFLOAT reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On INPUT reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On IF reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On ID reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On FOR reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On EOF reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On END reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On ELSE reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On BOOL reduce production comando_While -> WHILE expressao DO list(comando) END 
+-- On APAR reduce production comando_While -> WHILE expressao DO list(comando) END 
+
+State 118:
+declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) . END [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FUNCTION FOR EOF BOOL APAR ]
+-- On END shift to state 119
+
+State 119:
+declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FUNCTION FOR EOF BOOL APAR ]
+-- On WHILE reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On RETURN reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On OUTPUT reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On NOT reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On LITSTRING reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On LITINT reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On LITFLOAT reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On INPUT reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On IF reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On ID reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On FUNCTION reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On FOR reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On EOF reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On BOOL reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+-- On APAR reduce production declaracao_de_funcao -> FUNCTION ID APAR loption(separated_nonempty_list(VIRG,parametro)) FPAR tipo list(declaracao_de_variavel) list(comando) END 
+
+State 120:
+list(declaracao_de_variavel) -> declaracao_de_variavel . list(declaracao_de_variavel) [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR END BOOL APAR ]
+-- On VOID shift to state 5
+-- On STRING shift to state 6
+-- On INT shift to state 7
+-- On FLOAT shift to state 8
+-- On BOOLEANO shift to state 9
+-- On tipo_simples shift to state 10
+-- On tipo shift to state 19
+-- On list(declaracao_de_variavel) shift to state 121
+-- On declaracao_de_variavel shift to state 120
+-- On WHILE reduce production list(declaracao_de_variavel) -> 
+-- On RETURN reduce production list(declaracao_de_variavel) -> 
+-- On OUTPUT reduce production list(declaracao_de_variavel) -> 
+-- On NOT reduce production list(declaracao_de_variavel) -> 
+-- On LITSTRING reduce production list(declaracao_de_variavel) -> 
+-- On LITINT reduce production list(declaracao_de_variavel) -> 
+-- On LITFLOAT reduce production list(declaracao_de_variavel) -> 
+-- On INPUT reduce production list(declaracao_de_variavel) -> 
+-- On IF reduce production list(declaracao_de_variavel) -> 
+-- On ID reduce production list(declaracao_de_variavel) -> 
+-- On FOR reduce production list(declaracao_de_variavel) -> 
+-- On END reduce production list(declaracao_de_variavel) -> 
+-- On BOOL reduce production list(declaracao_de_variavel) -> 
+-- On APAR reduce production list(declaracao_de_variavel) -> 
+
+State 121:
+list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR END BOOL APAR ]
+-- On WHILE reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On RETURN reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On OUTPUT reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On NOT reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On LITSTRING reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On LITINT reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On LITFLOAT reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On INPUT reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On IF reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On ID reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On FOR reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On END reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On BOOL reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+-- On APAR reduce production list(declaracao_de_variavel) -> declaracao_de_variavel list(declaracao_de_variavel) 
+
+State 122:
+programa' -> programa . [ # ]
+-- On # accept programa
+
+State 123:
+programa -> list(declaracao_de_funcao) . list(comando) EOF [ # ]
+-- On WHILE shift to state 25
+-- On RETURN shift to state 71
+-- On OUTPUT shift to state 74
+-- On NOT shift to state 26
+-- On LITSTRING shift to state 27
+-- On LITINT shift to state 28
+-- On LITFLOAT shift to state 29
+-- On IF shift to state 78
+-- On ID shift to state 30
+-- On FOR shift to state 81
+-- On BOOL shift to state 32
+-- On APAR shift to state 33
+-- On variavel shift to state 93
+-- On separated_nonempty_list(VIRG,expressao) shift to state 62
+-- On loption(separated_nonempty_list(VIRG,expressao)) shift to state 94
+-- On list(comando) shift to state 124
+-- On expressaoAtrib shift to state 84
+-- On expressao shift to state 65
+-- On comando_While shift to state 98
+-- On comando_Se shift to state 99
+-- On comando_Retorno shift to state 100
+-- On comando_Output shift to state 101
+-- On comando_Input shift to state 102
+-- On comando_For shift to state 103
+-- On comando_Chamada shift to state 104
+-- On comando_Atribuicao shift to state 105
+-- On comando shift to state 106
+-- On chamada shift to state 108
+-- On INPUT reduce production loption(separated_nonempty_list(VIRG,expressao)) -> 
+-- On EOF reduce production list(comando) -> 
+
+State 124:
+programa -> list(declaracao_de_funcao) list(comando) . EOF [ # ]
+-- On EOF shift to state 125
+
+State 125:
+programa -> list(declaracao_de_funcao) list(comando) EOF . [ # ]
+-- On # reduce production programa -> list(declaracao_de_funcao) list(comando) EOF 
+
+State 126:
+list(declaracao_de_funcao) -> declaracao_de_funcao . list(declaracao_de_funcao) [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF BOOL APAR ]
+-- On FUNCTION shift to state 1
+-- On list(declaracao_de_funcao) shift to state 127
+-- On declaracao_de_funcao shift to state 126
+-- On WHILE reduce production list(declaracao_de_funcao) -> 
+-- On RETURN reduce production list(declaracao_de_funcao) -> 
+-- On OUTPUT reduce production list(declaracao_de_funcao) -> 
+-- On NOT reduce production list(declaracao_de_funcao) -> 
+-- On LITSTRING reduce production list(declaracao_de_funcao) -> 
+-- On LITINT reduce production list(declaracao_de_funcao) -> 
+-- On LITFLOAT reduce production list(declaracao_de_funcao) -> 
+-- On INPUT reduce production list(declaracao_de_funcao) -> 
+-- On IF reduce production list(declaracao_de_funcao) -> 
+-- On ID reduce production list(declaracao_de_funcao) -> 
+-- On FOR reduce production list(declaracao_de_funcao) -> 
+-- On EOF reduce production list(declaracao_de_funcao) -> 
+-- On BOOL reduce production list(declaracao_de_funcao) -> 
+-- On APAR reduce production list(declaracao_de_funcao) -> 
+
+State 127:
+list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) . [ WHILE RETURN OUTPUT NOT LITSTRING LITINT LITFLOAT INPUT IF ID FOR EOF BOOL APAR ]
+-- On WHILE reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On RETURN reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On OUTPUT reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On NOT reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On LITSTRING reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On LITINT reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On LITFLOAT reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On INPUT reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On IF reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On ID reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On FOR reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On EOF reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On BOOL reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+-- On APAR reduce production list(declaracao_de_funcao) -> declaracao_de_funcao list(declaracao_de_funcao) 
+

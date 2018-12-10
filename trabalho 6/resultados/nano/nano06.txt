@@ -1,0 +1,16 @@
+beginFun main(0,1)
+local n,inteiro
+t0 := 1
+t1 := 2
+t2 := t0 - t1
+n := t2
+call print((n,inteiro)): void
+return n
+endFun
+
+beginFun main(0,0)
+call main(): inteiro
+endFun
+
+
+- : unit = ()

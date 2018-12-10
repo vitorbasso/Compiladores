@@ -1,0 +1,29 @@
+beginFun main(0,3)
+local n,inteiro
+local m,inteiro
+local x,inteiro
+n := 1
+m := 2
+x := 5
+L2: t0 := x > n
+ifFalse t0 goto L3: 
+t1 := n = m
+ifFalse t1 goto L0: 
+call print((n,inteiro)): void
+goto L1: 
+L0: t2 := 0
+call print((t2,inteiro)): void
+L1: t3 := 1
+t4 := x - t3
+x := t4
+goto L2: 
+L3: t5 := 1
+return t5
+endFun
+
+beginFun main(0,0)
+call main(): inteiro
+endFun
+
+
+- : unit = ()

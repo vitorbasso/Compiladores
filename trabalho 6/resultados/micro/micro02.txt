@@ -1,0 +1,32 @@
+beginFun main(0,2)
+local num1,inteiro
+local num2,inteiro
+t0 := Digite o primeiro numero: 
+call print((t0,string)): void
+call read((num1,inteiro)): void
+t1 := Digite o segundo numero: 
+call print((t1,string)): void
+call read((num2,inteiro)): void
+t2 := num1 > num2
+ifFalse t2 goto L0: 
+t3 := O primeiro número 
+t4 :=  é maior que o segundo 
+t5 :=  
+
+call print((t3,string), (num1,inteiro), (t4,string), (num2,inteiro), (t5,string)): void
+goto L1: 
+L0: t6 := O segundo número 
+t7 :=  é maior que o primeiro 
+t8 :=  
+
+call print((t6,string), (num2,inteiro), (t7,string), (num1,inteiro), (t8,string)): void
+L1: t9 := 1
+return t9
+endFun
+
+beginFun main(0,0)
+call main(): inteiro
+endFun
+
+
+- : unit = ()

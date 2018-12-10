@@ -1,0 +1,12 @@
+beginFun main(0,1)
+local n,inteiro
+n := 1
+return n
+endFun
+
+beginFun main(0,0)
+call main(): inteiro
+endFun
+
+
+- : unit = ()
