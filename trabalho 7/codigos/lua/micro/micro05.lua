@@ -27,6 +27,3 @@ function main() int
   print("Foram inseridos",m,"Mulheres\n")
 
 end
-
-main()
-  
